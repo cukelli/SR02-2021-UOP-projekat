@@ -4,7 +4,7 @@ public class Primerak {
 	private Knjiga knjiga;
 	private int brojStrana;
 	private int godinaStampe;
-	private String jezikStampe;
+	private Jezik jezikStampe;
 	private boolean iznajmljena;
 	private Povez povez;
 	
@@ -12,12 +12,12 @@ public class Primerak {
 		this.knjiga = null;
 		this.brojStrana = 0;
 		this.godinaStampe = 0;
-		this.jezikStampe = "";
+		this.jezikStampe = null;
 		this.iznajmljena = false;
 		this.povez = null;
 	}
 	
-	public Primerak(Knjiga knjiga,int brojStrana,int godinStampe,String jezikStampe,boolean iznajmljena,Povez povez) {
+	public Primerak(Knjiga knjiga,int brojStrana,int godinStampe, Jezik jezikStampe,boolean iznajmljena,Povez povez) {
 		this.knjiga = knjiga;
 		this.brojStrana = brojStrana;
 		this.godinaStampe = godinaStampe;
@@ -50,11 +50,11 @@ public class Primerak {
 		this.godinaStampe = godinaStampe;
 	}
 
-	public String getJezikStampe() {
+	public Jezik getJezikStampe() {
 		return jezikStampe;
 	}
 
-	public void setJezikStampe(String jezikStampe) {
+	public void setJezikStampe(Jezik jezikStampe) {
 		this.jezikStampe = jezikStampe;
 	}
 

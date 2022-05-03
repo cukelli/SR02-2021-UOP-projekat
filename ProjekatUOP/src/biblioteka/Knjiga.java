@@ -5,7 +5,7 @@ public class Knjiga {
 	private String originalniNaslov;
 	private String autor;
 	private int godinaObjavljivanja;
-	private String jezikOriginala;
+	private Jezik jezikOriginala;
 	private String opis;
 	private Zanr zanr;
 	
@@ -14,12 +14,12 @@ public class Knjiga {
 		this.originalniNaslov = "";
 		this.autor = "";
 		this.godinaObjavljivanja = 0;
-		this.jezikOriginala = "";
+		this.jezikOriginala = null;
 		this.opis = "";
 		this.zanr = null;
 	}
 	
-	public Knjiga(String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,String jezikOriginala,String opis,Zanr zanr) {
+	public Knjiga(String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr) {
 		this.naslov = naslov;
 		this.originalniNaslov = originalniNaslov;
 		this.autor = autor;
@@ -61,11 +61,11 @@ public class Knjiga {
 		this.godinaObjavljivanja = godinaObjavljivanja;
 	}
 
-	public String getJezikOriginala() {
+	public Jezik getJezikOriginala() {
 		return jezikOriginala;
 	}
 
-	public void setJezikOriginala(String jezikOriginala) {
+	public void setJezikOriginala(Jezik jezikOriginala) {
 		this.jezikOriginala = jezikOriginala;
 	}
 
