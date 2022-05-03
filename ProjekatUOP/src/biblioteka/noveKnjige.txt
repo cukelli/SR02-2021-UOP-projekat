@@ -1,0 +1,5 @@
+Mali Princ;Little Prince;Anastasija Cukelj;2021;SRPSKI;kvalitetno stivo;zanr[oznaka: kvalitetno stivo,opis:naucna fantastika
+Istorija Srba;Istorija srbaa;Jovan Glavonjic;2010;SRPSKI;kvalitet;zanr[oznaka: kvalitet,opis:istorija
+Mali Princ;Little Prince;Anastasija Cukelj;2021;SRPSKI;kvalitetno stivo;zanr[oznaka: kvalitetno stivo,opis:naucna fantastika
+Istorija Srba;Istorija srbaa;Jovan Glavonjic;2010;SRPSKI;kvalitet;zanr[oznaka: kvalitet,opis:istorija
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;zanr[oznaka: Kvalitet,opis:Stivo

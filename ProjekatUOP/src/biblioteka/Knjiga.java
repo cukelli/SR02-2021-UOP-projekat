@@ -1,5 +1,13 @@
 package biblioteka;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class Knjiga {
 	private String naslov;
 	private String originalniNaslov;
@@ -89,5 +97,50 @@ public class Knjiga {
 	public String toString() {
 		return "Knjiga [naslov: " + this.naslov + ",originalni naslov: " + this.originalniNaslov + ",autor: " + this.autor + ",godina objavljivanja: " + this.godinaObjavljivanja + ",jezik originala: " + this.jezikOriginala + ",opis: " + this.opis + ",zanr: " + this.zanr.getOznaka();
 	}
+	
+	public static ArrayList<Knjiga> citajFajl(String imeFajla) throws IOException {
+		ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();
+		File fajl = new File(imeFajla);
+		BufferedReader reader = new BufferedReader(new FileReader(fajl));
 
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			String [] niz = line.split(";");
+			String naslov = niz[0];
+			String originalniNaslov = niz[1];
+			String autor = niz[2];
+			int godinaObjavljivanja = Integer.parseInt(niz[3]);
+			String jezikOriginala = niz[4];
+			Jezik defJezik = Jezik.ENGLESKI;
+			for (Jezik j: Jezik.values()) {
+				if (j.name().equalsIgnoreCase(jezikOriginala)) {
+					defJezik = j;
+				}
+			}
+			String opis = niz[5];
+			Zanr zanr = new Zanr(opis,niz[6]);
+			Knjiga knjiga = new Knjiga(naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,zanr);
+			knjige.add(knjiga);
+			
+		}
+		reader.close();
+		return knjige;
+		
+		
+	}
+
+	public static void upisiFajl(ArrayList<Knjiga> knjigeUpis, String imeFajla) throws IOException {
+		ArrayList<Knjiga> knjige = knjigeUpis;
+		File fajl = new File(imeFajla);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
+
+		for (Knjiga k: knjige) {
+			String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr();
+			writer.write(sb);
+			writer.newLine();
+		}
+		
+		writer.close();
+	}
+	
 }
