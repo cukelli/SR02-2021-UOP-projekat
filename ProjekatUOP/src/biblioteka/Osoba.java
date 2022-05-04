@@ -1,6 +1,7 @@
 package biblioteka;
 
 abstract class Osoba {
+	protected String IDOsobe;
 	protected String ime;
 	protected String prezime;
 	protected String JMBG;
@@ -8,6 +9,7 @@ abstract class Osoba {
 	protected Pol pol;
 	
 	public Osoba() {
+		this.IDOsobe = "";
 		this.ime = "";
 		this.prezime = "";
 		this.JMBG = "";
@@ -16,7 +18,8 @@ abstract class Osoba {
 		
 	}
 	
-	public Osoba(String ime,String prezime,String JMBG,String adresa) {
+	public Osoba(String IDOsobe,String ime,String prezime,String JMBG,String adresa) {
+		this.IDOsobe = IDOsobe;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.JMBG = JMBG;
@@ -63,6 +66,15 @@ abstract class Osoba {
 	public void setPol(Pol pol) {
 		this.pol = pol;
 	}
+
+	public String getIDOsobe() {
+		return IDOsobe;
+	}
+
+	public void setIDOsobe(String IDOsobe) {
+		IDOsobe = IDOsobe;
+	}
+	
 	
 	
 	

@@ -33,6 +33,6 @@ public class TipClanarine {
 	
  @Override
  public String toString() {
-	 return "Tip: " + this.tip + ", cena: " + this.cena;
+	 return  this.tip;
  }
 }
