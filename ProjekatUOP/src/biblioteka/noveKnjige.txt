@@ -1,9 +1,4 @@
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;123 
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Kvalitet;01234
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;01234
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;01234
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;01234

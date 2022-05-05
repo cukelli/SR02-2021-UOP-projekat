@@ -131,6 +131,9 @@ public class Knjiga {
 			}
 			String opis = niz[5];
 			Zanr zanr = new Zanr(opis,niz[6]);
+			
+			
+			
 			String IDKnjige = niz[7];
 			Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,zanr);
 			knjige.add(knjiga);

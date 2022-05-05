@@ -1,0 +1,3 @@
+odrasli;250.00
+penzionerska;100.00
+decija;150.00
