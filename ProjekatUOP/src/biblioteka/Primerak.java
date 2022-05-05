@@ -77,7 +77,7 @@ public class Primerak {
 	@Override
 	
 	public String toString() {
-		return "primerak: [Knjiga: " + this.knjiga.getNaslov() + ",broj strana: " + this.brojStrana + ",povez " + this.povez + ",godina stampe: " + this.godinaStampe + ",jezik stampe: " + this.jezikStampe + ",iznajmljena:" + this.iznajmljena;
+		return "primerak: [Knjiga: " + ",ID KNJIGE:" + this.knjiga.getIDKnjige() + ", naslov: " + this.knjiga.getNaslov() + ",broj strana: " + this.brojStrana + ",povez " + this.povez + ",godina stampe: " + this.godinaStampe + ",jezik stampe: " + this.jezikStampe + ",iznajmljena:" + this.iznajmljena;
 	}
 	
 	

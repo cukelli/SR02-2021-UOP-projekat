@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Knjiga {
+	private String IDKnjige;
 	private String naslov;
 	private String originalniNaslov;
 	private String autor;
@@ -18,6 +19,7 @@ public class Knjiga {
 	private Zanr zanr;
 	
 	public Knjiga() {
+		this.IDKnjige = "";
 		this.naslov = "";
 		this.originalniNaslov = "";
 		this.autor = "";
@@ -27,7 +29,8 @@ public class Knjiga {
 		this.zanr = null;
 	}
 	
-	public Knjiga(String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr) {
+	public Knjiga(String IDKnjige,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr) {
+		this.IDKnjige = IDKnjige;
 		this.naslov = naslov;
 		this.originalniNaslov = originalniNaslov;
 		this.autor = autor;
@@ -35,6 +38,15 @@ public class Knjiga {
 		this.jezikOriginala = jezikOriginala;
 		this.opis = opis;
 		this.zanr = zanr;
+	}
+	
+
+	public String getIDKnjige() {
+		return IDKnjige;
+	}
+
+	public void setIDKnjige(String iDKnjige) {
+		IDKnjige = iDKnjige;
 	}
 
 	public String getNaslov() {
@@ -95,7 +107,7 @@ public class Knjiga {
 	
 	@Override
 	public String toString() {
-		return "Knjiga [naslov: " + this.naslov + ",originalni naslov: " + this.originalniNaslov + ",autor: " + this.autor + ",godina objavljivanja: " + this.godinaObjavljivanja + ",jezik originala: " + this.jezikOriginala + ",opis: " + this.opis + ",zanr: " + this.zanr.getOznaka();
+		return "Knjiga [naslov: " + this.naslov + ",originalni naslov: " + this.originalniNaslov + ",autor: " + this.autor + ",godina objavljivanja: " + this.godinaObjavljivanja + ",jezik originala: " + this.jezikOriginala + ",opis: " + this.opis + ",zanr: " + this.zanr.getOznaka() + ", ID:" + this.IDKnjige;
 	}
 	
 	public static ArrayList<Knjiga> citajFajl(String imeFajla) throws IOException {
@@ -119,7 +131,8 @@ public class Knjiga {
 			}
 			String opis = niz[5];
 			Zanr zanr = new Zanr(opis,niz[6]);
-			Knjiga knjiga = new Knjiga(naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,zanr);
+			String IDKnjige = niz[7];
+			Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,zanr);
 			knjige.add(knjiga);
 			
 		}
@@ -135,7 +148,7 @@ public class Knjiga {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
 
 		for (Knjiga k: knjige) {
-			String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr();
+			String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr() + ";" + k.getIDKnjige();
 			writer.write(sb);
 			writer.newLine();
 		}

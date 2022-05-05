@@ -33,6 +33,6 @@ public class Zanr {
 
 @Override
  public String toString() {
-	 return "zanr[oznaka: " + this.oznaka + ",opis:" + this.opis;
+	 return this.oznaka;
 			 }
 }

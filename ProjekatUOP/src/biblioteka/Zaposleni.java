@@ -1,6 +1,6 @@
 package biblioteka;
 
-public class Zaposleni extends Osoba {
+abstract class Zaposleni extends Osoba {
 	
 	protected double plata;
 	protected String korIme;
