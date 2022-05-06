@@ -82,7 +82,7 @@ public class Clan extends Osoba {
 	}
 	
 	
-	public static ArrayList<Clan> citajClanove (String fajlClanovi) throws IOException {
+	public static ArrayList<Clan> citajClanove (String fajlClanovi,ArrayList<TipClanarine> sveClanarine) throws IOException {
 		ArrayList<Clan> clanovi = new ArrayList<Clan>();
 		File clanoviFajl = new File(fajlClanovi);
 		
@@ -107,21 +107,19 @@ public class Clan extends Osoba {
 			LocalDate datumPoslednjeUplateClana = LocalDate.parse(nizClanova[7]);
 			int UplaceniMeseciClana = Integer.parseInt(nizClanova[8]);
 			boolean aktivnostClana = Boolean.parseBoolean(nizClanova[9]);
-			double cenaClanarine = 0.0;
-			if (nizClanova[10] == "odrasla") {
-				cenaClanarine = 250.00;
+			TipClanarine tmpClanarine = sveClanarine.get(0);
 			
-			}
-			
-			else if (nizClanova[10] =="decija") {
-				cenaClanarine = 150.00;
-			}
-			else {
-				cenaClanarine = 100.00;
-			}
+			for (TipClanarine tip: sveClanarine) {
 				
-			TipClanarine tipClanarineClana = new TipClanarine(nizClanova[10], cenaClanarine);
-			Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tipClanarineClana);
+				if (tip.getTip().equalsIgnoreCase(nizClanova[10])) {
+				
+			  tmpClanarine = tip;
+		// System.out.println("usao u petljlu");
+				}
+			}
+		
+				
+			Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine);
 			clanovi.add(clan);	
 			
 		}

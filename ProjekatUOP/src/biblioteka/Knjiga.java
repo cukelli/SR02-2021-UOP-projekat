@@ -110,7 +110,10 @@ public class Knjiga {
 		return "Knjiga [naslov: " + this.naslov + ",originalni naslov: " + this.originalniNaslov + ",autor: " + this.autor + ",godina objavljivanja: " + this.godinaObjavljivanja + ",jezik originala: " + this.jezikOriginala + ",opis: " + this.opis + ",zanr: " + this.zanr.getOznaka() + ", ID:" + this.IDKnjige;
 	}
 	
-	public static ArrayList<Knjiga> citajFajl(String imeFajla) throws IOException {
+	public static ArrayList<Knjiga> citajFajl(String imeFajla,ArrayList<Zanr> zanroviKnjiga) throws IOException {
+		
+		
+		
 		ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();
 		File fajl = new File(imeFajla);
 		BufferedReader reader = new BufferedReader(new FileReader(fajl));
@@ -130,12 +133,21 @@ public class Knjiga {
 				}
 			}
 			String opis = niz[5];
-			Zanr zanr = new Zanr(opis,niz[6]);
+			Zanr tmp = zanroviKnjiga.get(0);
+
+			for (Zanr z: zanroviKnjiga) {
+			
+				if (z.getOznaka().equalsIgnoreCase(niz[6])) {
+				
+			  tmp = z;
+		// System.out.println("usao u petljlu");
+				}
+			}
 			
 			
 			
 			String IDKnjige = niz[7];
-			Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,zanr);
+			Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,tmp);
 			knjige.add(knjiga);
 			
 		}

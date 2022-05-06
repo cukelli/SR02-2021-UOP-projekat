@@ -19,8 +19,8 @@ public class Main {
 		
 		ArrayList <Administrator> a = Administrator.citajAdministratore("src/biblioteka/bibliotekari.txt");
 		ArrayList<Bibliotekar> b = Bibliotekar.citajBibliotekare("src/biblioteka/bibliotekari.txt");
-		ArrayList<Knjiga> k = Knjiga.citajFajl("src/biblioteka/noveKnjige.txt");
-		ArrayList<Clan> c = Clan.citajClanove("src/biblioteka/clanovi.txt");
+		ArrayList<Knjiga> k = Knjiga.citajFajl("src/biblioteka/noveKnjige.txt",zanroviKnjiga);
+		ArrayList<Clan> c = Clan.citajClanove("src/biblioteka/clanovi.txt",sveClanarine);
 		for (Knjiga kk: k) {
 			System.out.println(kk);
 		for (Clan cll: c) {
