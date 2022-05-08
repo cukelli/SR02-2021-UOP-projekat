@@ -1,6 +1,13 @@
 package biblioteka;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Iznajmljivanje {
 	
@@ -76,6 +83,71 @@ public class Iznajmljivanje {
 				}
 	
 	
-//	public static ArrayList<Iznajmljivanje> citajIznajmljivanja (String fajlSaIznajmljivanjem,)
+	public static ArrayList<Iznajmljivanje> citajIznajmljivanja (String fajlSaIznajmljivanjem, ArrayList<Clan> c,ArrayList<Bibliotekar> b,ArrayList<Primerak> p) throws IOException {
+	//	File fajlPrimerci = new File(fajlPrimeraka);
+		//Primerak.citajPrimerke(fajlPrimeraka,knjige);
+		ArrayList<Iznajmljivanje> iznajmljivanja = new ArrayList<Iznajmljivanje>();
+		File fajl = new File(fajlSaIznajmljivanjem);
+		BufferedReader reader = new BufferedReader(new FileReader(fajl));
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			String[] redIznajmljivanja = line.split(";");
+			  String IDIznajmljivanja = redIznajmljivanja[0];
+			  Bibliotekar tmpBibliotekar = b.get(0);
+			  
+			  for (Bibliotekar iteratorBibliotekar: b) {
+				  if (iteratorBibliotekar.getIDOsobe().equalsIgnoreCase(redIznajmljivanja[1])) {
+					  tmpBibliotekar = iteratorBibliotekar;
+				  }					  			  
+				  
+			  }
+			  
+			  Clan tmpClan = c.get(0);
+			  
+			  for (Clan iteratorClan: c) {
+				  if (iteratorClan.getBrojClanske().equalsIgnoreCase(redIznajmljivanja[2])) {
+					  tmpClan = iteratorClan;
+				  }
+			  }
+			
+			  LocalDate datumIznajmljivanja = LocalDate.parse(redIznajmljivanja[3]);
+			  LocalDate datumVracanja = LocalDate.parse(redIznajmljivanja[4]);
+			  
+			  Primerak tmpPrimerak = p.get(0);
+			  
+			  for (Primerak iteratorPrimerak: p) {
+				  if (iteratorPrimerak.getIDPrimerka().equalsIgnoreCase(redIznajmljivanja[5])) {
+					  tmpPrimerak = iteratorPrimerak;
+				  }
+			  }
+			
+			  Iznajmljivanje iznajmljivanje = new Iznajmljivanje(IDIznajmljivanja,tmpBibliotekar,tmpClan,datumIznajmljivanja,datumVracanja,tmpPrimerak);
+			  iznajmljivanja.add(iznajmljivanje);
+			  
+		}
+		reader.close();
+		return iznajmljivanja;
+		
+		
+		
+	}
+	
+	public static void upisiIznajmljivanje(ArrayList<Iznajmljivanje> iznajmljivanjeUpis,String fajlUpisIznajmljivanja) throws IOException {
+		ArrayList<Iznajmljivanje> iznajmljivanja = iznajmljivanjeUpis;
+		
+		File fajl = new File(fajlUpisIznajmljivanja);
+		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
+		 
+		for (Iznajmljivanje i: iznajmljivanja) {
+			String sbIznajmljivanja = i.getIDIznajmljivanja() + ";" + i.getZaposleni().getIDOsobe() + ";" + i.getClan().getBrojClanske() + ";" + i.getDatumIznajmljivanja() + ";" + i.getDatumVracanja() + ";" + i.getIznajmljenPrimerak().getIDPrimerka();
+			writer.write(sbIznajmljivanja);
+			writer.newLine();
+			
+		
+		}
+		writer.close();
+		
+	}
+	
 
 }

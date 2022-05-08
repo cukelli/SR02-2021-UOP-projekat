@@ -11,6 +11,7 @@ public class Main {
 		
 
 	try {
+		
 		ArrayList<Zanr> zanroviKnjiga = Zanr.citajZanrove("src/biblioteka/zanrovi.txt");
 		ArrayList<Knjiga> knjige = Knjiga.citajFajl("src/biblioteka/noveKnjige.txt",zanroviKnjiga);
 		
@@ -25,6 +26,8 @@ public class Main {
 		
 		
 		ArrayList<Clan> c = Clan.citajClanove("src/biblioteka/clanovi.txt",sveClanarine);
+		ArrayList<Iznajmljivanje> iznajmljeneKnjigeProcitane = Iznajmljivanje.citajIznajmljivanja("src/biblioteka/iznajmljivanja.txt", c, b, p);
+		
 		for (Knjiga kk: knjige) {
 			System.out.println(kk);
 		for (Clan cll: c) {
@@ -42,12 +45,14 @@ public class Main {
 		}
 		
 		
+		ArrayList<Iznajmljivanje> iznajmljivanjaKnjiga = new ArrayList<Iznajmljivanje>();
 		ArrayList<Administrator> admin = new ArrayList<Administrator>();
 		ArrayList<Bibliotekar> bb = new ArrayList<Bibliotekar>();
 		ArrayList<Knjiga> sveKnjige = new ArrayList<Knjiga>();
 		ArrayList<Clan> cln = new ArrayList<Clan>();
 		ArrayList<Primerak> primerci = new ArrayList<Primerak>();
 		
+		Iznajmljivanje iznajmljivanjeTest = new Iznajmljivanje("1235a",b.get(0),c.get(0),LocalDate.parse("2010-03-03"),LocalDate.parse("2010-06-06"),p.get(0));
 		Administrator administratorTest = new Administrator("1234","Mica","Micun","0102002735021","Stepe 3",Pol.MUSKI,23200.3,"wer","lozinka");
 		Bibliotekar bibliotekarTest = new Bibliotekar("12345","Milica","Lakovic","0102002735021","Vojvode Stepe 3",Pol.ZENSKI,25000.00,"LAKI","123df");
 		Knjiga knjigaNovaTest = new Knjiga("01234","Srpska Trilogija", "Srpska Trilogija", "Stevan Jakovljevic", 1915,Jezik.NEMACKI,"Kvalitetno stivo",zanroviKnjiga.get(0));
@@ -58,7 +63,9 @@ public class Main {
 		bb.add(bibliotekarTest);
 		admin.add(administratorTest);
 		primerci.add(primerakTest);
+		iznajmljivanjaKnjiga.add(iznajmljivanjeTest);
 		
+		Iznajmljivanje.upisiIznajmljivanje(iznajmljivanjaKnjiga, "src/biblioteka/iznajmljivanja.txt");
 		Knjiga.upisiFajl(sveKnjige, "src/biblioteka/noveKnjige.txt");
 		Clan.upisiClanove(cln, "src/biblioteka/clanovi.txt");
 		Bibliotekar.upisiBibliotekare(bb, "src/biblioteka/bibliotekari.txt");
