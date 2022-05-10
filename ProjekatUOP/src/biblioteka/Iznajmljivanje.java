@@ -81,22 +81,7 @@ public class Iznajmljivanje {
 				}
 	
 	
-	public static void upisiIznajmljivanje(ArrayList<Iznajmljivanje> iznajmljivanjeUpis,String fajlUpisIznajmljivanja) throws IOException {
-		ArrayList<Iznajmljivanje> iznajmljivanja = iznajmljivanjeUpis;
-		
-		File fajl = new File(fajlUpisIznajmljivanja);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
-		 
-		for (Iznajmljivanje i: iznajmljivanja) {
-			String sbIznajmljivanja = i.getIDIznajmljivanja() + ";" + i.getZaposleni().getIDOsobe() + ";" + i.getClan().getBrojClanske() + ";" + i.getDatumIznajmljivanja() + ";" + i.getDatumVracanja() + ";" + i.getIznajmljenPrimerak().getIDPrimerka();
-			writer.write(sbIznajmljivanja);
-			writer.newLine();
-			
-		
-		}
-		writer.close();
-		
-	}
+	
 	
 
 }

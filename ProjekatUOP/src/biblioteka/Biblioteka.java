@@ -117,6 +117,70 @@ public class Biblioteka {
 	 
 	}
 	 
+	 
+	 public static ArrayList<Clan> citajClanove (String fajlClanovi,ArrayList<TipClanarine> sveClanarine) throws IOException {
+			ArrayList<Clan> clanovi = new ArrayList<Clan>();
+			File clanoviFajl = new File(fajlClanovi);
+			
+			BufferedReader reader = new BufferedReader(new FileReader(clanoviFajl));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				String [] nizClanova = line.split(";");
+				String IDclana = nizClanova[0];
+				String imeClana = nizClanova[1];
+				String prezimeClana = nizClanova[2];
+				String JMBGClana = nizClanova[3];
+				String adresaClana = nizClanova[4];
+				String polClana = nizClanova[5];
+				Pol defPol = Pol.MUSKI;
+				for (Pol p: Pol.values()) {
+					if (p.name().equalsIgnoreCase(polClana)) {
+						defPol = p;
+					}
+				}
+				
+				String brojClanskeClana = nizClanova[6];
+				LocalDate datumPoslednjeUplateClana = LocalDate.parse(nizClanova[7]);
+				int UplaceniMeseciClana = Integer.parseInt(nizClanova[8]);
+				boolean aktivnostClana = Boolean.parseBoolean(nizClanova[9]);
+				TipClanarine tmpClanarine = sveClanarine.get(0);
+				
+				for (TipClanarine tip: sveClanarine) {
+					
+					if (tip.getTip().equalsIgnoreCase(nizClanova[10])) {
+					
+				  tmpClanarine = tip;
+			// System.out.println("usao u petljlu");
+					}
+				}
+				boolean obrisanostClana = Boolean.parseBoolean(nizClanova[11]);
+			
+					
+				Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine,obrisanostClana);
+				clanovi.add(clan);	
+				
+			}
+			reader.close();
+			return clanovi;
+			
+		}
+		
+		public static void upisiClanove(ArrayList<Clan> clanoviUpis, String clanoviFajl) throws IOException {
+			ArrayList<Clan> clanovi = clanoviUpis;
+			File fajlSaClanovima = new File(clanoviFajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaClanovima, true));
+			
+			for (Clan c: clanovi) {
+				String sbClan = c.getIDOsobe() + ";" + c.getIme() + ";" + c.getPrezime() + ";" + c.getJMBG() + ";" + c.getAdresa() + ";" + c.getPol() + ";" + c.getBrojClanske() + ";" + c.getDatumPoslednjeUplate() + ";" + c.getBrojUplacenihMeseci() + ";" + c.isAktivnost() + ";" + c.getTipClanarine() + ";" + c.isObrisan();
+				writer.write(sbClan);
+				writer.newLine();
+				
+	 		}
+			writer.close();
+
+			
+		}
+	 
 	 public static ArrayList<Bibliotekar> citajBibliotekare (String fajlBibliotekari) throws IOException {
 			ArrayList<Bibliotekar> bibliotekari = new ArrayList<Bibliotekar>();
 			File bibliotekariFajl = new File(fajlBibliotekari);
@@ -151,6 +215,22 @@ public class Biblioteka {
 			
 		}
 		
+	 
+	 public static void upisiBibliotekare(ArrayList<Bibliotekar> bibliotekariUpis,String bibliotekariFajl) throws IOException {
+			ArrayList<Bibliotekar> sviBibliotekari = bibliotekariUpis;
+			File fajlSaBibliotekarima = new File(bibliotekariFajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaBibliotekarima, true));
+			
+			for (Bibliotekar b: sviBibliotekari) {
+				String sbBibliotekar = b.getIDOsobe() + ";" + b.getIme() + ";" + b.getPrezime() + ";" + b.getJMBG() + ";" + b.getAdresa() + ";" + b.getPol() + ";" + b.getPlata() + ";" + b.getKorIme() + ";" + b.getLozinka();
+				writer.write(sbBibliotekar);
+				writer.newLine();
+			}
+			writer.close();
+			
+
+			
+		}
 		
 		
 		public static ArrayList<Administrator> citajAdministratore (String fajlAdministratori) throws IOException {
@@ -186,6 +266,19 @@ public class Biblioteka {
 			
 		}
 		
+		
+		public static void upisiAdministratore(ArrayList<Administrator> administratoriUpis,String administratoriFajl) throws IOException {
+			ArrayList<Administrator> administratori = administratoriUpis;
+			File fajlSaAdministratorima = new File(administratoriFajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaAdministratorima, true));
+			for (Administrator a: administratori) {
+				String sbAdministrator = a.getIDOsobe() + ";" + a.getIme() + ";" + a.getPrezime() + ";" + a.getJMBG() + ";" + a.getAdresa() + ";" + a.getPol() + ";" + a.getPlata() + ";" + a.getKorIme() + ";" + a.getLozinka();
+				writer.write(sbAdministrator);
+				writer.newLine();
+			}
+			writer.close();
+			
+		}
 		
 		public static ArrayList<Knjiga> citajFajl(String imeFajla,ArrayList<Zanr> zanroviKnjiga) throws IOException {
 			
@@ -233,6 +326,9 @@ public class Biblioteka {
 			
 			
 		}
+		
+		
+		
 
 		
 		
@@ -282,6 +378,38 @@ public class Biblioteka {
 			
 		}
 		
+		
+		public static void pisiPrimerke(ArrayList<Primerak> primerciUpis,String fajlUpisPrimeraka) throws IOException {
+			ArrayList<Primerak> sviPrimerci = primerciUpis;
+			File fajl = new File(fajlUpisPrimeraka);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
+			
+			for (Primerak p: sviPrimerci) {
+				String sbPrimerak = p.getIDPrimerka() + ";" + p.getKnjiga().getNaslov() + ";" + p.getBrojStrana() + ";" + p.getGodinaStampe() + ";" + p.getJezikStampe() + ";" + p.isIznajmljena() + ";" + p.getPovez();
+				writer.write(sbPrimerak);
+				writer.newLine();
+				
+			}
+			writer.close();
+		}
+		
+		
+		public static void upisiFajl(ArrayList<Knjiga> knjigeUpis, String imeFajla) throws IOException {
+			ArrayList<Knjiga> sveKnjige = knjigeUpis;
+			File fajl = new File(imeFajla);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
+
+			for (Knjiga k: sveKnjige) {
+				String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr() + ";" + k.getIDKnjige();
+				writer.write(sb);
+				writer.newLine();
+			}
+			
+			writer.close();
+		}
+		
+		
+		
 		public static ArrayList<Iznajmljivanje> citajIznajmljivanja (String fajlSaIznajmljivanjem, ArrayList<Clan> c,ArrayList<Bibliotekar> b,ArrayList<Primerak> p) throws IOException {
 			
 			ArrayList<Iznajmljivanje> svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
@@ -327,6 +455,24 @@ public class Biblioteka {
 			return svaIznajmljivanja;
 			
 			
+			
+		}
+		
+		
+		public static void upisiIznajmljivanje(ArrayList<Iznajmljivanje> iznajmljivanjeUpis,String fajlUpisIznajmljivanja) throws IOException {
+			ArrayList<Iznajmljivanje> iznajmljivanja = iznajmljivanjeUpis;
+			
+			File fajl = new File(fajlUpisIznajmljivanja);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
+			 
+			for (Iznajmljivanje i: iznajmljivanja) {
+				String sbIznajmljivanja = i.getIDIznajmljivanja() + ";" + i.getZaposleni().getIDOsobe() + ";" + i.getClan().getBrojClanske() + ";" + i.getDatumIznajmljivanja() + ";" + i.getDatumVracanja() + ";" + i.getIznajmljenPrimerak().getIDPrimerka();
+				writer.write(sbIznajmljivanja);
+				writer.newLine();
+				
+			
+			}
+			writer.close();
 			
 		}
 		

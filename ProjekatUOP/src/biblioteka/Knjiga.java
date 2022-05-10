@@ -1,10 +1,5 @@
 package biblioteka;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Knjiga {
 	private String IDKnjige;
@@ -108,20 +103,6 @@ public class Knjiga {
 		return "Knjiga [naslov: " + this.naslov + ",originalni naslov: " + this.originalniNaslov + ",autor: " + this.autor + ",godina objavljivanja: " + this.godinaObjavljivanja + ",jezik originala: " + this.jezikOriginala + ",opis: " + this.opis + ",zanr: " + this.zanr.getOznaka() + ", ID:" + this.IDKnjige;
 	}
 	
-	
-	public static void upisiFajl(ArrayList<Knjiga> knjigeUpis, String imeFajla) throws IOException {
-		ArrayList<Knjiga> sveKnjige = knjigeUpis;
-		File fajl = new File(imeFajla);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
-
-		for (Knjiga k: sveKnjige) {
-			String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr() + ";" + k.getIDKnjige();
-			writer.write(sb);
-			writer.newLine();
-		}
-		
-		writer.close();
-	}
 	
 	
 }

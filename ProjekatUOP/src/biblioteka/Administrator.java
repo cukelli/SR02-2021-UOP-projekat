@@ -23,18 +23,7 @@ public class Administrator extends Zaposleni {
 
 	
 	
-	public static void upisiAdministratore(ArrayList<Administrator> administratoriUpis,String administratoriFajl) throws IOException {
-		ArrayList<Administrator> administratori = administratoriUpis;
-		File fajlSaAdministratorima = new File(administratoriFajl);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaAdministratorima, true));
-		for (Administrator a: administratori) {
-			String sbAdministrator = a.getIDOsobe() + ";" + a.getIme() + ";" + a.getPrezime() + ";" + a.getJMBG() + ";" + a.getAdresa() + ";" + a.getPol() + ";" + a.getPlata() + ";" + a.getKorIme() + ";" + a.getLozinka();
-			writer.write(sbAdministrator);
-			writer.newLine();
-		}
-		writer.close();
-		
-	}
+	
 	
 	
 	

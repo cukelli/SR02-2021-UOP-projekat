@@ -1,10 +1,5 @@
 package biblioteka;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Bibliotekar extends Zaposleni {
 	public Bibliotekar() {
@@ -21,20 +16,6 @@ public class Bibliotekar extends Zaposleni {
 	
 	
 
-	public static void upisiBibliotekare(ArrayList<Bibliotekar> bibliotekariUpis,String bibliotekariFajl) throws IOException {
-		ArrayList<Bibliotekar> sviBibliotekari = bibliotekariUpis;
-		File fajlSaBibliotekarima = new File(bibliotekariFajl);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaBibliotekarima, true));
-		
-		for (Bibliotekar b: sviBibliotekari) {
-			String sbBibliotekar = b.getIDOsobe() + ";" + b.getIme() + ";" + b.getPrezime() + ";" + b.getJMBG() + ";" + b.getAdresa() + ";" + b.getPol() + ";" + b.getPlata() + ";" + b.getKorIme() + ";" + b.getLozinka();
-			writer.write(sbBibliotekar);
-			writer.newLine();
-		}
-		writer.close();
-		
-
-		
-	}
+	
 	
 }

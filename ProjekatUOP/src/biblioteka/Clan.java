@@ -96,68 +96,7 @@ public class Clan extends Osoba {
 	}
 	
 	
-	public static ArrayList<Clan> citajClanove (String fajlClanovi,ArrayList<TipClanarine> sveClanarine) throws IOException {
-		ArrayList<Clan> clanovi = new ArrayList<Clan>();
-		File clanoviFajl = new File(fajlClanovi);
-		
-		BufferedReader reader = new BufferedReader(new FileReader(clanoviFajl));
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			String [] nizClanova = line.split(";");
-			String IDclana = nizClanova[0];
-			String imeClana = nizClanova[1];
-			String prezimeClana = nizClanova[2];
-			String JMBGClana = nizClanova[3];
-			String adresaClana = nizClanova[4];
-			String polClana = nizClanova[5];
-			Pol defPol = Pol.MUSKI;
-			for (Pol p: Pol.values()) {
-				if (p.name().equalsIgnoreCase(polClana)) {
-					defPol = p;
-				}
-			}
-			
-			String brojClanskeClana = nizClanova[6];
-			LocalDate datumPoslednjeUplateClana = LocalDate.parse(nizClanova[7]);
-			int UplaceniMeseciClana = Integer.parseInt(nizClanova[8]);
-			boolean aktivnostClana = Boolean.parseBoolean(nizClanova[9]);
-			TipClanarine tmpClanarine = sveClanarine.get(0);
-			
-			for (TipClanarine tip: sveClanarine) {
-				
-				if (tip.getTip().equalsIgnoreCase(nizClanova[10])) {
-				
-			  tmpClanarine = tip;
-		// System.out.println("usao u petljlu");
-				}
-			}
-			boolean obrisanostClana = Boolean.parseBoolean(nizClanova[11]);
-		
-				
-			Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine,obrisanostClana);
-			clanovi.add(clan);	
-			
-		}
-		reader.close();
-		return clanovi;
-		
-	}
 	
-	public static void upisiClanove(ArrayList<Clan> clanoviUpis, String clanoviFajl) throws IOException {
-		ArrayList<Clan> clanovi = clanoviUpis;
-		File fajlSaClanovima = new File(clanoviFajl);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaClanovima, true));
-		
-		for (Clan c: clanovi) {
-			String sbClan = c.getIDOsobe() + ";" + c.getIme() + ";" + c.getPrezime() + ";" + c.getJMBG() + ";" + c.getAdresa() + ";" + c.getPol() + ";" + c.getBrojClanske() + ";" + c.getDatumPoslednjeUplate() + ";" + c.getBrojUplacenihMeseci() + ";" + c.isAktivnost() + ";" + c.getTipClanarine() + ";" + c.isObrisan();
-			writer.write(sbClan);
-			writer.newLine();
-			
- 		}
-		writer.close();
-
-		
-	}
 	
 
 }

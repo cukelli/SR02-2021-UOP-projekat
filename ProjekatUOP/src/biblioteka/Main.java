@@ -27,7 +27,7 @@ public class Main {
 		
 		
 		
-		ArrayList<Clan> c = Clan.citajClanove("src/biblioteka/clanovi.txt",sveClanarine);
+		ArrayList<Clan> c = Biblioteka.citajClanove("src/biblioteka/clanovi.txt",sveClanarine);
 		ArrayList<Iznajmljivanje> iznajmljeneKnjigeProcitane = Biblioteka.citajIznajmljivanja("src/biblioteka/iznajmljivanja.txt", c, b, p);
 		
 		
@@ -71,12 +71,12 @@ public class Main {
 		primerci.add(primerakTest);
 		iznajmljivanjaKnjiga.add(iznajmljivanjeTest);
 		
-		Iznajmljivanje.upisiIznajmljivanje(iznajmljivanjaKnjiga, "src/biblioteka/iznajmljivanja.txt");
-		Knjiga.upisiFajl(sveKnjige, "src/biblioteka/noveKnjige.txt");
-		Clan.upisiClanove(cln, "src/biblioteka/clanovi.txt");
-		Bibliotekar.upisiBibliotekare(bb, "src/biblioteka/bibliotekari.txt");
-		Administrator.upisiAdministratore(admin, "src/biblioteka/administratori.txt");
-		Primerak.pisiPrimerke(primerci, "src/biblioteka/primerci.txt");
+		Biblioteka.upisiIznajmljivanje(iznajmljivanjaKnjiga, "src/biblioteka/iznajmljivanja.txt");
+		Biblioteka.upisiFajl(sveKnjige, "src/biblioteka/noveKnjige.txt");
+		Biblioteka.upisiClanove(cln, "src/biblioteka/clanovi.txt");
+		Biblioteka.upisiBibliotekare(bb, "src/biblioteka/bibliotekari.txt");
+		Biblioteka.upisiAdministratore(admin, "src/biblioteka/administratori.txt");
+		Biblioteka.pisiPrimerke(primerci, "src/biblioteka/primerci.txt");
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -101,19 +101,6 @@ public class Primerak {
 	
 	
 	
-	public static void pisiPrimerke(ArrayList<Primerak> primerciUpis,String fajlUpisPrimeraka) throws IOException {
-		ArrayList<Primerak> sviPrimerci = primerciUpis;
-		File fajl = new File(fajlUpisPrimeraka);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
-		
-		for (Primerak p: sviPrimerci) {
-			String sbPrimerak = p.getIDPrimerka() + ";" + p.getKnjiga().getNaslov() + ";" + p.getBrojStrana() + ";" + p.getGodinaStampe() + ";" + p.getJezikStampe() + ";" + p.isIznajmljena() + ";" + p.getPovez();
-			writer.write(sbPrimerak);
-			writer.newLine();
-			
-		}
-		writer.close();
-	}
 	
 
 }
