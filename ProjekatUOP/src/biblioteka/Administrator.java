@@ -1,9 +1,7 @@
 package biblioteka;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,38 +23,6 @@ public class Administrator extends Zaposleni {
 
 	
 	
-	public static ArrayList<Administrator> citajAdministratore (String fajlAdministratori) throws IOException {
-		ArrayList<Administrator> administratori = new ArrayList<Administrator>();
-		File administratoriFajl = new File(fajlAdministratori);
-		
-		BufferedReader reader = new BufferedReader(new FileReader(administratoriFajl));
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			String[] nizAdministratora = line.split(";");
-			String IDAdministratora = nizAdministratora[0];
-			String imeAdministratora = nizAdministratora[1];
-			String prezimeAdministratora = nizAdministratora[2];
-			String JMBGAdministratora = nizAdministratora[3];
-			String adresaAdministratora = nizAdministratora[4];
-			String polAdministratora = nizAdministratora[5];
-			Pol defPol = Pol.MUSKI;
-			for (Pol p: Pol.values()) {
-				if (p.name().equalsIgnoreCase(polAdministratora)) {
-					defPol = p;
-				}
-			}
-			double plataAdministratora = Double.parseDouble(nizAdministratora[6]);
-			String korImeAdministratora = nizAdministratora[7];
-			String lozinkaAdministratora = nizAdministratora[8];
-			
-			Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
-            administratori.add(administrator);
-		}
-		reader.close();
-		return administratori;		
-
-		
-	}
 	public static void upisiAdministratore(ArrayList<Administrator> administratoriUpis,String administratoriFajl) throws IOException {
 		ArrayList<Administrator> administratori = administratoriUpis;
 		File fajlSaAdministratorima = new File(administratoriFajl);
@@ -69,4 +35,8 @@ public class Administrator extends Zaposleni {
 		writer.close();
 		
 	}
+	
+	
+	
+	
 }

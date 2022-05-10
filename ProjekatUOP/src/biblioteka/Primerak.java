@@ -1,9 +1,7 @@
 package biblioteka;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -101,57 +99,14 @@ public class Primerak {
 		return "primerak: [Knjiga: " + ", naslov: " + this.knjiga.getNaslov() + ",broj strana: " + this.brojStrana + ",povez " + this.povez + ",godina stampe: " + this.godinaStampe + ",jezik stampe: " + this.jezikStampe + ",iznajmljena:" + this.iznajmljena + ", ID:" + this.IDPrimerka;
 	}
 	
-	public static ArrayList<Primerak> citajPrimerke(String fajlPrimeraka,ArrayList<Knjiga> knjige) throws IOException {
-		ArrayList<Primerak> sviPrimerci = new ArrayList<Primerak>();
-		File fajl = new File(fajlPrimeraka);
-		BufferedReader reader = new BufferedReader(new FileReader(fajl));
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			String [] nizPrimerka = line.split(";");
-			String IDPrimerka = nizPrimerka[0];
-			Knjiga tmpKnjiga = knjige.get(0);
-			
-			for (Knjiga knj: knjige) {
-				
-				if (knj.getNaslov().equalsIgnoreCase(nizPrimerka[1])) {
-					tmpKnjiga = knj;
-				}
-			}
-			
-			int brojStranaPrimerka = Integer.parseInt(nizPrimerka[2]);
-			int godinaStampePrimerka = Integer.parseInt(nizPrimerka[3]);
-			String jezikPrimerka = nizPrimerka[4];
-			Jezik defJezikPrimerka = Jezik.SRPSKI;
-			for (Jezik j: Jezik.values()) {
-				if (j.name().equalsIgnoreCase(jezikPrimerka)) {
-					defJezikPrimerka = j;
-				}
-			}
-			
-			boolean iznajmljenostPrimerka = Boolean.parseBoolean(nizPrimerka[5]);
-			
-			String povezPrimerka = nizPrimerka[6];
-			Povez defPovezPrimerka = Povez.MEKI;
-			for (Povez p: Povez.values()) {
-				if (p.name().equalsIgnoreCase(povezPrimerka)) {
-					defPovezPrimerka = p;	
-				}
-			}
-			Primerak primerak = new Primerak(IDPrimerka,tmpKnjiga,brojStranaPrimerka,godinaStampePrimerka,defJezikPrimerka,iznajmljenostPrimerka,defPovezPrimerka);
-			sviPrimerci.add(primerak);			
-			
-		}
-		reader.close();
-		return sviPrimerci;
-		
-		
-	}
+	
+	
 	public static void pisiPrimerke(ArrayList<Primerak> primerciUpis,String fajlUpisPrimeraka) throws IOException {
-		ArrayList<Primerak> primerci = primerciUpis;
+		ArrayList<Primerak> sviPrimerci = primerciUpis;
 		File fajl = new File(fajlUpisPrimeraka);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
 		
-		for (Primerak p: primerci) {
+		for (Primerak p: sviPrimerci) {
 			String sbPrimerak = p.getIDPrimerka() + ";" + p.getKnjiga().getNaslov() + ";" + p.getBrojStrana() + ";" + p.getGodinaStampe() + ";" + p.getJezikStampe() + ";" + p.isIznajmljena() + ";" + p.getPovez();
 			writer.write(sbPrimerak);
 			writer.newLine();
@@ -159,7 +114,6 @@ public class Primerak {
 		}
 		writer.close();
 	}
-	
 	
 
 }

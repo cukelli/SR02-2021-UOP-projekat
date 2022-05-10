@@ -1,6 +1,16 @@
-001;Pera;Peric;0102002735021;4.jula,25;MUSKI;3;2022-06-03;3;true;odrasla;
-001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska
-001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska
-001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska
-001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska
-001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska
+001;Pera;Peric;0102002735021;4.jula,25;MUSKI;3;2022-06-03;3;true;odrasla;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
+001;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false

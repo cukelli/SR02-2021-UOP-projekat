@@ -1,9 +1,7 @@
 package biblioteka;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -110,59 +108,13 @@ public class Knjiga {
 		return "Knjiga [naslov: " + this.naslov + ",originalni naslov: " + this.originalniNaslov + ",autor: " + this.autor + ",godina objavljivanja: " + this.godinaObjavljivanja + ",jezik originala: " + this.jezikOriginala + ",opis: " + this.opis + ",zanr: " + this.zanr.getOznaka() + ", ID:" + this.IDKnjige;
 	}
 	
-	public static ArrayList<Knjiga> citajFajl(String imeFajla,ArrayList<Zanr> zanroviKnjiga) throws IOException {
-		
-		
-		
-		ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();
-		File fajl = new File(imeFajla);
-		BufferedReader reader = new BufferedReader(new FileReader(fajl));
-
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			String [] niz = line.split(";");
-			String naslov = niz[0];
-			String originalniNaslov = niz[1];
-			String autor = niz[2];
-			int godinaObjavljivanja = Integer.parseInt(niz[3]);
-			String jezikOriginala = niz[4];
-			Jezik defJezik = Jezik.ENGLESKI;
-			for (Jezik j: Jezik.values()) {
-				if (j.name().equalsIgnoreCase(jezikOriginala)) {
-					defJezik = j;
-				}
-			}
-			String opis = niz[5];
-			Zanr tmp = zanroviKnjiga.get(0);
-
-			for (Zanr z: zanroviKnjiga) {
-			
-				if (z.getOznaka().equalsIgnoreCase(niz[6])) {
-				
-			  tmp = z;
-		// System.out.println("usao u petljlu");
-				}
-			}
-			
-			
-			
-			String IDKnjige = niz[7];
-			Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,tmp);
-			knjige.add(knjiga);
-			
-		}
-		reader.close();
-		return knjige;
-		
-		
-	}
-
+	
 	public static void upisiFajl(ArrayList<Knjiga> knjigeUpis, String imeFajla) throws IOException {
-		ArrayList<Knjiga> knjige = knjigeUpis;
+		ArrayList<Knjiga> sveKnjige = knjigeUpis;
 		File fajl = new File(imeFajla);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
 
-		for (Knjiga k: knjige) {
+		for (Knjiga k: sveKnjige) {
 			String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr() + ";" + k.getIDKnjige();
 			writer.write(sb);
 			writer.newLine();
@@ -170,5 +122,6 @@ public class Knjiga {
 		
 		writer.close();
 	}
+	
 	
 }

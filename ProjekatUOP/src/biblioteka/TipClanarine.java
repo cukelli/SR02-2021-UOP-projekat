@@ -1,10 +1,5 @@
 package biblioteka;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class TipClanarine {
 	
@@ -42,22 +37,5 @@ public class TipClanarine {
 	 return this.tip;
  }
  
- public static ArrayList<TipClanarine> citajClanarine(String imeFajlaClanarine) throws IOException {
-		ArrayList<TipClanarine> clanarine = new ArrayList<TipClanarine>();
-		File fajlClanarine = new File(imeFajlaClanarine);
-		BufferedReader reader = new BufferedReader(new FileReader(fajlClanarine));
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			String[] linijaClanarine = line.split(";");
-			String tipClanarine = linijaClanarine[0];
-			double cenaClanarine = Double.parseDouble(linijaClanarine[1]);
-			TipClanarine clanarina = new TipClanarine(tipClanarine,cenaClanarine);
-			clanarine.add(clanarina);
-		
-		}
-		reader.close();
-		return clanarine;
  
- 
-}
 }
