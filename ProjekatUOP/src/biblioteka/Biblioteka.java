@@ -150,13 +150,12 @@ public class Biblioteka {
 					if (tip.getTip().equalsIgnoreCase(nizClanova[10])) {
 					
 				  tmpClanarine = tip;
-			// System.out.println("usao u petljlu");
 					}
 				}
 				boolean obrisanostClana = Boolean.parseBoolean(nizClanova[11]);
 			
 					
-				Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine,obrisanostClana);
+				Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,obrisanostClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine);
 				clanovi.add(clan);	
 				
 			}
@@ -205,8 +204,9 @@ public class Biblioteka {
 				double plataBibliotekara = Double.parseDouble(nizBibliotekara[6]);
 				String korImeBibliotekara = nizBibliotekara[7];
 				String lozinkaBibliotekara = nizBibliotekara[8];
+				boolean obrisanostBibliotekara = Boolean.parseBoolean(nizBibliotekara[9]);
 				
-				Bibliotekar bibliotekar = new Bibliotekar(IDBibliotekara,imeBibliotekara,prezimeBibliotekara,JMBGBibliotekara,adresaBibliotekara,defPol,plataBibliotekara,korImeBibliotekara,lozinkaBibliotekara);
+				Bibliotekar bibliotekar = new Bibliotekar(IDBibliotekara,imeBibliotekara,prezimeBibliotekara,JMBGBibliotekara,adresaBibliotekara,obrisanostBibliotekara,defPol,plataBibliotekara,korImeBibliotekara,lozinkaBibliotekara);
 				bibliotekari.add(bibliotekar);
 				
 				}
@@ -222,7 +222,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaBibliotekarima, true));
 			
 			for (Bibliotekar b: sviBibliotekari) {
-				String sbBibliotekar = b.getIDOsobe() + ";" + b.getIme() + ";" + b.getPrezime() + ";" + b.getJMBG() + ";" + b.getAdresa() + ";" + b.getPol() + ";" + b.getPlata() + ";" + b.getKorIme() + ";" + b.getLozinka();
+				String sbBibliotekar = b.getIDOsobe() + ";" + b.getIme() + ";" + b.getPrezime() + ";" + b.getJMBG() + ";" + b.getAdresa() + ";" + b.getPol() + ";" + b.getPlata() + ";" + b.getKorIme() + ";" + b.getLozinka() + ";" + b.obrisan;
 				writer.write(sbBibliotekar);
 				writer.newLine();
 			}
@@ -256,8 +256,9 @@ public class Biblioteka {
 				double plataAdministratora = Double.parseDouble(nizAdministratora[6]);
 				String korImeAdministratora = nizAdministratora[7];
 				String lozinkaAdministratora = nizAdministratora[8];
+				boolean obrisanostAdministratora = Boolean.parseBoolean(nizAdministratora[9]);
 				
-				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
+				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,obrisanostAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
 	            administratori.add(administrator);
 			}
 			reader.close();
@@ -272,7 +273,7 @@ public class Biblioteka {
 			File fajlSaAdministratorima = new File(administratoriFajl);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajlSaAdministratorima, true));
 			for (Administrator a: administratori) {
-				String sbAdministrator = a.getIDOsobe() + ";" + a.getIme() + ";" + a.getPrezime() + ";" + a.getJMBG() + ";" + a.getAdresa() + ";" + a.getPol() + ";" + a.getPlata() + ";" + a.getKorIme() + ";" + a.getLozinka();
+				String sbAdministrator = a.getIDOsobe() + ";" + a.getIme() + ";" + a.getPrezime() + ";" + a.getJMBG() + ";" + a.getAdresa() + ";" + a.getPol() + ";" + a.getPlata() + ";" + a.getKorIme() + ";" + a.getLozinka() + ";" + a.obrisan;
 				writer.write(sbAdministrator);
 				writer.newLine();
 			}
@@ -310,14 +311,14 @@ public class Biblioteka {
 					if (z.getOznaka().equalsIgnoreCase(niz[6])) {
 					
 				  tmp = z;
-			// System.out.println("usao u petljlu");
 					}
 				}
 				
 				
 				
 				String IDKnjige = niz[7];
-				Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,tmp);
+				boolean obrisanostKnjige = Boolean.parseBoolean(niz[8]);
+				Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,tmp,obrisanostKnjige);
 				knjige.add(knjiga);
 				
 			}
@@ -368,7 +369,8 @@ public class Biblioteka {
 						defPovezPrimerka = p;	
 					}
 				}
-				Primerak primerak = new Primerak(IDPrimerka,tmpKnjiga,brojStranaPrimerka,godinaStampePrimerka,defJezikPrimerka,iznajmljenostPrimerka,defPovezPrimerka);
+				boolean obrisanostPrimerka = Boolean.parseBoolean(nizPrimerka[7]);
+				Primerak primerak = new Primerak(IDPrimerka,tmpKnjiga,brojStranaPrimerka,godinaStampePrimerka,defJezikPrimerka,iznajmljenostPrimerka,defPovezPrimerka,obrisanostPrimerka);
 				sviPrimerci.add(primerak);			
 				
 			}
@@ -385,7 +387,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
 			
 			for (Primerak p: sviPrimerci) {
-				String sbPrimerak = p.getIDPrimerka() + ";" + p.getKnjiga().getNaslov() + ";" + p.getBrojStrana() + ";" + p.getGodinaStampe() + ";" + p.getJezikStampe() + ";" + p.isIznajmljena() + ";" + p.getPovez();
+				String sbPrimerak = p.getIDPrimerka() + ";" + p.getKnjiga().getNaslov() + ";" + p.getBrojStrana() + ";" + p.getGodinaStampe() + ";" + p.getJezikStampe() + ";" + p.isIznajmljena() + ";" + p.getPovez() + ";" + p.isObrisan();
 				writer.write(sbPrimerak);
 				writer.newLine();
 				
@@ -400,7 +402,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
 
 			for (Knjiga k: sveKnjige) {
-				String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr() + ";" + k.getIDKnjige();
+				String sb = k.getNaslov() + ";" + k.getOriginalniNaslov() + ";" + k.getAutor() + ";" + k.getGodinaObjavljivanja() + ";" + k.getJezikOriginala() + ";" + k.getOpis() + ";" + k.getZanr() + ";" + k.getIDKnjige() + ";" + k.isObrisana();
 				writer.write(sb);
 				writer.newLine();
 			}

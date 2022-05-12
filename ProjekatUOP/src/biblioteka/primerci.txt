@@ -1,3 +1,1 @@
-234;Srpska Trilogija;200;2010;SRPSKI;falsee;MEKI
-545434;Srpska Trilogija;567;2010;ENGLESKI;false;MEKI
-545434;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI
+545434;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true

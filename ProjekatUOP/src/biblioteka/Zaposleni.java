@@ -13,12 +13,13 @@ abstract class Zaposleni extends Osoba {
 		this.lozinka = "";
 	}
 	
-	public Zaposleni(String IDOsobe,String ime,String prezime,String JMBG,String adresa,Pol pol,double plata,String korIme,String lozinka) {
-		super(IDOsobe,ime,prezime,JMBG,adresa);
+	public Zaposleni(String IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka) {
+		super(IDOsobe,ime,prezime,JMBG,adresa,obrisan);
 		this.plata = plata;
 		this.korIme = korIme;
 		this.lozinka = lozinka;
 		this.pol = pol;
+		this.obrisan = obrisan;
 		
 	}
 
@@ -45,6 +46,7 @@ abstract class Zaposleni extends Osoba {
 	public void setLozinka(String lozinka) {
 		this.lozinka = lozinka;
 	}
+	
 	
 	
 	

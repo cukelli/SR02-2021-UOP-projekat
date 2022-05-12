@@ -10,6 +10,7 @@ public class Knjiga {
 	private Jezik jezikOriginala;
 	private String opis;
 	private Zanr zanr;
+	private boolean obrisana;
 	
 	public Knjiga() {
 		this.IDKnjige = "";
@@ -20,9 +21,10 @@ public class Knjiga {
 		this.jezikOriginala = null;
 		this.opis = "";
 		this.zanr = null;
+		this.obrisana = false;
 	}
 	
-	public Knjiga(String IDKnjige,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr) {
+	public Knjiga(String IDKnjige,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr,boolean obrisana) {
 		this.IDKnjige = IDKnjige;
 		this.naslov = naslov;
 		this.originalniNaslov = originalniNaslov;
@@ -31,6 +33,7 @@ public class Knjiga {
 		this.jezikOriginala = jezikOriginala;
 		this.opis = opis;
 		this.zanr = zanr;
+		this.obrisana = obrisana;
 	}
 	
 
@@ -98,6 +101,16 @@ public class Knjiga {
 		this.zanr = zanr;
 	}
 	
+	
+	
+	public boolean isObrisana() {
+		return obrisana;
+	}
+
+	public void setObrisana(boolean obrisana) {
+		this.obrisana = obrisana;
+	}
+
 	@Override
 	public String toString() {
 		return "Knjiga [naslov: " + this.naslov + ",originalni naslov: " + this.originalniNaslov + ",autor: " + this.autor + ",godina objavljivanja: " + this.godinaObjavljivanja + ",jezik originala: " + this.jezikOriginala + ",opis: " + this.opis + ",zanr: " + this.zanr.getOznaka() + ", ID:" + this.IDKnjige;

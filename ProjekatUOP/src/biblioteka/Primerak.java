@@ -1,10 +1,5 @@
 package biblioteka;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Primerak {
 	private String IDPrimerka;
@@ -14,6 +9,7 @@ public class Primerak {
 	private Jezik jezikStampe;
 	private boolean iznajmljena;
 	private Povez povez;
+	private boolean obrisan;
 	
 	public Primerak() {
 		this.IDPrimerka = "";
@@ -23,9 +19,10 @@ public class Primerak {
 		this.jezikStampe = null;
 		this.iznajmljena = false;
 		this.povez = null;
+		this.obrisan = false;
 	}
 	
-	public Primerak(String IDPrimerka,Knjiga knjiga,int brojStrana,int godinaStampe, Jezik jezikStampe,boolean iznajmljena,Povez povez) {
+	public Primerak(String IDPrimerka,Knjiga knjiga,int brojStrana,int godinaStampe, Jezik jezikStampe,boolean iznajmljena,Povez povez,boolean obrisan) {
 		this.IDPrimerka = IDPrimerka;
 		this.knjiga = knjiga;
 		this.brojStrana = brojStrana;
@@ -33,6 +30,7 @@ public class Primerak {
 		this.jezikStampe = jezikStampe;
 		this.iznajmljena = iznajmljena;
 		this.povez = povez;
+		this.obrisan = obrisan;
 	}
 
 	public Knjiga getKnjiga() {
@@ -91,6 +89,15 @@ public class Primerak {
 
 	public void setIDPrimerka(String iDPrimerka) {
 		IDPrimerka = iDPrimerka;
+	}
+	
+
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
 	}
 
 	@Override

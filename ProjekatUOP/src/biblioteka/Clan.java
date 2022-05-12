@@ -1,13 +1,6 @@
 package biblioteka;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Clan extends Osoba {
 	
@@ -28,8 +21,8 @@ public class Clan extends Osoba {
 		this.obrisan = false;
 	}
 	
-	public Clan(String IDOsobe,String ime,String prezime,String JMBG,String adresa,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,boolean aktivnost,TipClanarine tipClanarine,boolean obrisan) {
-		super(IDOsobe,ime,prezime,JMBG,adresa);
+	public Clan(String IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,boolean aktivnost,TipClanarine tipClanarine) {
+		super(IDOsobe,ime,prezime,JMBG,adresa,obrisan);
 		this.brojClanske = brojClanske;
 		this.datumPoslednjeUplate = datumPoslednjeUplate;
 		this.brojUplacenihMeseci = brojUplacenihMeseci;

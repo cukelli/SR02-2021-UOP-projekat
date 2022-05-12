@@ -7,6 +7,7 @@ abstract class Osoba {
 	protected String JMBG;
 	protected String adresa;
 	protected Pol pol;
+	protected boolean obrisan;
 	
 	public Osoba() {
 		this.IDOsobe = "";
@@ -15,16 +16,18 @@ abstract class Osoba {
 		this.JMBG = "";
 		this.adresa = "";
 		this.pol = null;
+		this.obrisan = false;
 		
 	}
 	
-	public Osoba(String IDOsobe,String ime,String prezime,String JMBG,String adresa) {
+	public Osoba(String IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan) {
 		this.IDOsobe = IDOsobe;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.JMBG = JMBG;
 		this.adresa = adresa;
 		this.pol = pol;
+		this.obrisan = obrisan;
 	}
 
 	public String getIme() {
@@ -74,7 +77,14 @@ abstract class Osoba {
 	public void setIDOsobe(String IDOsobe) {
 		IDOsobe = IDOsobe;
 	}
-	
+
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
+	}
 	
 	
 	

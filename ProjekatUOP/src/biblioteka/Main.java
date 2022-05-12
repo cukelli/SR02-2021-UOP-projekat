@@ -14,21 +14,21 @@ public class Main {
 		
 		
 		
-		ArrayList<Zanr> zanroviKnjiga = Biblioteka.citajZanrove("src/biblioteka/zanrovi.txt");
-		ArrayList<Knjiga> knjige = Biblioteka.citajFajl("src/biblioteka/noveKnjige.txt",zanroviKnjiga);
+		ArrayList<Zanr> zanroviKnjiga = Biblioteka.citajZanrove("src/fajlovi/zanrovi.txt");
+		ArrayList<Knjiga> knjige = Biblioteka.citajFajl("src/fajlovi/noveKnjige.txt",zanroviKnjiga);
 		
 	
-		ArrayList<TipClanarine> sveClanarine = Biblioteka.citajClanarine("src/biblioteka/clanarine.txt");
+		ArrayList<TipClanarine> sveClanarine = Biblioteka.citajClanarine("src/fajlovi/clanarine.txt");
 	
 		
-		ArrayList<Primerak> p = Biblioteka.citajPrimerke("src/biblioteka/primerci.txt",knjige);
-		ArrayList <Administrator> a = Biblioteka.citajAdministratore("src/biblioteka/administratori.txt");
-		ArrayList<Bibliotekar> b = Biblioteka.citajBibliotekare("src/biblioteka/bibliotekari.txt");
+		ArrayList<Primerak> p = Biblioteka.citajPrimerke("src/fajlovi/primerci.txt",knjige);
+		ArrayList <Administrator> a = Biblioteka.citajAdministratore("src/fajlovi/administratori.txt");
+		ArrayList<Bibliotekar> b = Biblioteka.citajBibliotekare("src/fajlovi/bibliotekari.txt");
 		
 		
 		
-		ArrayList<Clan> c = Biblioteka.citajClanove("src/biblioteka/clanovi.txt",sveClanarine);
-		ArrayList<Iznajmljivanje> iznajmljeneKnjigeProcitane = Biblioteka.citajIznajmljivanja("src/biblioteka/iznajmljivanja.txt", c, b, p);
+		ArrayList<Clan> c = Biblioteka.citajClanove("src/fajlovi/clanovi.txt",sveClanarine);
+		ArrayList<Iznajmljivanje> iznajmljeneKnjigeProcitane = Biblioteka.citajIznajmljivanja("src/fajlovi/iznajmljivanja.txt", c, b, p);
 		
 		
 			
@@ -59,11 +59,11 @@ public class Main {
 		ArrayList<Primerak> primerci = new ArrayList<Primerak>();
 		
 		Iznajmljivanje iznajmljivanjeTest = new Iznajmljivanje("1235a",b.get(0),c.get(0),LocalDate.parse("2010-03-03"),LocalDate.parse("2010-06-06"),p.get(0));
-		Administrator administratorTest = new Administrator("1234","Mica","Micun","0102002735021","Stepe 3",Pol.MUSKI,23200.3,"wer","lozinka");
-		Bibliotekar bibliotekarTest = new Bibliotekar("12345","Milica","Lakovic","0102002735021","Vojvode Stepe 3",Pol.ZENSKI,25000.00,"LAKI","123df");
-		Knjiga knjigaNovaTest = new Knjiga("01234","Srpska Trilogija", "Srpska Trilogija", "Stevan Jakovljevic", 1915,Jezik.NEMACKI,"Kvalitetno stivo",zanroviKnjiga.get(0));
-		Clan clanTest = new Clan("001","Sima","Markovic","0233234","Laze Kostica 3",Pol.MUSKI,"5",LocalDate.parse("2019-06-03"),3,true,sveClanarine.get(1),false);
-		Primerak primerakTest = new Primerak("545434",knjige.get(0),567,2010,Jezik.ENGLESKI,true,Povez.MEKI);
+		Administrator administratorTest = new Administrator("1234","Mica","Micun","0102002735021","Stepe 3",false,Pol.MUSKI,23200.3,"wer","lozinka");
+		Bibliotekar bibliotekarTest = new Bibliotekar("12345","Milica","Lakovic","0102002735021","Vojvode Stepe 3",false,Pol.ZENSKI,25000.00,"LAKI","123df");
+		Knjiga knjigaNovaTest = new Knjiga("01234","Srpska Trilogija", "Srpska Trilogija", "Stevan Jakovljevic", 1915,Jezik.NEMACKI,"Kvalitetno stivo",zanroviKnjiga.get(0),true);
+		Clan clanTest = new Clan("001","Sima","Markovic","0233234","Laze Kostica 3",false,Pol.MUSKI,"5",LocalDate.parse("2019-06-03"),3,true,sveClanarine.get(1));
+		Primerak primerakTest = new Primerak("545434",knjige.get(0),567,2010,Jezik.ENGLESKI,true,Povez.MEKI,true);
 		sveKnjige.add(knjigaNovaTest);
 		cln.add(clanTest);
 		bb.add(bibliotekarTest);
@@ -71,12 +71,12 @@ public class Main {
 		primerci.add(primerakTest);
 		iznajmljivanjaKnjiga.add(iznajmljivanjeTest);
 		
-		Biblioteka.upisiIznajmljivanje(iznajmljivanjaKnjiga, "src/biblioteka/iznajmljivanja.txt");
-		Biblioteka.upisiFajl(sveKnjige, "src/biblioteka/noveKnjige.txt");
-		Biblioteka.upisiClanove(cln, "src/biblioteka/clanovi.txt");
-		Biblioteka.upisiBibliotekare(bb, "src/biblioteka/bibliotekari.txt");
-		Biblioteka.upisiAdministratore(admin, "src/biblioteka/administratori.txt");
-		Biblioteka.pisiPrimerke(primerci, "src/biblioteka/primerci.txt");
+		Biblioteka.upisiIznajmljivanje(iznajmljivanjaKnjiga, "src/fajlovi/iznajmljivanja.txt");
+		Biblioteka.upisiFajl(sveKnjige, "src/fajlovi/noveKnjige.txt");
+		Biblioteka.upisiClanove(cln, "src/fajlovi/clanovi.txt");
+		Biblioteka.upisiBibliotekare(bb, "src/fajlovi/bibliotekari.txt");
+		Biblioteka.upisiAdministratore(admin, "src/fajlovi/administratori.txt");
+		Biblioteka.pisiPrimerke(primerci, "src/fajlovi/primerci.txt");
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

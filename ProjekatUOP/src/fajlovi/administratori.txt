@@ -1,0 +1,10 @@
+234;Sima;Simic;234234;Cara Lazara;MUSKI;230.00;aasd;asdas;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
