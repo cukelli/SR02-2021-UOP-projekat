@@ -1368,7 +1368,7 @@
 											"font": "Arial;13;1",
 											"left": 725,
 											"top": 719,
-											"width": 107.8466796875,
+											"width": 112.201171875,
 											"height": 13,
 											"text": "ADMINISTRATOR"
 										},
@@ -1403,7 +1403,7 @@
 									"font": "Arial;13;0",
 									"left": 720,
 									"top": 712,
-									"width": 117.8466796875,
+									"width": 122.201171875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGArvjE+HgLjhw="
@@ -1430,7 +1430,7 @@
 									"font": "Arial;13;0",
 									"left": 720,
 									"top": 737,
-									"width": 117.8466796875,
+									"width": 122.201171875,
 									"height": 10
 								},
 								{
@@ -1445,7 +1445,7 @@
 									"font": "Arial;13;0",
 									"left": 720,
 									"top": 747,
-									"width": 117.8466796875,
+									"width": 122.201171875,
 									"height": 10
 								},
 								{
@@ -1485,7 +1485,7 @@
 							"containerChangeable": true,
 							"left": 720,
 							"top": 712,
-							"width": 117.8466796875,
+							"width": 122.201171875,
 							"height": 89,
 							"nameCompartment": {
 								"$ref": "AAAAAAGArvjE+HgKWDI="
@@ -1544,7 +1544,7 @@
 											"font": "Arial;13;1",
 											"left": 885,
 											"top": 695,
-											"width": 87.3818359375,
+											"width": 91.03173828125,
 											"height": 13,
 											"text": "bIBLIOTEKAR"
 										},
@@ -1579,7 +1579,7 @@
 									"font": "Arial;13;0",
 									"left": 880,
 									"top": 688,
-									"width": 97.3818359375,
+									"width": 101.03173828125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGArvjXQnhKIRM="
@@ -1606,7 +1606,7 @@
 									"font": "Arial;13;0",
 									"left": 880,
 									"top": 713,
-									"width": 97.3818359375,
+									"width": 101.03173828125,
 									"height": 10
 								},
 								{
@@ -1621,7 +1621,7 @@
 									"font": "Arial;13;0",
 									"left": 880,
 									"top": 723,
-									"width": 97.3818359375,
+									"width": 101.03173828125,
 									"height": 10
 								},
 								{
@@ -1661,7 +1661,7 @@
 							"containerChangeable": true,
 							"left": 880,
 							"top": 688,
-							"width": 97.3818359375,
+							"width": 101.03173828125,
 							"height": 73,
 							"nameCompartment": {
 								"$ref": "AAAAAAGArvjXQnhJ8KQ="
@@ -1700,7 +1700,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 755,
+									"left": 756,
 									"top": 581,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1721,7 +1721,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 740,
+									"left": 741,
 									"top": 582,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1742,7 +1742,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 784,
+									"left": 785,
 									"top": 580,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -1761,7 +1761,7 @@
 								"$ref": "AAAAAAGArvjE93gJarA="
 							},
 							"lineStyle": 1,
-							"points": "776:711;765:464",
+							"points": "778:711;765:464",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGArvkWh3iugyA="
@@ -1794,7 +1794,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 833,
+									"left": 835,
 									"top": 576,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1815,7 +1815,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 820,
+									"left": 822,
 									"top": 583,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1836,7 +1836,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 860,
+									"left": 862,
 									"top": 561,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -1855,7 +1855,7 @@
 								"$ref": "AAAAAAGArvjXQnhIjIM="
 							},
 							"lineStyle": 1,
-							"points": "908:687;787:464",
+							"points": "910:687;788:464",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGArvk3HnjOtWY="
@@ -2596,16 +2596,17 @@
 									"model": {
 										"$ref": "AAAAAAGArv+JTX+jpiU="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 136,
+									"left": 133,
 									"top": 486,
+									"width": 7.22998046875,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGArv+JTn+l6Q0="
-									}
+									},
+									"text": "1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -3815,16 +3816,17 @@
 									"model": {
 										"$ref": "AAAAAAGArwSgwY3arI4="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 95,
+									"left": 92,
 									"top": 528,
+									"width": 7.22998046875,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGArwSgwo3cIdY="
-									}
+									},
+									"text": "1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -6437,7 +6439,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAGArx1j59TVyrI="
 									},
-									"text": "0..1"
+									"text": "0..*"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -6868,7 +6870,8 @@
 								"name": "Jezik",
 								"reference": {
 									"$ref": "AAAAAAGArvJEZnSZod8="
-								}
+								},
+								"multiplicity": "1"
 							}
 						},
 						{
@@ -7179,7 +7182,8 @@
 								"name": "JezikPrimerka",
 								"reference": {
 									"$ref": "AAAAAAGArvJEZnSZod8="
-								}
+								},
+								"multiplicity": "1"
 							}
 						},
 						{
@@ -7642,7 +7646,7 @@
 								"reference": {
 									"$ref": "AAAAAAGArvl+GHjr930="
 								},
-								"multiplicity": "0..1"
+								"multiplicity": "0..*"
 							}
 						}
 					],
