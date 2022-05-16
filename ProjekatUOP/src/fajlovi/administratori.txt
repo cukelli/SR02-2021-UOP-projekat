@@ -8,3 +8,7 @@
 1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+1234;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false

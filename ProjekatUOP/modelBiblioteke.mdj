@@ -5892,7 +5892,7 @@
 											"top": 187,
 											"width": 144.4091796875,
 											"height": 13,
-											"text": "+radnoVreme: LocalDate",
+											"text": "+radnoVreme: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -7685,7 +7685,7 @@
 								"$ref": "AAAAAAGArxQ3D8J4bBM="
 							},
 							"name": "radnoVreme",
-							"type": "LocalDate"
+							"type": "String"
 						}
 					]
 				}

@@ -9,3 +9,7 @@
 12345;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
 12345;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
 12345;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
+12345;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
+12345;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
+12345;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
+12345;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false

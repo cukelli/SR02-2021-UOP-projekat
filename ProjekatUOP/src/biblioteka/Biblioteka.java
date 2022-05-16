@@ -14,7 +14,7 @@ public class Biblioteka {
 	private String naziv;
 	private String adresa;
 	private String telefon;
-	private LocalDateTime radnoVreme;
+	private String radnoVreme;
 	
 	
 
@@ -22,12 +22,12 @@ public class Biblioteka {
 		this.naziv = "";
 		this.adresa = "";
 		this.telefon = "";
-		this.radnoVreme = null;
+		this.radnoVreme = "";
 		
 		
 	}
 	
-	public Biblioteka(String naziv,String adresa,String telefon,LocalDateTime radnoVreme) {
+	public Biblioteka(String naziv,String adresa,String telefon,String radnoVreme) {
 		this.naziv = naziv;
 		this.adresa = adresa;
 		this.telefon = telefon;
@@ -59,11 +59,11 @@ public class Biblioteka {
 		this.telefon = telefon;
 	}
 
-	public LocalDateTime getRadnoVreme() {
+	public String getRadnoVreme() {
 		return radnoVreme;
 	}
 
-	public void setRadnoVreme(LocalDateTime radnoVreme) {
+	public void setRadnoVreme(String radnoVreme) {
 		this.radnoVreme = radnoVreme;
 	}	
 	
@@ -476,6 +476,45 @@ public class Biblioteka {
 			}
 			writer.close();
 			
+		}
+		
+		
+		public static ArrayList<Biblioteka> citajBiblioteku(String fajlBiblioteke) throws IOException {
+			ArrayList<Biblioteka> bibliotekaCitanje = new ArrayList<Biblioteka>();
+			File fajl = new File(fajlBiblioteke);
+			BufferedReader reader = new BufferedReader(new FileReader(fajl));
+			String line = null;
+			while ((line = reader.readLine()) != null) { 
+				String[] redBiblioteke = line.split(";");
+				String nazivBiblioteke = redBiblioteke[0];
+				String adresaBiblioteke = redBiblioteke[1];
+				String brojTelefonaBiblioteke = redBiblioteke[2];
+				String radnoVremeBiblioteke = redBiblioteke[3];
+				Biblioteka biblioteka = new Biblioteka(nazivBiblioteke,adresaBiblioteke,brojTelefonaBiblioteke,radnoVremeBiblioteke);
+				bibliotekaCitanje.add(biblioteka);
+
+
+			}
+		
+			reader.close();
+			return bibliotekaCitanje;
+			
+			
+			
+		}
+		
+		
+		public static void upisiBiblioteku(ArrayList<Biblioteka> bibliotekaUpis,String fajlUpisBiblioteke) throws IOException {
+			ArrayList<Biblioteka> biblioteka = bibliotekaUpis;
+			File fajl = new File(fajlUpisBiblioteke);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl,true));
+			
+			for (Biblioteka b: biblioteka) {
+				String sbBiblioteke = b.getNaziv() + ";" + b.getAdresa() + ";" + b.getTelefon() + ";" + b.getRadnoVreme();
+				writer.write(sbBiblioteke);
+				writer.newLine();
+			}
+			writer.close();
 		}
 		
 		
