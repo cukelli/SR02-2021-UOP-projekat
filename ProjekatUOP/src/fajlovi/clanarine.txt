@@ -1,3 +1,5 @@
-odrasli;250.00
-penzionerska;100.00
-decija;150.00
+odrasli;250.00;1
+penzionerska;100.00;2
+decija;150.00;3
+srednja;234.0;4
+srednja;234.0;5

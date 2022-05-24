@@ -3,33 +3,39 @@ package biblioteka;
 import java.time.LocalDate;
 
 public class Clan extends Osoba {
+	private static int idMaker=0;
+
 	
 	private String brojClanske;
 	private LocalDate datumPoslednjeUplate;
 	private int brojUplacenihMeseci;
 	private boolean aktivnost;
 	private TipClanarine tipClanarine;
-	boolean obrisan;
+	
 	
 	public Clan() {
 		super();
+		//this.IDOsobe = IDOsobe;
+		//Clan.idMaker = IDOsobe;
 		this.brojClanske = "";
 		this.datumPoslednjeUplate = null;
 		this.brojUplacenihMeseci = 0;
 		this.aktivnost = false;
 		this.tipClanarine = null;
-		this.obrisan = false;
+		
 	}
 	
-	public Clan(String IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,boolean aktivnost,TipClanarine tipClanarine) {
+	public Clan(int IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,boolean aktivnost,TipClanarine tipClanarine) {
 		super(IDOsobe,ime,prezime,JMBG,adresa,obrisan);
+		this.IDOsobe = IDOsobe;
+		Clan.idMaker = IDOsobe;
 		this.brojClanske = brojClanske;
 		this.datumPoslednjeUplate = datumPoslednjeUplate;
 		this.brojUplacenihMeseci = brojUplacenihMeseci;
 		this.aktivnost = aktivnost;
 		this.tipClanarine = tipClanarine;
 		this.pol = pol;
-		this.obrisan = obrisan;
+		
 	}
 
 	public String getBrojClanske() {
@@ -81,6 +87,15 @@ public class Clan extends Osoba {
 
 	public void setObrisan(boolean obrisan) {
 		this.obrisan = obrisan;
+	}
+	
+	
+	public static void setIdMaker(int count) {
+		Clan.idMaker = count;
+	}
+	
+	public static int getUpdateMaker() {
+		return Clan.idMaker;
 	}
 
 	@Override 

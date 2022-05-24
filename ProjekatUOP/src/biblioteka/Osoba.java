@@ -1,7 +1,8 @@
 package biblioteka;
 
 abstract class Osoba {
-	protected String IDOsobe;
+	//private static int IDMaker = 0;
+	protected int IDOsobe;
 	protected String ime;
 	protected String prezime;
 	protected String JMBG;
@@ -10,7 +11,7 @@ abstract class Osoba {
 	protected boolean obrisan;
 	
 	public Osoba() {
-		this.IDOsobe = "";
+		this.IDOsobe = 0;
 		this.ime = "";
 		this.prezime = "";
 		this.JMBG = "";
@@ -20,8 +21,9 @@ abstract class Osoba {
 		
 	}
 	
-	public Osoba(String IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan) {
+	public Osoba(int IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan) {
 		this.IDOsobe = IDOsobe;
+		//Osoba.IDMaker = IDOsobe;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.JMBG = JMBG;
@@ -70,12 +72,12 @@ abstract class Osoba {
 		this.pol = pol;
 	}
 
-	public String getIDOsobe() {
+	public int getIDOsobe() {
 		return IDOsobe;
 	}
 
-	public void setIDOsobe(String IDOsobe) {
-		IDOsobe = IDOsobe;
+	public void setIDOsobe(int IDOsobe) {
+		this.IDOsobe = IDOsobe;
 	}
 
 	public boolean isObrisan() {
@@ -85,7 +87,11 @@ abstract class Osoba {
 	public void setObrisan(boolean obrisan) {
 		this.obrisan = obrisan;
 	}
+
+
 	
+
+
 	
 	
 	

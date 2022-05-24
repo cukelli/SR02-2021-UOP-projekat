@@ -1,8 +1,12 @@
 package biblioteka;
 
+import java.util.UUID;
 
 public class Primerak {
-	private String IDPrimerka;
+	
+	
+	private int IDPrimerka;
+	private static int IDMaker = 0;
 	private Knjiga knjiga;
 	private int brojStrana;
 	private int godinaStampe;
@@ -12,7 +16,7 @@ public class Primerak {
 	private boolean obrisan;
 	
 	public Primerak() {
-		this.IDPrimerka = "";
+		this.IDPrimerka = 0;
 		this.knjiga = null;
 		this.brojStrana = 0;
 		this.godinaStampe = 0;
@@ -22,8 +26,9 @@ public class Primerak {
 		this.obrisan = false;
 	}
 	
-	public Primerak(String IDPrimerka,Knjiga knjiga,int brojStrana,int godinaStampe, Jezik jezikStampe,boolean iznajmljena,Povez povez,boolean obrisan) {
+	public Primerak(int IDPrimerka,Knjiga knjiga,int brojStrana,int godinaStampe, Jezik jezikStampe,boolean iznajmljena,Povez povez,boolean obrisan) {
 		this.IDPrimerka = IDPrimerka;
+	     Primerak.IDMaker = IDPrimerka;
 		this.knjiga = knjiga;
 		this.brojStrana = brojStrana;
 		this.godinaStampe = godinaStampe;
@@ -83,11 +88,11 @@ public class Primerak {
 	
 	
 	
-	public String getIDPrimerka() {
+	public int getIDPrimerka() {
 		return IDPrimerka;
 	}
 
-	public void setIDPrimerka(String iDPrimerka) {
+	public void setIDPrimerka(int iDPrimerka) {
 		IDPrimerka = iDPrimerka;
 	}
 	
@@ -99,6 +104,15 @@ public class Primerak {
 	public void setObrisan(boolean obrisan) {
 		this.obrisan = obrisan;
 	}
+	
+	public static void setIdMaker(int count) {
+		Primerak.IDMaker = count;
+	}
+	
+	public static int getUpdateMaker() {
+		return Primerak.IDMaker;
+	}
+	
 
 	@Override
 	

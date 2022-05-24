@@ -3,8 +3,10 @@ package biblioteka;
 import java.time.LocalDate;
 
 public class Iznajmljivanje {
+	private static int idMaker=0;
+
 	
-	private String IDIznajmljivanja;
+	private int IDIznajmljivanja;
 	private Zaposleni zaposleni;
 	private Clan clan;
 	private LocalDate datumIznajmljivanja;
@@ -14,7 +16,7 @@ public class Iznajmljivanje {
 	
 	public Iznajmljivanje() {
 		
-		this.IDIznajmljivanja = "";
+		this.IDIznajmljivanja = 0;
 		this.zaposleni = null;
 		this.clan = null;
 		this.datumIznajmljivanja = null;
@@ -22,9 +24,10 @@ public class Iznajmljivanje {
 		this.iznajmljenPrimerak = null;
 		
 	}
-	public Iznajmljivanje(String IDIznajmljivanja,Zaposleni zaposleni,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak)
+	public Iznajmljivanje(int IDIznajmljivanja,Zaposleni zaposleni,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak)
 	{
 		this.IDIznajmljivanja = IDIznajmljivanja;
+		Iznajmljivanje.idMaker = IDIznajmljivanja;
 		this.zaposleni = zaposleni;
 		this.clan = clan;
 		this.datumIznajmljivanja = datumIznajmljivanja;
@@ -64,11 +67,20 @@ public class Iznajmljivanje {
 	
 	
 	
-	public String getIDIznajmljivanja() {
+	public int getIDIznajmljivanja() {
 		return IDIznajmljivanja;
 	}
-	public void setIDIznajmljivanja(String iDIznajmljivanja) {
+	public void setIDIznajmljivanja(int iDIznajmljivanja) {
 		IDIznajmljivanja = iDIznajmljivanja;
+	}
+	
+
+	public static void setIdMaker(int count) {
+		Iznajmljivanje.idMaker = count;
+	}
+	
+	public static int getUpdateMaker() {
+		return Iznajmljivanje.idMaker;
 	}
 	@Override
 	public String toString() {
