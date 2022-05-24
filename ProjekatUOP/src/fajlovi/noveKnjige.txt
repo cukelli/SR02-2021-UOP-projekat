@@ -31,3 +31,4 @@ Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno sti
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;30;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;31;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;32;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;33;true

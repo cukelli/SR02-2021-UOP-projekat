@@ -475,7 +475,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
 			 
 			for (Iznajmljivanje i: iznajmljivanja) {
-				String sbIznajmljivanja = i.getIDIznajmljivanja() + ";" + i.getZaposleni().getIDOsobe() + ";" + i.getClan().getBrojClanske() + ";" + i.getDatumIznajmljivanja() + ";" + i.getDatumVracanja() + ";" + i.getIznajmljenPrimerak().getIDPrimerka();
+				String sbIznajmljivanja = i.getIDIznajmljivanja() + ";" + i.getBibliotekar().getIDOsobe() + ";" + i.getClan().getBrojClanske() + ";" + i.getDatumIznajmljivanja() + ";" + i.getDatumVracanja() + ";" + i.getIznajmljenPrimerak().getIDPrimerka();
 				writer.write(sbIznajmljivanja);
 				writer.newLine();
 				

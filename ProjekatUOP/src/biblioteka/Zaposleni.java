@@ -126,13 +126,17 @@ abstract class Zaposleni extends Osoba {
 	}
 	
 	
-	public void dodajZanr(String oznaka,String opis,int IDZanra) {
+	public void dodajZanr(String oznaka,String opis,int IDZanra) throws IOException {
 		ArrayList<Zanr> sviZanrovi = new ArrayList<Zanr>();
 		Zanr zanr = new Zanr();
 		zanr.setOznaka(oznaka);
 		zanr.setOpis(opis);
 		zanr.setIDZanra(IDZanra);
+		sviZanrovi.add(zanr);
+		Biblioteka.upisiZanr(sviZanrovi, "src/fajlovi/zanrovi.txt");
 	}
+	
+
 	
 	@Override
 	public String toString() {

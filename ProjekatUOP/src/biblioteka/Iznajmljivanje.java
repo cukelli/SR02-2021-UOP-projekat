@@ -7,7 +7,7 @@ public class Iznajmljivanje {
 
 	
 	private int IDIznajmljivanja;
-	private Zaposleni zaposleni;
+	private Bibliotekar bibliotekar;
 	private Clan clan;
 	private LocalDate datumIznajmljivanja;
 	private LocalDate datumVracanja;
@@ -17,28 +17,28 @@ public class Iznajmljivanje {
 	public Iznajmljivanje() {
 		
 		this.IDIznajmljivanja = 0;
-		this.zaposleni = null;
+		this.bibliotekar = null;
 		this.clan = null;
 		this.datumIznajmljivanja = null;
 		this.datumVracanja = null;
 		this.iznajmljenPrimerak = null;
 		
 	}
-	public Iznajmljivanje(int IDIznajmljivanja,Zaposleni zaposleni,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak)
+	public Iznajmljivanje(int IDIznajmljivanja,Bibliotekar bibliotekar,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak)
 	{
 		this.IDIznajmljivanja = IDIznajmljivanja;
 		Iznajmljivanje.idMaker = IDIznajmljivanja;
-		this.zaposleni = zaposleni;
+		this.bibliotekar = bibliotekar;
 		this.clan = clan;
 		this.datumIznajmljivanja = datumIznajmljivanja;
 		this.datumVracanja = datumVracanja;
 		this.iznajmljenPrimerak = iznajmljenPrimerak;
 	}
-	public Zaposleni getZaposleni() {
-		return zaposleni;
+	public Bibliotekar getBibliotekar() {
+		return bibliotekar;
 	}
-	public void setZaposleni(Zaposleni zaposleni) {
-		this.zaposleni = zaposleni;
+	public void setBibliotekar(Bibliotekar bibliotekar) {
+		this.bibliotekar = bibliotekar;
 	}
 	public Clan getClan() {
 		return clan;
@@ -84,7 +84,7 @@ public class Iznajmljivanje {
 	}
 	@Override
 	public String toString() {
-		return "Iznajmljivanje:[" + this.zaposleni + ", clan: " + this.clan + ", datum vracanja: " + this.datumVracanja + ", datum iznajmljivanja: " + this.datumIznajmljivanja + ",primerak: " + this.iznajmljenPrimerak + ", ID:" + this.IDIznajmljivanja;
+		return "Iznajmljivanje:[" + this.bibliotekar + ", clan: " + this.clan + ", datum vracanja: " + this.datumVracanja + ", datum iznajmljivanja: " + this.datumIznajmljivanja + ",primerak: " + this.iznajmljenPrimerak + ", ID:" + this.IDIznajmljivanja;
 				}
 	
 	

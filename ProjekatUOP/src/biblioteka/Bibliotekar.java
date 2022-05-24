@@ -1,5 +1,8 @@
 package biblioteka;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Bibliotekar extends Zaposleni {
 	private static int idMaker=0;
@@ -25,6 +28,21 @@ public class Bibliotekar extends Zaposleni {
 		return Bibliotekar.idMaker;
 	}
 	
+	
+	public void iznajmiKnjigu(int IDIznajmljivanja,Bibliotekar bibliotekar,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak) throws IOException {
+		ArrayList<Iznajmljivanje> svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
+		Iznajmljivanje iznajmljivanje = new Iznajmljivanje();
+		iznajmljivanje.setIDIznajmljivanja(IDIznajmljivanja);
+		iznajmljivanje.setBibliotekar(bibliotekar);
+		iznajmljivanje.setClan(clan);
+		iznajmljivanje.setDatumIznajmljivanja(datumIznajmljivanja);
+		iznajmljivanje.setDatumVracanja(datumVracanja);
+		iznajmljivanje.setIznajmljenPrimerak(iznajmljenPrimerak);
+		svaIznajmljivanja.add(iznajmljivanje);
+		Biblioteka.upisiIznajmljivanje(svaIznajmljivanja, "src/fajlovi/iznajmljivanja.txt");
+	
+		
+	}
 	
 	
 
