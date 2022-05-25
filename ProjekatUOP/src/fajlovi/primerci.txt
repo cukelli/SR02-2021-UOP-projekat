@@ -13,3 +13,4 @@
 50;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 51;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 52;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
+53;Alhemicar;567;2010;ENGLESKI;true;MEKI;true

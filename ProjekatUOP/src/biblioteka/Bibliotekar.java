@@ -44,6 +44,21 @@ public class Bibliotekar extends Zaposleni {
 		
 	}
 	
+	public void brisiIznajmljivanje(int ID,Biblioteka biblioteka) throws IOException {
+        biblioteka.getSvaIznajmljivanja();
+        for (Iznajmljivanje i: biblioteka.getSvaIznajmljivanja()) {
+        	if (i.getIDIznajmljivanja()==ID) {
+        	    i.setObrisanostIznajmljivanja(true);
+        		
+        	}
+        	
+        	Biblioteka.izbrisiSadrzajFajla("src/fajlovi/iznajmljivanja.txt");
+        	Biblioteka.upisiIznajmljivanje(biblioteka.svaIznajmljivanja,"src/fajlovi/iznajmljivanja.txt");
+        }    	
+	
+	}
+	
+	
 	
 
 	public String toString() {

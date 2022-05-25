@@ -11,26 +11,25 @@ public class Main {
 		
 
 	try {
-	 ArrayList<Biblioteka> procitanaBibliotekaTest = Biblioteka.citajBiblioteku("src/fajlovi/biblioteka.txt");
+		Biblioteka biblioteka = new Biblioteka();
+        	
+		
+		
+		biblioteka.citajZanrove("src/fajlovi/zanrovi.txt");
+		biblioteka.citajFajl("src/fajlovi/noveKnjige.txt",biblioteka.sviZanrovi);
+		biblioteka.citajFajl("src/fajlovi/noveKnjige.txt",biblioteka.sviZanrovi);
+		
 	
+	  biblioteka.citajClanarine("src/fajlovi/clanarine.txt");
+      biblioteka.citajPrimerke("src/fajlovi/primerci.txt",biblioteka.knjige);
 		
-		
-		ArrayList<Zanr> zanroviKnjiga = Biblioteka.citajZanrove("src/fajlovi/zanrovi.txt");
-		ArrayList<Knjiga> procitaneKnjige = Biblioteka.citajFajl("src/fajlovi/noveKnjige.txt",zanroviKnjiga);
-		
-	
-		ArrayList<TipClanarine> sveClanarine = Biblioteka.citajClanarine("src/fajlovi/clanarine.txt");
-	
-		
-		ArrayList<Primerak> procitaniPrimerci = Biblioteka.citajPrimerke("src/fajlovi/primerci.txt",procitaneKnjige);
-		
-		ArrayList <Administrator> procitaniAdmini = Biblioteka.citajAdministratore("src/fajlovi/administratori.txt");
-		ArrayList<Bibliotekar> procitaniBibliotekari = Biblioteka.citajBibliotekare("src/fajlovi/bibliotekari.txt");
+		biblioteka.citajAdministratore("src/fajlovi/administratori.txt");
+		biblioteka.citajBibliotekare("src/fajlovi/bibliotekari.txt");
 		
 		
 		
-		ArrayList<Clan> procitaniClanovi = Biblioteka.citajClanove("src/fajlovi/clanovi.txt",sveClanarine);
-		ArrayList<Iznajmljivanje> iznajmljeneKnjigeProcitane = Biblioteka.citajIznajmljivanja("src/fajlovi/iznajmljivanja.txt", procitaniClanovi, procitaniBibliotekari, procitaniPrimerci);
+		 biblioteka.citajClanove("src/fajlovi/clanovi.txt",biblioteka.sveClanarine);
+	      biblioteka.citajIznajmljivanja("src/fajlovi/iznajmljivanja.txt", biblioteka.sviClanovi, biblioteka.sviBibliotekari, biblioteka.sviPrimerci);
 		
 		
 			
@@ -51,25 +50,24 @@ public class Main {
 
 		
 		Biblioteka bibliotekaTest = new Biblioteka("Biblioteka Desanka Maksimovic","Laze Teleckog 6","6044395","20-23h");
-		Iznajmljivanje iznajmljivanjeTest = new Iznajmljivanje(getIznajmljivanjeID,procitaniBibliotekari.get(0),procitaniClanovi.get(0),LocalDate.parse("2010-03-03"),LocalDate.parse("2010-06-06"),procitaniPrimerci.get(0));
+		Iznajmljivanje iznajmljivanjeTest = new Iznajmljivanje(getIznajmljivanjeID,biblioteka.sviBibliotekari.get(0),biblioteka.sviClanovi.get(0),LocalDate.parse("2010-03-03"),LocalDate.parse("2010-06-06"),biblioteka.sviPrimerci.get(0),false);
 		Administrator administratorTest = new Administrator(getAdminID,"Mica","Micun","0102002735021","Stepe 3",false,Pol.MUSKI,23200.3,"wer","lozinka");
 		Bibliotekar bibliotekarTest = new Bibliotekar(getLibrarianID,"Milica","Lakovic","0102002735021","Vojvode Stepe 3",false,Pol.ZENSKI,25000.00,"LAKI","123df");
 		int getId = Knjiga.getUpdateMaker()+1;
 		int getPrimerakID = Primerak.getUpdateMaker()+1;
-		TipClanarine clanarinaTest = new TipClanarine("srednja",234.00,getMembershipID);
-		Knjiga knjigaNovaTest = new Knjiga(getId,"Srpska Trilogija", "Srpska Trilogija", "Stevan Jakovljevic", 1915,Jezik.NEMACKI,"Kvalitetno stivo",zanroviKnjiga.get(0),true);
+		TipClanarine clanarinaTest = new TipClanarine("srednja",234.00,getMembershipID,false);
+		Knjiga knjigaNovaTest = new Knjiga(getId,"Srpska Trilogija", "Srpska Trilogija", "Stevan Jakovljevic", 1915,Jezik.NEMACKI,"Kvalitetno stivo",biblioteka.sviZanrovi.get(0),true);
 		
 		
-		
-		Clan clanTest = new Clan(getClanID,"Sima","Markovic","0233234","Laze Kostica 3",false,Pol.MUSKI,"5",LocalDate.parse("2019-06-03"),3,true,sveClanarine.get(1));
-		Primerak primerakTest = new Primerak(getPrimerakID,procitaneKnjige.get(0),567,2010,Jezik.ENGLESKI,true,Povez.MEKI,true);
+		Clan clanTest = new Clan(getClanID,"Sima","Markovic","0233234","Laze Kostica 3",false,Pol.MUSKI,"5",LocalDate.parse("2019-06-03"),3,true,biblioteka.sveClanarine.get(1));
+		Primerak primerakTest = new Primerak(getPrimerakID,biblioteka.knjige.get(0),567,2010,Jezik.ENGLESKI,true,Povez.MEKI,true);
 		dodateClanarine.add(clanarinaTest);
 		dodaneKnjige.add(knjigaNovaTest);
 		dodaniClanovi.add(clanTest);
 		dodaniBibliotekari.add(bibliotekarTest);
 		admin.add(administratorTest);
-		noviPrimerci.add(primerakTest);
-		iznajmljivanjaKnjiga.add(iznajmljivanjeTest);
+		//noviPrimerci.add(primerakTest);
+	//	iznajmljivanjaKnjiga.add(iznajmljivanjeTest);
 		testBiblioteka.add(bibliotekaTest);
 		
 		
@@ -82,23 +80,26 @@ public class Main {
 		Biblioteka.upisiAdministratore(admin, "src/fajlovi/administratori.txt");
 		Biblioteka.pisiPrimerke(noviPrimerci, "src/fajlovi/primerci.txt");
 		
-		ArrayList<Biblioteka> procitanaBiblioteka = Biblioteka.citajBiblioteku("src/fajlovi/biblioteka.txt");
-	//	ArrayList<Knjiga> procitanaKnjiga = Biblioteka.citajFajl("src/fajlovi/noveKnjige.txt", zanroviKnjiga);
+		
 
-		
-		
-		for (Biblioteka bibl: procitanaBiblioteka) {
-			//System.out.println(bibl);
-		}
+		Biblioteka.izbrisiSadrzajFajla("src/fajlovi/biblioteka.txt");
+	
 		
 		ArrayList<Knjiga> sveKnjige2 = new ArrayList<Knjiga>();
-		sveKnjige2.addAll(procitaneKnjige);
+		//sveKnjige2.addAll(procitaneKnjige);
 		sveKnjige2.addAll(dodaneKnjige);
 
-		for (Knjiga knj: sveKnjige2) {
-		//	System.out.println(knj);
-		}
-
+		
+		
+         administratorTest.brisiKnjigu(13, biblioteka);
+         administratorTest.brisiClana(1002, biblioteka);
+         administratorTest.brisiClanarinu(2, biblioteka);
+         administratorTest.brisiPrimerak(35, biblioteka);
+         administratorTest.brisiZanr(3, biblioteka);
+         administratorTest.brisiBibliotekara(301, biblioteka);
+         bibliotekarTest.brisiIznajmljivanje(6001, biblioteka);
+         bibliotekarTest.iznajmiKnjigu(14, bibliotekarTest, clanTest, LocalDate.parse("2020-03-03"),LocalDate.parse("2020-04-04"), primerakTest);
+         administratorTest.brisiAdministratora(234, biblioteka);
 		
 		
 		

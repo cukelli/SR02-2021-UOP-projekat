@@ -9,8 +9,8 @@ Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno sti
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;8;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;9;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;10;true
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;11;true
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;12;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;11;false
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;12;false
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;13;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;14;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;15;true
@@ -32,3 +32,8 @@ Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno sti
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;31;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;32;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;33;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;34;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;35;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;36;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;37;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Istorija;38;true

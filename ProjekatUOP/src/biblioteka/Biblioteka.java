@@ -6,10 +6,24 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 public class Biblioteka {
+    ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();	
+    ArrayList<Clan> sviClanovi = new ArrayList<Clan>();
+    ArrayList<TipClanarine> sveClanarine = new ArrayList<TipClanarine>();
+    ArrayList<Primerak> sviPrimerci = new ArrayList<Primerak>();
+    ArrayList<Zanr>sviZanrovi = new ArrayList<Zanr>();
+    ArrayList<Iznajmljivanje>svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
+    ArrayList<Bibliotekar> sviBibliotekari = new ArrayList<Bibliotekar>();
+    ArrayList<Administrator> sviAdministratori = new ArrayList<Administrator>();
+    
+    
+    
 	private String naziv;
 	private String adresa;
 	private String telefon;
@@ -68,7 +82,76 @@ public class Biblioteka {
 	
 	
 
+	public ArrayList<Bibliotekar> getSviBibliotekari() {
+		return sviBibliotekari;
+	}
+
+	public void setSviBibliotekari(ArrayList<Bibliotekar> sviBibliotekari) {
+		this.sviBibliotekari = sviBibliotekari;
+	}
+
+	public ArrayList<Iznajmljivanje> getSvaIznajmljivanja() {
+		return svaIznajmljivanja;
+	}
+
+	public void setSvaIznajmljivanja(ArrayList<Iznajmljivanje> svaIznajmljivanja) {
+		this.svaIznajmljivanja = svaIznajmljivanja;
+	}
+
+	public ArrayList<Knjiga> getKnjige() {
+		return knjige;
+	}
+
+	public void setKnjige(ArrayList<Knjiga> knjige) {
+		this.knjige = knjige;
+	}
 	
+	
+
+	public ArrayList<Clan> getSviClanovi() {
+		return sviClanovi;
+	}
+
+	public void setSviClanovi(ArrayList<Clan> sviClanovi) {
+		this.sviClanovi = sviClanovi;
+	}
+	
+
+	public ArrayList<TipClanarine> getSveClanarine() {
+		return sveClanarine;
+	}
+
+	public void setSveClanarine(ArrayList<TipClanarine> sveClanarine) {
+		this.sveClanarine = sveClanarine;
+	}
+	
+	
+
+	public ArrayList<Primerak> getSviPrimerci() {
+		return sviPrimerci;
+	}
+
+	public void setSviPrimerci(ArrayList<Primerak> sviPrimerci) {
+		this.sviPrimerci = sviPrimerci;
+	}
+	
+
+	public ArrayList<Zanr> getSviZanrovi() {
+		return sviZanrovi;
+	}
+
+	public void setSviZanrovi(ArrayList<Zanr> sviZanrovi) {
+		this.sviZanrovi = sviZanrovi;
+	}
+	
+
+	public ArrayList<Administrator> getSviAdministratori() {
+		return sviAdministratori;
+	}
+
+	public void setSviAdministratori(ArrayList<Administrator> sviAdministratori) {
+		this.sviAdministratori = sviAdministratori;
+	}
 
 	@Override
 	public String toString() {
@@ -76,8 +159,8 @@ public class Biblioteka {
 	}
 	
 	
-	public static ArrayList<Zanr> citajZanrove(String imeFajlaZanrovi) throws IOException {
-		ArrayList<Zanr> sviZanrovi = new ArrayList<Zanr>();
+	public void citajZanrove(String imeFajlaZanrovi) throws IOException {
+		 this.sviZanrovi = new ArrayList<Zanr>();
 		File fajlZanrova = new File(imeFajlaZanrovi);
 		BufferedReader reader = new BufferedReader(new FileReader(fajlZanrova));
 		String line = null;
@@ -86,20 +169,21 @@ public class Biblioteka {
 			String oznakaZanra = linijaZanr[0];
 			String opisZanra = linijaZanr[1];
 			int IDZanra = Integer.parseInt(linijaZanr[2]);
-			Zanr zanr = new Zanr(oznakaZanra,opisZanra,IDZanra);
+			boolean obrisanostZanra = Boolean.parseBoolean(linijaZanr[3]);
+			Zanr zanr = new Zanr(oznakaZanra,opisZanra,IDZanra,obrisanostZanra);
 			sviZanrovi.add(zanr);
 			System.out.println(zanr);
 		
 		}
 		
 		reader.close();
-		return sviZanrovi;
+		
 		
 		
 	}
 	
-	 public static ArrayList<TipClanarine> citajClanarine(String imeFajlaClanarine) throws IOException {
-			ArrayList<TipClanarine> sveClanarine = new ArrayList<TipClanarine>();
+	 public void citajClanarine(String imeFajlaClanarine) throws IOException {
+			this.sveClanarine = new ArrayList<TipClanarine>();
 			File fajlClanarine = new File(imeFajlaClanarine);
 			BufferedReader reader = new BufferedReader(new FileReader(fajlClanarine));
 			String line = null;
@@ -108,19 +192,20 @@ public class Biblioteka {
 				String tipClanarine = linijaClanarine[0];
 				double cenaClanarine = Double.parseDouble(linijaClanarine[1]);
 				int IDClanarine = Integer.parseInt(linijaClanarine[2]);
-				TipClanarine clanarina = new TipClanarine(tipClanarine,cenaClanarine,IDClanarine);
+				boolean obrisanostClanarine = Boolean.parseBoolean(linijaClanarine[3]);
+				TipClanarine clanarina = new TipClanarine(tipClanarine,cenaClanarine,IDClanarine,obrisanostClanarine);
 				sveClanarine.add(clanarina);
 			
 			}
 			reader.close();
-			return sveClanarine;
+			
 	 
 	 
 	}
 	 
 	 
-	 public static ArrayList<Clan> citajClanove (String fajlClanovi,ArrayList<TipClanarine> sveClanarine) throws IOException {
-			ArrayList<Clan> clanovi = new ArrayList<Clan>();
+	 public void citajClanove (String fajlClanovi,ArrayList<TipClanarine> sveClanarine) throws IOException {
+			this.sviClanovi = new ArrayList<Clan>();
 			File clanoviFajl = new File(fajlClanovi);
 			
 			BufferedReader reader = new BufferedReader(new FileReader(clanoviFajl));
@@ -157,11 +242,11 @@ public class Biblioteka {
 			
 					
 				Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,obrisanostClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine);
-				clanovi.add(clan);	
+				sviClanovi.add(clan);	
 				
 			}
 			reader.close();
-			return clanovi;
+			
 			
 		}
 		
@@ -181,8 +266,8 @@ public class Biblioteka {
 			
 		}
 	 
-	 public static ArrayList<Bibliotekar> citajBibliotekare (String fajlBibliotekari) throws IOException {
-			ArrayList<Bibliotekar> bibliotekari = new ArrayList<Bibliotekar>();
+	 public void citajBibliotekare (String fajlBibliotekari) throws IOException {
+			this.sviBibliotekari = new ArrayList<Bibliotekar>();
 			File bibliotekariFajl = new File(fajlBibliotekari);
 			
 			BufferedReader reader = new BufferedReader(new FileReader(bibliotekariFajl));
@@ -208,11 +293,11 @@ public class Biblioteka {
 				boolean obrisanostBibliotekara = Boolean.parseBoolean(nizBibliotekara[9]);
 				
 				Bibliotekar bibliotekar = new Bibliotekar(IDBibliotekara,imeBibliotekara,prezimeBibliotekara,JMBGBibliotekara,adresaBibliotekara,obrisanostBibliotekara,defPol,plataBibliotekara,korImeBibliotekara,lozinkaBibliotekara);
-				bibliotekari.add(bibliotekar);
+				sviBibliotekari.add(bibliotekar);
 				
 				}
 			reader.close();
-			return bibliotekari;
+			
 			
 		}
 		
@@ -234,8 +319,8 @@ public class Biblioteka {
 		}
 		
 		
-		public static ArrayList<Administrator> citajAdministratore (String fajlAdministratori) throws IOException {
-			ArrayList<Administrator> administratori = new ArrayList<Administrator>();
+		public void citajAdministratore (String fajlAdministratori) throws IOException {
+			this.sviAdministratori = new ArrayList<Administrator>();
 			File administratoriFajl = new File(fajlAdministratori);
 			
 			BufferedReader reader = new BufferedReader(new FileReader(administratoriFajl));
@@ -260,10 +345,10 @@ public class Biblioteka {
 				boolean obrisanostAdministratora = Boolean.parseBoolean(nizAdministratora[9]);
 				
 				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,obrisanostAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
-	            administratori.add(administrator);
+	            sviAdministratori.add(administrator);
 			}
 			reader.close();
-			return administratori;		
+			
 
 			
 		}
@@ -282,11 +367,11 @@ public class Biblioteka {
 			
 		}
 		
-		public static ArrayList<Knjiga> citajFajl(String imeFajla,ArrayList<Zanr> zanroviKnjiga) throws IOException {
+		public void citajFajl(String imeFajla,ArrayList<Zanr> zanroviKnjiga) throws IOException {
 			
 			
 			
-			ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();
+			this.knjige = new ArrayList<Knjiga>();
 			File fajl = new File(imeFajla);
 			BufferedReader reader = new BufferedReader(new FileReader(fajl));
 
@@ -320,12 +405,12 @@ public class Biblioteka {
 				boolean obrisanostKnjige = Boolean.parseBoolean(niz[8]);
 				Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,tmp,obrisanostKnjige);
 				//System.out.println(knjiga.getIDKnjige());
-				knjige.add(knjiga);
+				this.knjige.add(knjiga);
 				
 			}
 			reader.close();
 			
-			return knjige;
+			
 			
 			
 		}
@@ -335,8 +420,8 @@ public class Biblioteka {
 
 		
 		
-		public static ArrayList<Primerak> citajPrimerke(String fajlPrimeraka,ArrayList<Knjiga> knjige) throws IOException {
-			ArrayList<Primerak> sviPrimerci = new ArrayList<Primerak>();
+		public void citajPrimerke(String fajlPrimeraka,ArrayList<Knjiga> knjige) throws IOException {
+			this.sviPrimerci = new ArrayList<Primerak>();
 			File fajl = new File(fajlPrimeraka);
 			BufferedReader reader = new BufferedReader(new FileReader(fajl));
 			String line = null;
@@ -379,7 +464,7 @@ public class Biblioteka {
 				
 			}
 			reader.close();
-			return sviPrimerci;
+			
 			
 			
 		}
@@ -419,9 +504,9 @@ public class Biblioteka {
 		
 		
 		
-		public static ArrayList<Iznajmljivanje> citajIznajmljivanja (String fajlSaIznajmljivanjem, ArrayList<Clan> c,ArrayList<Bibliotekar> b,ArrayList<Primerak> p) throws IOException {
+		public void citajIznajmljivanja (String fajlSaIznajmljivanjem, ArrayList<Clan> c,ArrayList<Bibliotekar> b,ArrayList<Primerak> p) throws IOException {
 			
-			ArrayList<Iznajmljivanje> svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
+			this.svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
 			File fajl = new File(fajlSaIznajmljivanjem);
 			BufferedReader reader = new BufferedReader(new FileReader(fajl));
 			String line = null;
@@ -455,15 +540,14 @@ public class Biblioteka {
 						  tmpPrimerak = iteratorPrimerak;
 					  }
 				  }
+				  
+				  boolean obrisanostIznajmljivanja = Boolean.parseBoolean(redIznajmljivanja[6]);
 				
-				  Iznajmljivanje iznajmljivanje = new Iznajmljivanje(IDIznajmljivanja,tmpBibliotekar,tmpClan,datumIznajmljivanja,datumVracanja,tmpPrimerak);
+				  Iznajmljivanje iznajmljivanje = new Iznajmljivanje(IDIznajmljivanja,tmpBibliotekar,tmpClan,datumIznajmljivanja,datumVracanja,tmpPrimerak,obrisanostIznajmljivanja);
 				  svaIznajmljivanja.add(iznajmljivanje);
 				  
 			}
-			reader.close();
-			return svaIznajmljivanja;
-			
-			
+			reader.close();			
 			
 		}
 		
@@ -475,7 +559,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl, true));
 			 
 			for (Iznajmljivanje i: iznajmljivanja) {
-				String sbIznajmljivanja = i.getIDIznajmljivanja() + ";" + i.getBibliotekar().getIDOsobe() + ";" + i.getClan().getBrojClanske() + ";" + i.getDatumIznajmljivanja() + ";" + i.getDatumVracanja() + ";" + i.getIznajmljenPrimerak().getIDPrimerka();
+				String sbIznajmljivanja = i.getIDIznajmljivanja() + ";" + i.getBibliotekar().getIDOsobe() + ";" + i.getClan().getBrojClanske() + ";" + i.getDatumIznajmljivanja() + ";" + i.getDatumVracanja() + ";" + i.getIznajmljenPrimerak().getIDPrimerka() + ";" + i.isObrisanostIznajmljivanja();
 				writer.write(sbIznajmljivanja);
 				writer.newLine();
 				
@@ -530,7 +614,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl,true));
 			
 			for (TipClanarine tip: clanarine) {
-		    	String sbClanarine = tip.getTip() + ";" + tip.getCena() + ";" + tip.getIDClanarine();
+		    	String sbClanarine = tip.getTip() + ";" + tip.getCena() + ";" + tip.getIDClanarine() + ";" + tip.isObrisanaClanarina();
 			   writer.write(sbClanarine);
 				writer.newLine();
 			}
@@ -542,11 +626,19 @@ public class Biblioteka {
 			File fajl = new File(fajlUpisZanr);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl,true));
 			for (Zanr z: zanr) {
-				String sbZanr = z.getOznaka() + ";" + z.getOpis() + ";" + z.getIDZanra();
+				String sbZanr = z.getOznaka() + ";" + z.getOpis() + ";" + z.getIDZanra() + ";" + z.isObrisanZanr();
 				writer.write(sbZanr);
 				writer.newLine();
 			}
 			writer.close();
+		}
+		
+		public static boolean izbrisiSadrzajFajla(String putanja) throws IOException {
+			BufferedWriter writer = Files.newBufferedWriter(Paths.get(putanja));
+			writer.write("");
+			writer.flush();
+			
+			return true;
 		}
 
 }

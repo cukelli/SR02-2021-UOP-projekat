@@ -14,9 +14,7 @@ public class Administrator extends Zaposleni {
 	
 	public Administrator(int IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka) {
 	 super(IDOsobe,ime,prezime,JMBG,adresa,obrisan,pol, plata,korIme,lozinka);
-	 if (idMaker >= IDOsobe) {
-		 idMaker = IDOsobe + 1;
-	 }
+	 
 	this.IDOsobe = IDOsobe;
 	Administrator.idMaker = IDOsobe;
 	}
@@ -58,6 +56,35 @@ public class Administrator extends Zaposleni {
 		Biblioteka.upisiBibliotekare(sviBibliotekari, "src/fajlovi/bibliotekari.txt");
 
 		}
+	
+	public void brisiBibliotekara(int ID,Biblioteka biblioteka) throws IOException {
+        biblioteka.getSviBibliotekari();
+        for (Bibliotekar b: biblioteka.getSviBibliotekari()) {
+        	if (b.getIDOsobe()==ID) {
+        		b.setObrisan(true);
+        		
+        	}
+        	
+        	Biblioteka.izbrisiSadrzajFajla("src/fajlovi/bibliotekari.txt");
+        	Biblioteka.upisiBibliotekare(biblioteka.sviBibliotekari,"src/fajlovi/bibliotekari.txt");
+        }    	
+	
+	}
+	
+	public void brisiAdministratora(int ID,Biblioteka biblioteka) throws IOException {
+        biblioteka.getSviAdministratori();
+        for (Administrator a: biblioteka.getSviAdministratori()) {
+        	if (a.getIDOsobe()==ID) {
+        		a.setObrisan(true);
+        		
+        	}
+        	
+        	Biblioteka.izbrisiSadrzajFajla("src/fajlovi/administratori.txt");
+        	Biblioteka.upisiAdministratore(biblioteka.sviAdministratori,"src/fajlovi/administratori.txt");
+        }    	
+	
+	}
+	
 	
 
 	public static void setIdMaker(int count) {

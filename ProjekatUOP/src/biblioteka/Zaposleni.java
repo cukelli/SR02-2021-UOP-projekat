@@ -3,10 +3,12 @@ package biblioteka;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 abstract class Zaposleni extends Osoba {
 	
 	protected Biblioteka biblioteka;
+	
 	
 	protected double plata;
 	protected String korIme;
@@ -135,6 +137,81 @@ abstract class Zaposleni extends Osoba {
 		sviZanrovi.add(zanr);
 		Biblioteka.upisiZanr(sviZanrovi, "src/fajlovi/zanrovi.txt");
 	}
+	
+	
+	
+	
+	public void brisiKnjigu(int ID, Biblioteka biblioteka) throws IOException {
+		biblioteka.getKnjige();
+		for (Knjiga k: biblioteka.getKnjige()) {
+			if (k.getIDKnjige()==ID) { 
+				k.setObrisana(true);
+			}
+				
+			}
+		  Biblioteka.izbrisiSadrzajFajla("src/fajlovi/noveKnjige.txt");
+		  Biblioteka.upisiFajl(biblioteka.knjige, "src/fajlovi/noveKnjige.txt");
+		
+			
+		}
+	
+	public void brisiClana(int ID,Biblioteka biblioteka) throws IOException {
+        biblioteka.getSviClanovi();
+        for (Clan c: biblioteka.getSviClanovi()) {
+        	if (c.getIDOsobe()==ID) {
+        		c.setObrisan(true);
+        		
+        	}
+        	
+        	Biblioteka.izbrisiSadrzajFajla("src/fajlovi/clanovi.txt");
+        	Biblioteka.upisiClanove(biblioteka.sviClanovi,"src/fajlovi/clanovi.txt");
+        }    	
+	
+	}
+	
+	public void brisiClanarinu(int ID,Biblioteka biblioteka) throws IOException {
+        biblioteka.getSveClanarine();
+        for (TipClanarine tc: biblioteka.getSveClanarine()) {
+        	if (tc.getIDClanarine()==ID) {
+        		tc.setObrisanaClanarina(true);
+        		
+        	}
+        	
+        	Biblioteka.izbrisiSadrzajFajla("src/fajlovi/clanarine.txt");
+        	Biblioteka.upisiClanarinu(biblioteka.sveClanarine,"src/fajlovi/clanarine.txt");
+        }    	
+	
+	}
+	
+	public void brisiPrimerak(int ID,Biblioteka biblioteka) throws IOException {
+        biblioteka.getSviPrimerci();
+        for (Primerak p: biblioteka.getSviPrimerci()) {
+        	if (p.getIDPrimerka()==ID) {
+        		p.setObrisan(true);
+        		
+        	}
+        	
+        	Biblioteka.izbrisiSadrzajFajla("src/fajlovi/primerci.txt");
+        	Biblioteka.pisiPrimerke(biblioteka.sviPrimerci,"src/fajlovi/primerci.txt");
+        }    	
+	
+	}
+	
+	public void brisiZanr(int ID,Biblioteka biblioteka) throws IOException {
+        biblioteka.getSviZanrovi();
+        for (Zanr z: biblioteka.getSviZanrovi()) {
+        	if (z.getIDZanra()==ID) {
+        		z.setObrisanZanr(true);
+        		
+        	}
+        	
+        	Biblioteka.izbrisiSadrzajFajla("src/fajlovi/zanrovi.txt");
+        	Biblioteka.upisiZanr(biblioteka.sviZanrovi,"src/fajlovi/zanrovi.txt");
+        }    	
+	
+	}
+		
+		
 	
 
 	

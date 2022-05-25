@@ -7,18 +7,21 @@ public class Zanr {
 	private String oznaka;
 	private String opis;
 	private int IDZanra;
+	private boolean obrisanZanr;
 	
 	public Zanr() {
 		this.IDZanra = IDZanra;
 		this.oznaka = "";
 		this.opis = "";
+		this.obrisanZanr = false;
 	}
 	
-	public Zanr(String oznaka,String opis,int IDZanra) {
+	public Zanr(String oznaka,String opis,int IDZanra,boolean obrisanZanr) {
 		this.oznaka = oznaka;
 		this.opis = opis;
 		this.IDZanra = IDZanra;
 		Zanr.idMaker = IDZanra;
+		this.obrisanZanr = obrisanZanr;
 	}
 	
 	
@@ -56,6 +59,19 @@ public String getOznaka() {
 
 	public void setIDZanra(int iDZanra) {
 		IDZanra = iDZanra;
+	}
+	
+
+public boolean isObrisanZanr() {
+		return obrisanZanr;
+	}
+
+	public void setObrisanZanr(boolean obrisanZanr) {
+		this.obrisanZanr = obrisanZanr;
+	}
+
+	public static int getIdMaker() {
+		return idMaker;
 	}
 
 @Override

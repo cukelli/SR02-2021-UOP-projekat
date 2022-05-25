@@ -12,6 +12,7 @@ public class Iznajmljivanje {
 	private LocalDate datumIznajmljivanja;
 	private LocalDate datumVracanja;
 	private Primerak iznajmljenPrimerak;
+	private boolean obrisanostIznajmljivanja;
 	
 	
 	public Iznajmljivanje() {
@@ -22,9 +23,10 @@ public class Iznajmljivanje {
 		this.datumIznajmljivanja = null;
 		this.datumVracanja = null;
 		this.iznajmljenPrimerak = null;
+		this.obrisanostIznajmljivanja = false;
 		
 	}
-	public Iznajmljivanje(int IDIznajmljivanja,Bibliotekar bibliotekar,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak)
+	public Iznajmljivanje(int IDIznajmljivanja,Bibliotekar bibliotekar,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak,boolean obrisanostIznajmljivanja)
 	{
 		this.IDIznajmljivanja = IDIznajmljivanja;
 		Iznajmljivanje.idMaker = IDIznajmljivanja;
@@ -33,6 +35,7 @@ public class Iznajmljivanje {
 		this.datumIznajmljivanja = datumIznajmljivanja;
 		this.datumVracanja = datumVracanja;
 		this.iznajmljenPrimerak = iznajmljenPrimerak;
+		this.obrisanostIznajmljivanja = obrisanostIznajmljivanja;
 	}
 	public Bibliotekar getBibliotekar() {
 		return bibliotekar;
@@ -74,7 +77,17 @@ public class Iznajmljivanje {
 		IDIznajmljivanja = iDIznajmljivanja;
 	}
 	
+	
 
+	public boolean isObrisanostIznajmljivanja() {
+		return obrisanostIznajmljivanja;
+	}
+	public void setObrisanostIznajmljivanja(boolean obrisanostIznajmljivanja) {
+		this.obrisanostIznajmljivanja = obrisanostIznajmljivanja;
+	}
+	public static int getIdMaker() {
+		return idMaker;
+	}
 	public static void setIdMaker(int count) {
 		Iznajmljivanje.idMaker = count;
 	}

@@ -8,18 +8,21 @@ public class TipClanarine {
 	private String tip;
 	private double cena;
 	private int IDClanarine;
+	private boolean obrisanaClanarina;
 	
 	public TipClanarine() {
 		this.tip = "";
 		this.cena = 0.0;
 		this.IDClanarine = 0;
+		this.obrisanaClanarina = false;
 	}
 	
-	public TipClanarine(String tip, double cena,int IDClanarine) {
+	public TipClanarine(String tip, double cena,int IDClanarine,boolean obrisanaClanarina) {
 		this.tip = tip;
 		this.cena = cena;
 		this.IDClanarine = IDClanarine;
 		TipClanarine.idMaker = IDClanarine;
+		this.obrisanaClanarina = obrisanaClanarina;
 	}
 
 	public String getTip() {
@@ -58,6 +61,16 @@ public class TipClanarine {
 
 	public static int getIdMaker() {
 		return idMaker;
+	}
+	
+	
+
+public boolean isObrisanaClanarina() {
+		return obrisanaClanarina;
+	}
+
+	public void setObrisanaClanarina(boolean obrisanaClanarina) {
+		this.obrisanaClanarina = obrisanaClanarina;
 	}
 
 @Override
