@@ -210,9 +210,90 @@ abstract class Zaposleni extends Osoba {
         }    	
 	
 	}
-		
+	
+    public void updateKnjigu(int ID,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr,boolean obrisana,Biblioteka biblioteka) throws IOException {
+    	   for(Knjiga k: biblioteka.getKnjige()) {
+    		   if (k.getIDKnjige() == ID) {
+    			    k.setNaslov(originalniNaslov);
+    			    k.setAutor(autor);
+    			    k.setGodinaObjavljivanja(godinaObjavljivanja);
+    			    k.setJezikOriginala(jezikOriginala);
+    			    k.setOpis(opis);
+    			    k.setZanr(zanr);
+    			    k.setObrisana(obrisana);
+    		   }
+    		   Biblioteka.izbrisiSadrzajFajla("src/fajlovi/noveKnjige.txt");
+    		   Biblioteka.upisiFajl(biblioteka.knjige, "src/fajlovi/noveKnjige.txt");
+    	   }
+    }
+	
+    public void updateClan(int ID,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,boolean aktivnost,TipClanarine tipClanarine,Biblioteka biblioteka) throws IOException {
+    	for (Clan c: biblioteka.getSviClanovi()) {
+    		if (c.getIDOsobe() == ID) {
+    		    c.setIme(ime);
+    		    c.setPrezime(prezime);
+    		    c.setJMBG(JMBG);
+    		    c.setAdresa(adresa);
+    		    c.setObrisan(obrisan);
+    		    c.setPol(pol);
+    		    c.setBrojClanske(brojClanske);
+    		    c.setDatumPoslednjeUplate(datumPoslednjeUplate);
+    		    c.setBrojUplacenihMeseci(brojUplacenihMeseci);
+    		    c.setAktivnost(aktivnost);
+    		    c.setTipClanarine(tipClanarine);
+    		    
+    		    Biblioteka.izbrisiSadrzajFajla("src/fajlovi/clanovi.txt");
+    		    Biblioteka.upisiClanove(biblioteka.sviClanovi,"src/fajlovi/clanovi.txt");
+    		 
+    		}
+    	}
+    }
 		
 	
+    public void updatePrimerak(int ID,Knjiga knjiga,int brojStrana,int godinaStampe, Jezik jezikStampe,boolean iznajmljena,Povez povez,boolean obrisan,Biblioteka biblioteka) throws IOException {
+    	for (Primerak p: biblioteka.getSviPrimerci()) {
+    		if (p.getIDPrimerka() == ID) {
+    			p.setKnjiga(knjiga);
+    			p.setBrojStrana(brojStrana);
+    			p.setGodinaStampe(godinaStampe);
+    			p.setJezikStampe(jezikStampe);
+    			p.setIznajmljena(iznajmljena);
+    			p.setPovez(povez);
+    			p.setObrisan(obrisan);
+   			
+    			
+    			Biblioteka.izbrisiSadrzajFajla("src/fajlovi/primerci.txt");
+    			Biblioteka.pisiPrimerke(biblioteka.sviPrimerci, "src/fajlovi/primerci.txt");
+    		}
+    	}
+    }
+    
+    public void updateClanarina(String tip, double cena,int ID,boolean obrisanaClanarina,Biblioteka biblioteka) throws IOException {
+    	for (TipClanarine tc: biblioteka.getSveClanarine()) {
+    		if (tc.getIDClanarine() == ID) {
+    			tc.setTip(tip);
+    			tc.setCena(cena);
+    			tc.setObrisanaClanarina(obrisanaClanarina);
+    			
+    			Biblioteka.izbrisiSadrzajFajla("src/fajlovi/clanarine.txt");
+    			Biblioteka.upisiClanarinu(biblioteka.sveClanarine,"src/fajlovi/clanarine.txt");
+    		}
+    	}
+    }
+    
+    public void UpdateZanr(String oznaka,String opis,int ID,boolean obrisanZanr,Biblioteka biblioteka) throws IOException {
+    	for (Zanr z: biblioteka.getSviZanrovi()) {
+    		if (z.getIDZanra() == ID) {
+    			z.setOznaka(oznaka);
+    			z.setOpis(opis);
+    			z.setObrisanZanr(obrisanZanr);
+    			
+    			Biblioteka.izbrisiSadrzajFajla("src/fajlovi/zanrovi.txt");
+    			Biblioteka.upisiZanr(biblioteka.sviZanrovi, "src/fajlovi/zanrovi.txt");
+    		}
+    	}
+    	
+    }
 
 	
 	@Override

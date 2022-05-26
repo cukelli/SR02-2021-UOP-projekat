@@ -347,6 +347,10 @@ public class Biblioteka {
 				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,obrisanostAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
 	            sviAdministratori.add(administrator);
 			}
+			
+//			for (Administrator a: sviAdministratori) {
+//				System.out.println(a.getJMBG());
+//			}
 			reader.close();
 			
 

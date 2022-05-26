@@ -98,11 +98,16 @@ public class Main {
          administratorTest.brisiZanr(3, biblioteka);
          administratorTest.brisiBibliotekara(301, biblioteka);
          bibliotekarTest.brisiIznajmljivanje(6001, biblioteka);
-         bibliotekarTest.iznajmiKnjigu(14, bibliotekarTest, clanTest, LocalDate.parse("2020-03-03"),LocalDate.parse("2020-04-04"), primerakTest);
+         bibliotekarTest.iznajmiKnjigu(getIznajmljivanjeID, bibliotekarTest, clanTest, LocalDate.parse("2020-03-03"),LocalDate.parse("2020-04-04"), primerakTest);
          administratorTest.brisiAdministratora(234, biblioteka);
-		
-		
-		
+		administratorTest.updateAdmina(234, "Milkica","Simic" , "234", "Cara Urosa", false, Pol.MUSKI, 100.0, "aasd", "asdas",biblioteka);
+		 administratorTest.updateBibliotekara(300, "Zvici", "Aleksandra", "666", "Bulevar 6", false, Pol.ZENSKI, 100.0, "zvicy", "zvciy123", biblioteka);
+         bibliotekarTest.updateIznajmljivanje(6000, bibliotekarTest, clanTest, LocalDate.parse("2021-10-20"), LocalDate.parse("2021-03-13"), primerakTest, false,biblioteka);
+         administratorTest.updateKnjigu(2, "Rat i mir", "Rat i mir", "Tolstoj", 1934, Jezik.ENGLESKI, "Lektira", biblioteka.sviZanrovi.get(0), false,biblioteka);
+		 administratorTest.UpdateZanr("Nova istorija", "testiranje", 1, false,biblioteka);
+		 administratorTest.updateClanarina("novi odrasli", 300.0, 1, false, biblioteka);
+		 administratorTest.updatePrimerak(53, knjigaNovaTest, 120, 2002, Jezik.NEMACKI, false, Povez.TVRDI, false, biblioteka);
+		 administratorTest.updateClan(1003, "Aleksandra", "Zvicer", "010200735021", "Zivojin Culum", true, Pol.ZENSKI, "234", LocalDate.parse("2020-03-03"), 3, false, biblioteka.sveClanarine.get(1), biblioteka);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

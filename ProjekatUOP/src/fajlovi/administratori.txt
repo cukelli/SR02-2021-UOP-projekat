@@ -1,4 +1,4 @@
-234;Sima;Simic;234234;Cara Lazara;MUSKI;230.0;aasd;asdas;true
-235;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+234;Milkica;Simic;234;Cara Urosa;MUSKI;100.0;aasd;asdas;false
+235;Milkica;Simic;0102002735021;Cara Urosa;MUSKI;100.0;aasd;asdas;false
 236;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
-237;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+237;Anastasija;Cukelj;0102002735021;4.jula,25;ZENSKI;2340.0;CUKELLI;lozinka;false

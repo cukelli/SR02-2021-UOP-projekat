@@ -58,6 +58,25 @@ public class Bibliotekar extends Zaposleni {
 	
 	}
 	
+	public void updateIznajmljivanje(int ID,Bibliotekar bibliotekar,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak,boolean obrisanostIznajmljivanja,Biblioteka biblioteka) throws IOException {
+		for (Iznajmljivanje i: biblioteka.getSvaIznajmljivanja()) {
+			if (i.getIDIznajmljivanja()==ID){
+				i.setBibliotekar(bibliotekar);
+				i.setClan(clan);
+				i.setDatumIznajmljivanja(datumIznajmljivanja);
+				i.setDatumVracanja(datumVracanja);
+				i.setIznajmljenPrimerak(iznajmljenPrimerak);
+				i.setObrisanostIznajmljivanja(obrisanostIznajmljivanja);
+	
+			
+				
+				Biblioteka.izbrisiSadrzajFajla("src/fajlovi/iznajmljivanja.txt");
+				Biblioteka.upisiIznajmljivanje(biblioteka.svaIznajmljivanja,"src/fajlovi/iznajmljivanja.txt");
+				
+			}
+		}
+	}
+	
 	
 	
 

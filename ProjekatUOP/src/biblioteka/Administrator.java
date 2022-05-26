@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Administrator extends Zaposleni {
 	private static int idMaker=0;
+	//private Biblioteka biblioteka;
 	
 	public Administrator() {
 		
@@ -83,6 +84,50 @@ public class Administrator extends Zaposleni {
         	Biblioteka.upisiAdministratore(biblioteka.sviAdministratori,"src/fajlovi/administratori.txt");
         }    	
 	
+	}
+	
+	public void updateAdmina(int IDAdmina,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
+		for (Administrator a: biblioteka.getSviAdministratori()) {
+			if (a.getIDOsobe() == IDAdmina) {
+				a.setIme(ime);
+				a.setPrezime(prezime);
+				a.setJMBG(JMBG);
+				a.setAdresa(adresa);
+				a.setObrisan(obrisan);
+				a.setPol(pol);
+				a.setPlata(plata);
+				a.setKorIme(korIme);
+				a.setLozinka(lozinka);
+				a.setBiblioteka(biblioteka);
+				
+				
+				Biblioteka.izbrisiSadrzajFajla("src/fajlovi/administratori.txt");
+	        	Biblioteka.upisiAdministratore(biblioteka.sviAdministratori,"src/fajlovi/administratori.txt");
+				
+				
+			}
+		}
+	}
+	
+	public void updateBibliotekara(int IDBibliotekara,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
+		for (Bibliotekar b: biblioteka.getSviBibliotekari()) {
+			if (b.getIDOsobe()==IDBibliotekara) {
+				b.setIme(ime);
+				b.setPrezime(prezime);
+				b.setJMBG(JMBG);
+				b.setAdresa(adresa);
+				b.setObrisan(obrisan);
+				b.setPol(pol);
+				b.setPlata(plata);
+				b.setKorIme(korIme);
+				b.setLozinka(lozinka);
+				b.setBiblioteka(biblioteka);
+				
+				Biblioteka.izbrisiSadrzajFajla("src/fajlovi/bibliotekari.txt");
+				Biblioteka.upisiBibliotekare(biblioteka.sviBibliotekari, "src/fajlovi/bibliotekari.txt");
+				
+			}
+		}
 	}
 	
 	

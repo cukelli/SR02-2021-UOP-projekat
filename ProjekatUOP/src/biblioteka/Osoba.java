@@ -23,7 +23,6 @@ abstract class Osoba {
 	
 	public Osoba(int IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan) {
 		this.IDOsobe = IDOsobe;
-		//Osoba.IDMaker = IDOsobe;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.JMBG = JMBG;
@@ -52,7 +51,7 @@ abstract class Osoba {
 		return JMBG;
 	}
 
-	public void setJMBG(String jMBG) {
+	public void setJMBG(String JMBG) {
 		this.JMBG = JMBG;
 	}
 
