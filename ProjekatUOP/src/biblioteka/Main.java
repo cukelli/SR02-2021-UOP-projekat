@@ -108,7 +108,10 @@ public class Main {
 		 administratorTest.updateClanarina("novi odrasli", 300.0, 1, false, biblioteka);
 		 administratorTest.updatePrimerak(53, knjigaNovaTest, 120, 2002, Jezik.NEMACKI, false, Povez.TVRDI, false, biblioteka);
 		 administratorTest.updateClan(1003, "Aleksandra", "Zvicer", "010200735021", "Zivojin Culum", true, Pol.ZENSKI, "234", LocalDate.parse("2020-03-03"), 3, false, biblioteka.sveClanarine.get(1), biblioteka);
-	} catch (IOException e) {
+		  biblioteka.neobrisaniBibliotekari();
+		  biblioteka.neobrisaneKnjige();
+		  biblioteka.neobrisaneClanarine();
+		  } catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

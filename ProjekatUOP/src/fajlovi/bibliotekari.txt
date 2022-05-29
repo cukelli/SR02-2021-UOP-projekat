@@ -1,4 +1,4 @@
 300;Zvici;Aleksandra;666;Bulevar 6;ZENSKI;100.0;zvicy;zvciy123;false
 301;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;true
-302;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
+302;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;true
 303;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false

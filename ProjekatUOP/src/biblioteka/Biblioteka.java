@@ -291,11 +291,14 @@ public class Biblioteka {
 				String korImeBibliotekara = nizBibliotekara[7];
 				String lozinkaBibliotekara = nizBibliotekara[8];
 				boolean obrisanostBibliotekara = Boolean.parseBoolean(nizBibliotekara[9]);
-				
+			//	System.out.println(obrisanostBibliotekara);
+
 				Bibliotekar bibliotekar = new Bibliotekar(IDBibliotekara,imeBibliotekara,prezimeBibliotekara,JMBGBibliotekara,adresaBibliotekara,obrisanostBibliotekara,defPol,plataBibliotekara,korImeBibliotekara,lozinkaBibliotekara);
 				sviBibliotekari.add(bibliotekar);
 				
+              			
 				}
+		//	System.out.println(sviBibliotekari+"Svi");
 			reader.close();
 			
 			
@@ -346,6 +349,7 @@ public class Biblioteka {
 				
 				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,obrisanostAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
 	            sviAdministratori.add(administrator);
+	          //  System.out.println(sviAdministratori);
 			}
 			
 //			for (Administrator a: sviAdministratori) {
@@ -644,5 +648,96 @@ public class Biblioteka {
 			
 			return true;
 		}
+		
+		public ArrayList<Bibliotekar> neobrisaniBibliotekari() {
+			ArrayList<Bibliotekar> neobrisaniBibliotekari = new ArrayList<Bibliotekar>();
+			for (Bibliotekar b: sviBibliotekari) {
+				if (b.isObrisan() == false) {
+					neobrisaniBibliotekari.add(b);
+				}
+			}
+			System.out.println(neobrisaniBibliotekari);
+			return neobrisaniBibliotekari;
+		}
+		
+		public ArrayList<Administrator> neobrisaniAdministratori() {
+			ArrayList<Administrator> neobrisaniAdministratori = new ArrayList<Administrator>();
+			for (Administrator a: sviAdministratori) {
+				if (a.isObrisan() == false) {
+					neobrisaniAdministratori.add(a);
+					
+				}
+			}
+			return neobrisaniAdministratori;
+			}
+		
+		public ArrayList<Clan> neobrisaniClanovi() {
+			ArrayList<Clan> neobrisaniClanovi = new ArrayList<Clan>();
+			for (Clan c: sviClanovi) {
+				if (c.isObrisan() == false) {
+					neobrisaniClanovi.add(c);
+					
+				}
+			}
+			return neobrisaniClanovi;
+			}
+		
+		public ArrayList<Knjiga> neobrisaneKnjige() {
+			ArrayList<Knjiga> neobrisaneKnjige = new ArrayList<Knjiga>();
+			for (Knjiga k: knjige) {
+				if (k.isObrisana() == false) {
+					neobrisaneKnjige.add(k);
+					
+				}
+			}
+			System.out.println(neobrisaneKnjige);
+			return neobrisaneKnjige;
+			
+			}
+		
+		public ArrayList<Iznajmljivanje> neobrisanaIznajmljivanja() {
+			ArrayList<Iznajmljivanje> neobrisanaIznajmljivanja = new ArrayList<Iznajmljivanje>();
+			for (Iznajmljivanje i: svaIznajmljivanja) {
+				if (i.isObrisanostIznajmljivanja() == false) {
+					neobrisanaIznajmljivanja.add(i);
+					
+				}
+			}
+			return neobrisanaIznajmljivanja;
+			
+			}
+		public ArrayList<TipClanarine> neobrisaneClanarine() {
+			ArrayList<TipClanarine> neobrisaneClanarine = new ArrayList<TipClanarine>();
+			for (TipClanarine tc: sveClanarine) {
+				if (tc.isObrisanaClanarina() == false) {
+					neobrisaneClanarine.add(tc);
+				}
+			}
+			System.out.println(neobrisaneClanarine);
+			return neobrisaneClanarine;
+		}
+		
+		public ArrayList<Primerak> neobrisaniPrimerci() {
+			ArrayList<Primerak> neobrisaniPrimerci = new ArrayList<Primerak>();
+			for (Primerak p: sviPrimerci) {
+				if (p.isObrisan() == false) {
+					neobrisaniPrimerci.add(p);
+				}
+			}
+			System.out.println(neobrisaniPrimerci);
+			return neobrisaniPrimerci;
+		}
+		
+		public ArrayList<Zanr> neobrisaniZanrovi() {
+			ArrayList<Zanr> neobrisaniZanrovi = new ArrayList<Zanr>();
+			for (Zanr z: sviZanrovi) {
+				if (z.isObrisanZanr()== false) {
+					neobrisaniZanrovi.add(z);
+				}
+			}
+			System.out.println(neobrisaniZanrovi);
+			return neobrisaniZanrovi;
+		}
+		
 
 }

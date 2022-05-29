@@ -1,5 +1,5 @@
 Alhemicar;Paulo Koeljo;Paulo Koeljo;1915;NEMACKI;Kvalitetno stivo;Nova istorija;0;true
-Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Nova istorija;1;true
+Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Nova istorija;1;false
 Rat i mir;Srpska Trilogija;Tolstoj;1934;ENGLESKI;Lektira;Nova istorija;2;false
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Nova istorija;3;true
 Srpska Trilogija;Srpska Trilogija;Stevan Jakovljevic;1915;NEMACKI;Kvalitetno stivo;Nova istorija;4;true
