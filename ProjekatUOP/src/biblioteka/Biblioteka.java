@@ -743,15 +743,34 @@ public class Biblioteka {
 			return neobrisaniZanrovi;
 		}
 		
-		public Zaposleni login(String korisnickoIme, String lozinka) {
-			for(Zaposleni zaposleni : sviAdministratori) {
-				if(zaposleni.getKorIme().equalsIgnoreCase(korisnickoIme) &&
+		public Zaposleni login(String korIme, String lozinka) {
+			for(Zaposleni zaposleni : sviZaposleni) {
+				if(zaposleni.getKorIme().equalsIgnoreCase(korIme) &&
 						zaposleni.getLozinka().equals(lozinka) && !zaposleni.isObrisan()) {
 					return zaposleni;
 				}
 			}
 			return null;
 		}
+		
+		public ArrayList<Zaposleni> sviZaposleni() {
+			sviZaposleni.addAll(sviAdministratori);
+			sviZaposleni.addAll(sviBibliotekari);
+			//System.out.println(sviZaposleni);
+			return sviZaposleni;
+		}
+		
+		public ArrayList<Zaposleni> sviNeobrisaniZaposleni() {
+			ArrayList<Zaposleni> sviNeobrisaniZaposleni = new ArrayList<Zaposleni>();
+			for (Zaposleni z: sviZaposleni) {
+				if (z.isObrisan() == false) {
+					sviNeobrisaniZaposleni.add(z);
+				}
+			}
+			//System.out.println(sviNeobrisaniZaposleni);
+			return sviNeobrisaniZaposleni;
+		}
+		
 		
 
 }

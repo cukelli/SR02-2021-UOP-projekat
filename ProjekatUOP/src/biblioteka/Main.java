@@ -118,14 +118,17 @@ public class Main {
 		  biblioteka.neobrisaneKnjige();
 		  biblioteka.neobrisaneClanarine();
 	  
-		 GlavniProzor glavniProzor = new GlavniProzor(biblioteka,biblioteka.neobrisaniAdministratori().get(2));
+	 GlavniProzor glavniProzor = new GlavniProzor(biblioteka,biblioteka.neobrisaniAdministratori().get(2));
 	     glavniProzor.setVisible(true);
-	     AdminProzor adminProzorTest = new AdminProzor(biblioteka);
-		  adminProzorTest.setVisible(true);
-		 BibliotekarProzor bibliotekarTestProzor = new BibliotekarProzor(biblioteka);
- 		 bibliotekarTestProzor.setVisible(true);
-	     LoginProzor loginProzor = new LoginProzor(biblioteka);
+//	     AdminProzor adminProzorTest = new AdminProzor(biblioteka);
+//		  adminProzorTest.setVisible(true);
+//		 BibliotekarProzor bibliotekarTestProzor = new BibliotekarProzor(biblioteka);
+// 		 bibliotekarTestProzor.setVisible(true);
+     LoginProzor loginProzor = new LoginProzor(biblioteka);
 	     loginProzor.setVisible(true);
+		  
+		  biblioteka.sviZaposleni();
+		  biblioteka.sviNeobrisaniZaposleni();
 		 
 		 
 		  } catch (IOException e) {

@@ -10,8 +10,8 @@
 10;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 11;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 12;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
-13;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
-14;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+13;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;true
+14;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;true
 15;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 16;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 17;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
@@ -26,5 +26,3 @@
 26;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 27;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 28;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
-29;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
-30;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
