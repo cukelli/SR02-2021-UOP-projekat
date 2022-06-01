@@ -1,8 +1,14 @@
 package biblioteka;
 
+import gui.AdminProzor;
+import gui.BibliotekarProzor;
+import gui.GlavniProzor;
+import gui.LoginProzor;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
 
 public class Main {
 
@@ -99,7 +105,7 @@ public class Main {
          administratorTest.brisiBibliotekara(301, biblioteka);
          bibliotekarTest.brisiIznajmljivanje(6001, biblioteka);
          bibliotekarTest.iznajmiKnjigu(getIznajmljivanjeID, bibliotekarTest, clanTest, LocalDate.parse("2020-03-03"),LocalDate.parse("2020-04-04"), primerakTest);
-         administratorTest.brisiAdministratora(234, biblioteka);
+       //  administratorTest.brisiAdministratora(234, biblioteka);
 		administratorTest.updateAdmina(234, "Milkica","Simic" , "234", "Cara Urosa", false, Pol.MUSKI, 100.0, "aasd", "asdas",biblioteka);
 		 administratorTest.updateBibliotekara(300, "Zvici", "Aleksandra", "666", "Bulevar 6", false, Pol.ZENSKI, 100.0, "zvicy", "zvciy123", biblioteka);
          bibliotekarTest.updateIznajmljivanje(6000, bibliotekarTest, clanTest, LocalDate.parse("2021-10-20"), LocalDate.parse("2021-03-13"), primerakTest, false,biblioteka);
@@ -111,6 +117,17 @@ public class Main {
 		  biblioteka.neobrisaniBibliotekari();
 		  biblioteka.neobrisaneKnjige();
 		  biblioteka.neobrisaneClanarine();
+	  
+		 GlavniProzor glavniProzor = new GlavniProzor(biblioteka,biblioteka.neobrisaniAdministratori().get(2));
+	     glavniProzor.setVisible(true);
+	     AdminProzor adminProzorTest = new AdminProzor(biblioteka);
+		  adminProzorTest.setVisible(true);
+		 BibliotekarProzor bibliotekarTestProzor = new BibliotekarProzor(biblioteka);
+ 		 bibliotekarTestProzor.setVisible(true);
+	     LoginProzor loginProzor = new LoginProzor(biblioteka);
+	     loginProzor.setVisible(true);
+		 
+		 
 		  } catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

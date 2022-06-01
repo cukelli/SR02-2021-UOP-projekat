@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
+
+
 public class Biblioteka {
     ArrayList<Knjiga> knjige = new ArrayList<Knjiga>();	
     ArrayList<Clan> sviClanovi = new ArrayList<Clan>();
@@ -21,6 +23,11 @@ public class Biblioteka {
     ArrayList<Iznajmljivanje>svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
     ArrayList<Bibliotekar> sviBibliotekari = new ArrayList<Bibliotekar>();
     ArrayList<Administrator> sviAdministratori = new ArrayList<Administrator>();
+    
+    ArrayList<Zaposleni> sviZaposleni = new ArrayList<Zaposleni>();
+    
+    
+    
     
     
     
@@ -172,7 +179,7 @@ public class Biblioteka {
 			boolean obrisanostZanra = Boolean.parseBoolean(linijaZanr[3]);
 			Zanr zanr = new Zanr(oznakaZanra,opisZanra,IDZanra,obrisanostZanra);
 			sviZanrovi.add(zanr);
-			System.out.println(zanr);
+			//System.out.println(zanr);
 		
 		}
 		
@@ -352,9 +359,7 @@ public class Biblioteka {
 	          //  System.out.println(sviAdministratori);
 			}
 			
-//			for (Administrator a: sviAdministratori) {
-//				System.out.println(a.getJMBG());
-//			}
+
 			reader.close();
 			
 
@@ -412,7 +417,6 @@ public class Biblioteka {
 				int IDKnjige = Integer.parseInt(niz[7]);
 				boolean obrisanostKnjige = Boolean.parseBoolean(niz[8]);
 				Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,tmp,obrisanostKnjige);
-				//System.out.println(knjiga.getIDKnjige());
 				this.knjige.add(knjiga);
 				
 			}
@@ -737,6 +741,16 @@ public class Biblioteka {
 			}
 			System.out.println(neobrisaniZanrovi);
 			return neobrisaniZanrovi;
+		}
+		
+		public Zaposleni login(String korisnickoIme, String lozinka) {
+			for(Zaposleni zaposleni : sviAdministratori) {
+				if(zaposleni.getKorIme().equalsIgnoreCase(korisnickoIme) &&
+						zaposleni.getLozinka().equals(lozinka) && !zaposleni.isObrisan()) {
+					return zaposleni;
+				}
+			}
+			return null;
 		}
 		
 

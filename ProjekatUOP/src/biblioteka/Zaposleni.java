@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Zaposleni extends Osoba {
+public abstract class Zaposleni extends Osoba {
 	
 	protected Biblioteka biblioteka;
 	
