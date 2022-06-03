@@ -3,4 +3,5 @@ module ProjekatUOP {
 	//exports biblioteka;
 
 	requires java.desktop;
+//	requires miglayout;
 }

@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -14,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
 import biblioteka.Clan;
+import biblioteka.Zaposleni;
 
 public class ClanProzor extends JFrame {
 	
@@ -25,10 +29,12 @@ public class ClanProzor extends JFrame {
 	
 	private DefaultTableModel tableModel;
 	private JTable clanoviTabela;
+	private Zaposleni prijavljeniZaposleni;
 	
 	private Biblioteka biblioteka;
 	
-	public ClanProzor(Biblioteka biblioteka) {
+	public ClanProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
+		this.prijavljeniZaposleni = prijavljeniZaposleni;
 		this.biblioteka = biblioteka;
 		setTitle("Clanovi");
 		setSize(500, 300);
@@ -83,7 +89,24 @@ public class ClanProzor extends JFrame {
 		add(scrollPane, BorderLayout.CENTER); }
 		
 		
-		private void initActions() {}
+		private void initActions() {
+		btnEdit.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(clanoviTabela.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(rootPane, "Izaberite clana za izmenu");
+				return;
+			}
+			ClanIzmenaProzor cp = new ClanIzmenaProzor(biblioteka, prijavljeniZaposleni, clanoviTabela.getSelectedRow());
+			cp.setVisible(true);
+		}
+			
+		
+	});
+	
+	
+	
+}
 		
 
 	

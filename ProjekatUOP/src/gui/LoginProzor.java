@@ -2,6 +2,8 @@ package gui;
 
 
 import java.awt.event.ActionEvent;
+
+
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -54,8 +56,8 @@ public class LoginProzor extends JFrame {
 		add(btnCancel);
 		
 		
-		txtKorisnickoIme.setText("petarp");
-		pfPassword.setText("12345");
+		txtKorisnickoIme.setText("aasd");
+		pfPassword.setText("asdas");
 		getRootPane().setDefaultButton(btnOk);
 	}
 	public void initActions() {

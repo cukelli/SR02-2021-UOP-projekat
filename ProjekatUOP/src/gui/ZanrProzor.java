@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -14,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import biblioteka.Biblioteka;
 import biblioteka.TipClanarine;
 import biblioteka.Zanr;
+import biblioteka.Zaposleni;
 
 public class ZanrProzor extends JFrame {
 	
@@ -25,10 +29,12 @@ public class ZanrProzor extends JFrame {
 	private DefaultTableModel tableModel;
 	private JTable zanroviTabela;
 	
+	private Zaposleni prijavljeniZaposleni;
 	private Biblioteka biblioteka;
 	
-	public ZanrProzor(Biblioteka biblioteka) {
+	public ZanrProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
 		this.biblioteka = biblioteka;
+		this.prijavljeniZaposleni = prijavljeniZaposleni;
 		setTitle("Zanrovi");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -73,7 +79,24 @@ public class ZanrProzor extends JFrame {
 		add(scrollPane, BorderLayout.CENTER); }
 
 		
-		private void initActions() {}
+		private void initActions() {
+			btnEdit.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(zanroviTabela.getSelectedRow() == -1) {
+						JOptionPane.showMessageDialog(rootPane, "Izaberite zanr za izmenu");
+						return;
+					}
+					ZanrIzmenaProzor bp = new ZanrIzmenaProzor(biblioteka, prijavljeniZaposleni, zanroviTabela.getSelectedRow());
+					bp.setVisible(true);
+				}
+					
+				
+			});
+			
+			
+			
+		}
 
 }
 	

@@ -4,9 +4,9 @@
 41;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 42;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 43;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-44;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-45;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-46;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
+44;Alhemicar;567;2010;ENGLESKI;false;MEKI;true
+45;Alhemicar;567;2010;ENGLESKI;false;MEKI;true
+46;Alhemicar;567;2010;ENGLESKI;false;MEKI;false
 47;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 48;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 49;Alhemicar;567;2010;ENGLESKI;true;MEKI;true

@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,9 +32,6 @@ public class GlavniProzor extends JFrame {
     
 	private JButton btnIzmeni = new JButton("Izmeni");
 
-    
-    
-    
     
 	
 	
@@ -88,13 +86,19 @@ public class GlavniProzor extends JFrame {
 		add(radnoVremeBiblioteke);
 		add(btnIzmeni);
 		
+		bibliotekaNazivPolje.setText(biblioteka.getNaziv());
+		adresaBiblioteke.setText(biblioteka.getAdresa());
+	    telefonBiblioteke.setText(biblioteka.getNaziv());
+	    radnoVremeBiblioteke.setText(biblioteka.getRadnoVreme());
+	    
+		
 
 	}
 	private void initActions() {
 		administratorItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			AdminProzor adminProzor = new AdminProzor(biblioteka);
+			AdminProzor adminProzor = new AdminProzor(biblioteka,prijavljenZaposleni);
 				adminProzor.setVisible(true);
 			}
 		});
@@ -102,7 +106,7 @@ public class GlavniProzor extends JFrame {
 	bibliotekarItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			BibliotekarProzor bibliotekarProzor = new BibliotekarProzor(biblioteka);
+			BibliotekarProzor bibliotekarProzor = new BibliotekarProzor(biblioteka,prijavljenZaposleni);
 				bibliotekarProzor.setVisible(true);
 			}
 		});
@@ -110,7 +114,7 @@ public class GlavniProzor extends JFrame {
 	clanItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		ClanProzor clanProzor = new ClanProzor(biblioteka);
+		ClanProzor clanProzor = new ClanProzor(biblioteka,prijavljenZaposleni);
 			clanProzor.setVisible(true);
 		}
 	});
@@ -118,7 +122,7 @@ public class GlavniProzor extends JFrame {
 	iznajmljivanjeItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		IznajmljivanjeProzor iznajmljivanjeProzor = new IznajmljivanjeProzor(biblioteka);
+		IznajmljivanjeProzor iznajmljivanjeProzor = new IznajmljivanjeProzor(biblioteka,prijavljenZaposleni);
 			iznajmljivanjeProzor.setVisible(true);
 		}
 	});
@@ -150,7 +154,7 @@ public class GlavniProzor extends JFrame {
 	zanroviItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		ZanrProzor zanrProzor = new ZanrProzor(biblioteka);
+		ZanrProzor zanrProzor = new ZanrProzor(biblioteka,prijavljenZaposleni);
 			zanrProzor.setVisible(true);
 		}
 		

@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -756,7 +757,7 @@ public class Biblioteka {
 		public ArrayList<Zaposleni> sviZaposleni() {
 			sviZaposleni.addAll(sviAdministratori);
 			sviZaposleni.addAll(sviBibliotekari);
-			//System.out.println(sviZaposleni);
+			System.out.println(sviZaposleni);
 			return sviZaposleni;
 		}
 		
@@ -771,6 +772,43 @@ public class Biblioteka {
 			return sviNeobrisaniZaposleni;
 		}
 		
+		public ArrayList<Primerak> sviNeiznajmljeniPrimerci() {
+			ArrayList<Primerak> sviNeiznajmljeniPrimerci = new ArrayList<Primerak>();
+			for (Primerak p: sviPrimerci) {
+				if (p.isIznajmljena() == false && p.isObrisan() == false) {
+					sviNeiznajmljeniPrimerci.add(p);
+				}
+			}
+			 return sviNeiznajmljeniPrimerci;
+		
+			}
+		
+		public ArrayList<Clan> AktivniClanovi() {
+			ArrayList<Clan> AktivniClanovi = new ArrayList<Clan>();
+			for (Clan c: sviClanovi) {
+				if (c.isObrisan()==false  && c.isAktivnost() == true) {
+					AktivniClanovi.add(c);
+				}
+			}
+			return AktivniClanovi;
+		}
+		
+		public List<String> oznakeClanarina() {
+			List<String> oznakeClanarina = new ArrayList<String>();
+			for (TipClanarine t: sveClanarine) {
+				oznakeClanarina.add(t.getTip());
+				
+			}
+			
+			return oznakeClanarina;
+			
+			
+			
+		}
+	
+	
+		}
+		
 		
 
-}
+

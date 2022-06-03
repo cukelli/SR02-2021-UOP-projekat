@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -14,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
 import biblioteka.Iznajmljivanje;
+import biblioteka.Zaposleni;
 
 public class IznajmljivanjeProzor extends JFrame {
 	private JToolBar mainToolbar = new JToolBar();
@@ -25,9 +29,11 @@ public class IznajmljivanjeProzor extends JFrame {
 	private DefaultTableModel tableModel;
 	private JTable iznajmljivanjeTabela;
 	
+	private Zaposleni prijavljenZaposleni;
 	private Biblioteka biblioteka;
 	
-	public IznajmljivanjeProzor(Biblioteka biblioteka) {
+	public IznajmljivanjeProzor(Biblioteka biblioteka,Zaposleni prijavljenZaposleni) {
+		this.prijavljenZaposleni = prijavljenZaposleni;
 		this.biblioteka = biblioteka;
 		setTitle("Iznajmljivanje");
 		setSize(500, 300);
@@ -81,5 +87,20 @@ public class IznajmljivanjeProzor extends JFrame {
 	}
 	
 	
-	private void initActions() {}
+	private void initActions() {
+		btnEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(iznajmljivanjeTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite clana za izmenu");
+					return;
+				}
+				IznajmljivanjeIzmenaProzor ip = new IznajmljivanjeIzmenaProzor(biblioteka, prijavljenZaposleni, iznajmljivanjeTabela.getSelectedRow());
+				ip.setVisible(true);
+			}
+				
+			
+		});
+		
+	}
 }

@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -14,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
+import biblioteka.Zaposleni;
 
 public class BibliotekarProzor extends JFrame {
 	private JToolBar mainToolbar = new JToolBar();
@@ -24,11 +28,12 @@ public class BibliotekarProzor extends JFrame {
 
 	private DefaultTableModel tableModel;
 	private JTable bibliotekariTabela;
-	
+	private Zaposleni prijavljeniZaposleni;
 	private Biblioteka biblioteka;
 	
-	public BibliotekarProzor(Biblioteka biblioteka) {
+	public BibliotekarProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
 		this.biblioteka = biblioteka;
+		this.prijavljeniZaposleni = prijavljeniZaposleni;
 		setTitle("Bibliotekari");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -79,8 +84,23 @@ public class BibliotekarProzor extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane(bibliotekariTabela);
 		add(scrollPane, BorderLayout.CENTER); }
+	
+	public void initActions() {
+		btnEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(bibliotekariTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite bibliotekara za izmenu");
+					return;
+				}
+				BibliotekarIzmenaProzor bp = new BibliotekarIzmenaProzor(biblioteka, prijavljeniZaposleni, bibliotekariTabela.getSelectedRow());
+				bp.setVisible(true);
+			}
+				
+			
+		});
 		
 		
-		private void initActions() {}
-
+		
+	}
 }

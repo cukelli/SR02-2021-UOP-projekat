@@ -3,15 +3,19 @@ package gui;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
+import biblioteka.Zaposleni;
 
 public class AdminProzor extends JFrame {
 	
@@ -24,10 +28,11 @@ public class AdminProzor extends JFrame {
 
 	private DefaultTableModel tableModel;
 	private JTable adminiTabela;
-	
+	private Zaposleni prijavljeniZaposleni;
 	private Biblioteka biblioteka;
 	
-	public AdminProzor(Biblioteka biblioteka) {
+	public AdminProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
+		this.prijavljeniZaposleni = prijavljeniZaposleni;
 		this.biblioteka = biblioteka;
 		setTitle("Administratori");
 		setSize(500, 300);
@@ -79,7 +84,24 @@ public class AdminProzor extends JFrame {
 		add(scrollPane, BorderLayout.CENTER); }
 		
 		
-		private void initActions() {}
+	public void initActions() {
+		btnEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(adminiTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite admina za izmenu");
+					return;
+				}
+				AdminIzmenaProzor ap = new AdminIzmenaProzor(biblioteka, prijavljeniZaposleni, adminiTabela.getSelectedRow());
+				ap.setVisible(true);
+			}
+				
+			
+		});
+		
+		
+		
+	}
 		
 
 }

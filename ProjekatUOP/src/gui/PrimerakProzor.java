@@ -50,18 +50,17 @@ public class PrimerakProzor extends JFrame {
 		mainToolbar.add(btnDelete);
 		add(mainToolbar, BorderLayout.NORTH);
 		
-		String[] zaglavlja = new String[] {"ID","Knjiga","Broj strana","Godina stampe","Jezik stampe","Iznajmljena","Povez"};
+		String[] zaglavlja = new String[] {"ID","Knjiga","Broj strana","Godina stampe","Jezik stampe","Povez"};
 		Object[][] sadrzaj = new Object[biblioteka.neobrisaniPrimerci().size()][zaglavlja.length];
 		
-		for(int i=0; i<biblioteka.neobrisaniPrimerci().size(); i++) {
-		    Primerak primerak = biblioteka.neobrisaniPrimerci().get(i);
+		for(int i=0; i <(biblioteka.sviNeiznajmljeniPrimerci().size()); i++) {
+		    Primerak primerak = biblioteka.sviNeiznajmljeniPrimerci().get(i);
 			sadrzaj[i][0] = primerak.getIDPrimerka();
 			sadrzaj[i][1] = primerak.getKnjiga().getIDKnjige();
 			sadrzaj[i][2] = primerak.getBrojStrana();
 			sadrzaj[i][3] = primerak.getGodinaStampe();
 			sadrzaj[i][4] = primerak.getJezikStampe();
-			sadrzaj[i][5] = primerak.isIznajmljena();
-			sadrzaj[i][6] = primerak.getPovez();
+			sadrzaj[i][5] = primerak.getPovez();
 		
 		}
 		
