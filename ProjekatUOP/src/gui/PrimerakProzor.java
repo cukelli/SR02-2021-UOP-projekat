@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +15,9 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import biblioteka.Administrator;
 import biblioteka.Biblioteka;
+import biblioteka.Bibliotekar;
 import biblioteka.Clan;
 import biblioteka.Primerak;
 import biblioteka.Zaposleni;
@@ -105,6 +108,38 @@ public class PrimerakProzor extends JFrame {
 					DodajPrimerakProzor dpr = new DodajPrimerakProzor(biblioteka, prijavljeniZaposleni);
 					dpr.setVisible(true);
 				}
+					
+				
+			});
+			
+			btnDelete.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(primerciTabela.getSelectedRow() == -1) {
+						JOptionPane.showMessageDialog(rootPane, "Izaberite primerak za brisanje");
+					
+						return;
+					}
+					else {
+					   Primerak brisi =  biblioteka.neobrisaniPrimerci().get(primerciTabela.getSelectedRow());
+					   if (!brisi.isObrisan()) {
+						   try {
+								prijavljeniZaposleni.brisiPrimerak(brisi.getIDPrimerka(),biblioteka);
+								tableModel.removeRow(primerciTabela.getSelectedRow());
+								
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+					   } else {
+						JOptionPane.showMessageDialog(rootPane, "Primerak je vec obrisan, ponovo otvirite aplikaciju.");					
+						return;
+					   }
+		
+					}
+					
+				}
+				
 					
 				
 			});

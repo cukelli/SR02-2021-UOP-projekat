@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ import biblioteka.Knjiga;
 import biblioteka.Pol;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class AdminIzmenaProzor extends JDialog {
 	private JTextField IDPolje = new JTextField(20);
@@ -80,7 +82,6 @@ public class AdminIzmenaProzor extends JDialog {
     	add(lblID);
     	add(IDPolje);
     	IDPolje.setEditable(false);
-    	JMBGPolje.setEditable(false);
     	add(lblIme);
     	add(imePolje);
     	add(lblPol);
@@ -117,11 +118,32 @@ public class AdminIzmenaProzor extends JDialog {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
+
+					String ime = imePolje.getText().trim();
+					String prezime = prezimePolje.getText().trim();
+					String jmbg = JMBGPolje.getText().trim();
+					String adresa = adresaPolje.getText().trim();
+					double plataUpdate = Double.parseDouble(plata.getText().trim());
+					String korisName = korisnickoIme.getText().trim();
+					@SuppressWarnings("deprecation")
+					String lozinkaUpdate = lozinka.getText().trim();
+
   					Administrator admin = (Administrator) prijavljeniZaposleni;
-					admin.updateAdmina(Integer.parseInt(IDPolje.getText().trim()),imePolje.getText().trim(),prezimePolje.getText().trim(),JMBGPolje.getText().trim(),adresaPolje.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),Double.parseDouble(plata.getText().trim()),korisnickoIme.getText().trim(),lozinka.getText().trim(),biblioteka);
-					dispose();
-					AdminProzor ap = new AdminProzor(biblioteka,prijavljeniZaposleni);
-					ap.setVisible(true);
+
+  					
+					if (Utils.validirajAdmin(ime, prezime, jmbg, adresa,
+							plataUpdate, korisName, lozinkaUpdate,admin)) {
+						
+						admin.updateAdmina(Integer.parseInt(IDPolje.getText().trim()),ime,prezime,jmbg,adresa,
+								Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,
+								lozinkaUpdate,biblioteka);
+						
+						
+						dispose();
+						AdminProzor ap = new AdminProzor(biblioteka,prijavljeniZaposleni);
+						ap.setVisible(true);
+					}
+
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();
@@ -137,6 +159,7 @@ public class AdminIzmenaProzor extends JDialog {
    		});
    		};
     
+   		
 
 
 }

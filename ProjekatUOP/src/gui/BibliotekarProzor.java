@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -110,6 +111,40 @@ public class BibliotekarProzor extends JFrame {
 				
 			
 		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(bibliotekariTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite bibliotekari za brisanje");
+				
+					return;
+				}
+				else {
+				   Administrator admin = (Administrator) prijavljeniZaposleni;
+				   Bibliotekar brisi =  biblioteka.neobrisaniBibliotekari().get(bibliotekariTabela.getSelectedRow());
+				   if (!brisi.isObrisan()) {
+					   try {
+							admin.brisiBibliotekara(brisi.getIDOsobe(),biblioteka);
+							tableModel.removeRow(bibliotekariTabela.getSelectedRow());
+							
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				   } else {
+					JOptionPane.showMessageDialog(rootPane, "Korisnik je vec obrisan, ponovo otvirite aplikaciju.");					
+					return;
+				   }
+	
+				}
+				
+			}
+			
+				
+			
+		});
+		
 		
 		
 		

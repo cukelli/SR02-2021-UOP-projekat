@@ -4,5 +4,5 @@
 1003;Aleksandra;Zvicer;010200735021;Zivojin Culum;ZENSKI;234;2020-03-03;3;false;penzionerska;true
 1004;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
 1005;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
-1006;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;false
-1006;Teodora;Eric;01020023935;;ZENSKI;124;2012-03-03;3;true;novi odraslii;false
+1006;Sima;Markovic;0233234;Laze Kostica 3;MUSKI;5;2019-06-03;3;true;penzionerska;true
+1006;Teodora;Eric;01020023935;;ZENSKI;124;2012-03-03;3;true;novi odraslii;true

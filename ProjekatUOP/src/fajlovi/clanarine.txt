@@ -1,4 +1,4 @@
 novi odraslii;300.0;1;false
 penzionerska;100.0;2;true
-decija;150.0;3;false
-swing clanarina;250.0;4;false
+decija;150.0;3;true
+swing clanarina;250.0;4;true

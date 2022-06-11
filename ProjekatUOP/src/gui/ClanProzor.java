@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
+import biblioteka.Bibliotekar;
 import biblioteka.Clan;
 import biblioteka.Zaposleni;
 
@@ -57,7 +59,7 @@ public class ClanProzor extends JFrame {
 		mainToolbar.add(btnDelete);
 		add(mainToolbar, BorderLayout.NORTH);
 		
-		String[] zaglavlja = new String[] {"ID","Ime","Prezime","JMBG","Adresa","Pol","Broj clanske","Datum poslednje uplate","Broj uplacenih meseci","aktivnost","Tip clanarine"};
+		String[] zaglavlja = new String[] {"ID","Ime","Prezime","JMBG","Adresa","Pol","Broj clanske","Datum poslednje uplate","Broj uplacenih meseci","Tip clanarine"};
 		Object[][] sadrzaj = new Object[biblioteka.neobrisaniClanovi().size()][zaglavlja.length];
 		
 		for(int i=0; i<biblioteka.neobrisaniClanovi().size(); i++) {
@@ -71,8 +73,7 @@ public class ClanProzor extends JFrame {
 			sadrzaj[i][6] = clan.getBrojClanske();
 			sadrzaj[i][7] = clan.getDatumPoslednjeUplate();
 			sadrzaj[i][8] = clan.getBrojUplacenihMeseci();
-			sadrzaj[i][9] = clan.isAktivnost();
-            sadrzaj[i][10] = clan.getTipClanarine();
+            sadrzaj[i][9] = clan.getTipClanarine();
 		}
 		
 
@@ -112,6 +113,39 @@ public class ClanProzor extends JFrame {
 				DodajClanaProzor dc = new DodajClanaProzor(biblioteka, prijavljeniZaposleni);
 				dc.setVisible(true);
 			}
+				
+			
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clanoviTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite clana za brisanje");
+				
+					return;
+				}
+				else {
+				  
+				   Clan brisi =  biblioteka.neobrisaniClanovi().get(clanoviTabela.getSelectedRow());
+				   if (!brisi.isObrisan()) {
+					   try {
+							prijavljeniZaposleni.brisiClana(brisi.getIDOsobe(),biblioteka);
+							tableModel.removeRow(clanoviTabela.getSelectedRow());
+							
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				   } else {
+					JOptionPane.showMessageDialog(rootPane, "Clan je vec obrisan, ponovo otvirite aplikaciju.");					
+					return;
+				   }
+	
+				}
+				
+			}
+			
 				
 			
 		});

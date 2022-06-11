@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +15,9 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import biblioteka.Administrator;
 import biblioteka.Biblioteka;
+import biblioteka.Bibliotekar;
 import biblioteka.TipClanarine;
 import biblioteka.Zanr;
 import biblioteka.Zaposleni;
@@ -102,6 +105,39 @@ public class ZanrProzor extends JFrame {
 				DodajZanrProzor dz = new DodajZanrProzor(biblioteka, prijavljeniZaposleni);
 				dz.setVisible(true);
 			}
+				
+			
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(zanroviTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite zanr za brisanje");
+				
+					return;
+				}
+				else {
+				 
+				   Zanr brisi =  biblioteka.neobrisaniZanrovi().get(zanroviTabela.getSelectedRow());
+				   if (!brisi.isObrisanZanr()) {
+					   try {
+							prijavljeniZaposleni.brisiZanr(brisi.getIDZanra(),biblioteka);
+							tableModel.removeRow(zanroviTabela.getSelectedRow());
+							
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				   } else {
+					JOptionPane.showMessageDialog(rootPane, "Zanr je vec obrisan, ponovo otvirite aplikaciju.");					
+					return;
+				   }
+	
+				}
+				
+			}
+			
 				
 			
 		});

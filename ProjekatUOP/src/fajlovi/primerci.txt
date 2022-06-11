@@ -13,4 +13,4 @@
 50;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 51;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 52;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-53;Srpska Trilogija;120;2002;NEMACKI;false;TVRDI;false
+53;Srpska Trilogija;120;2002;NEMACKI;false;TVRDI;true

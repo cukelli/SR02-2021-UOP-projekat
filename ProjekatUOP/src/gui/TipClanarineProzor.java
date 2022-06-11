@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +15,9 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import biblioteka.Administrator;
 import biblioteka.Biblioteka;
+import biblioteka.Bibliotekar;
 import biblioteka.Primerak;
 import biblioteka.TipClanarine;
 import biblioteka.Zanr;
@@ -107,6 +110,40 @@ public class TipClanarineProzor extends JFrame {
 				
 			
 		});
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clanarineTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite clanarinu za brisanje");
+				
+					return;
+				}
+				else {
+				  
+				   TipClanarine brisi =  biblioteka.neobrisaneClanarine().get(clanarineTabela.getSelectedRow());
+				   if (!brisi.isObrisanaClanarina()) {
+					   try {
+							prijavljeniZaposleni.brisiClanarinu(brisi.getIDClanarine(),biblioteka);
+							tableModel.removeRow(clanarineTabela.getSelectedRow());
+							
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				   } else {
+					JOptionPane.showMessageDialog(rootPane, "Clanarina je vec obrisana, ponovo otvirite aplikaciju.");					
+					return;
+				   }
+	
+				}
+				
+			}
+			
+				
+			
+		});
+		
+		
 
 }
 }

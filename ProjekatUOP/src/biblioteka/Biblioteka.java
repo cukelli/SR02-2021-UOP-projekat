@@ -357,7 +357,7 @@ public class Biblioteka {
 				
 				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,obrisanostAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
 	            sviAdministratori.add(administrator);
-	          //  System.out.println(sviAdministratori);
+	        
 			}
 			
 
@@ -695,7 +695,7 @@ public class Biblioteka {
 					
 				}
 			}
-			System.out.println(neobrisaneKnjige);
+			//System.out.println(neobrisaneKnjige);
 			return neobrisaneKnjige;
 			
 			}
@@ -718,7 +718,7 @@ public class Biblioteka {
 					neobrisaneClanarine.add(tc);
 				}
 			}
-			System.out.println(neobrisaneClanarine);
+			//System.out.println(neobrisaneClanarine);
 			return neobrisaneClanarine;
 		}
 		
@@ -729,7 +729,7 @@ public class Biblioteka {
 					neobrisaniPrimerci.add(p);
 				}
 			}
-			System.out.println(neobrisaniPrimerci);
+			//System.out.println(neobrisaniPrimerci);
 			return neobrisaniPrimerci;
 		}
 		
@@ -740,7 +740,7 @@ public class Biblioteka {
 					neobrisaniZanrovi.add(z);
 				}
 			}
-			System.out.println(neobrisaniZanrovi);
+			//System.out.println(neobrisaniZanrovi);
 			return neobrisaniZanrovi;
 		}
 		
@@ -757,7 +757,7 @@ public class Biblioteka {
 		public ArrayList<Zaposleni> sviZaposleni() {
 			sviZaposleni.addAll(sviAdministratori);
 			sviZaposleni.addAll(sviBibliotekari);
-			System.out.println(sviZaposleni);
+			//System.out.println(sviZaposleni);
 			return sviZaposleni;
 		}
 		

@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import biblioteka.Administrator;
 import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
 import biblioteka.Iznajmljivanje;
@@ -110,6 +112,39 @@ public class IznajmljivanjeProzor extends JFrame {
 			DodajIznajmljivanjeProzor dp = new DodajIznajmljivanjeProzor(biblioteka, prijavljenZaposleni);
 			dp.setVisible(true);
 		}
+			
+		
+	});
+	
+	btnDelete.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(iznajmljivanjeTabela.getSelectedRow() == -1) {
+				JOptionPane.showMessageDialog(rootPane, "Izaberite iznajmljivanje za brisanje");
+			
+				return;
+			}
+			else {
+			   Bibliotekar bibliotekar = (Bibliotekar) prijavljenZaposleni;
+			   Iznajmljivanje brisi =  biblioteka.neobrisanaIznajmljivanja().get(iznajmljivanjeTabela.getSelectedRow());
+			   if (!brisi.isObrisanostIznajmljivanja()) {
+				   try {
+						bibliotekar.brisiIznajmljivanje(brisi.getIDIznajmljivanja(), biblioteka);
+						tableModel.removeRow(iznajmljivanjeTabela.getSelectedRow());
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			   } else {
+				JOptionPane.showMessageDialog(rootPane, "Iznajmljivanje je vec obrisano, ponovo otvirite aplikaciju.");					
+				return;
+			   }
+
+			}
+			
+		}
+		
 			
 		
 	});

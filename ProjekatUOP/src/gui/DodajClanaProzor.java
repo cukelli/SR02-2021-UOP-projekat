@@ -138,5 +138,7 @@ public class DodajClanaProzor extends JDialog {
   			}
    		});
    		};
+   		
+   		
 
 }

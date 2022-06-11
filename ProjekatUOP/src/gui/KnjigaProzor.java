@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import biblioteka.Administrator;
 import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
 import biblioteka.Knjiga;
@@ -106,6 +108,39 @@ public class KnjigaProzor extends JFrame {
 				DodajKnjiguProzor dk = new DodajKnjiguProzor(biblioteka, prijavljeniZaposleni);
 				dk.setVisible(true);
 			}
+				
+			
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(knjigeTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite knjigu za brisanje");
+				
+					return;
+				}
+				else {
+				 
+				   Knjiga brisi =  biblioteka.neobrisaneKnjige().get(knjigeTabela.getSelectedRow());
+				   if (!brisi.isObrisana()) {
+					   try {
+							prijavljeniZaposleni.brisiKnjigu(brisi.getIDKnjige(),biblioteka);
+							tableModel.removeRow(knjigeTabela.getSelectedRow());
+							
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				   } else {
+					JOptionPane.showMessageDialog(rootPane, "Knjiga je vec obrisana, ponovo otvirite aplikaciju.");					
+					return;
+				   }
+	
+				}
+				
+			}
+			
 				
 			
 		});

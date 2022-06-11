@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -8,10 +9,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
@@ -39,7 +42,7 @@ public class AdminProzor extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		initGUI();
-		initActions();
+		initActions(this);
 	}
 	
 	private void initGUI() {
@@ -84,7 +87,7 @@ public class AdminProzor extends JFrame {
 		add(scrollPane, BorderLayout.CENTER); }
 		
 		
-	public void initActions() {
+	public void initActions(AdminProzor p) {
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -105,6 +108,39 @@ public class AdminProzor extends JFrame {
 				DodajAdminaProzor dp = new DodajAdminaProzor(biblioteka, prijavljeniZaposleni);
 				dp.setVisible(true);
 			}
+				
+			
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(adminiTabela.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(rootPane, "Izaberite admina za brisanje");
+				
+					return;
+				}
+				else {
+				   Administrator admin = (Administrator) prijavljeniZaposleni;
+				   Administrator brisi =  biblioteka.neobrisaniAdministratori().get(adminiTabela.getSelectedRow());
+				   if (!brisi.isObrisan()) {
+					   try {
+							admin.brisiAdministratora(brisi.getIDOsobe(),biblioteka);
+							tableModel.removeRow(adminiTabela.getSelectedRow());
+							
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				   } else {
+					JOptionPane.showMessageDialog(rootPane, "Korisnik je vec obrisan, ponovo otvirite aplikaciju.");					
+					return;
+				   }
+	
+				}
+				
+			}
+			
 				
 			
 		});
