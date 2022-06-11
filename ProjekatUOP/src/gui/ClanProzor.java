@@ -103,13 +103,21 @@ public class ClanProzor extends JFrame {
 			
 		
 	});
-	
-	
-	
-}
+			
+
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodajClanaProzor dc = new DodajClanaProzor(biblioteka, prijavljeniZaposleni);
+				dc.setVisible(true);
+			}
+				
+			
+		});
 		
 
-	
+}
 	
 
 }

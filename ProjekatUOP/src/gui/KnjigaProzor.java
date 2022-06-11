@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -14,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
 import biblioteka.Knjiga;
+import biblioteka.Zaposleni;
 
 public class KnjigaProzor extends JFrame {
 	private JToolBar mainToolbar = new JToolBar();
@@ -21,13 +25,14 @@ public class KnjigaProzor extends JFrame {
 	private JButton btnEdit = new JButton();
 	private JButton btnDelete = new JButton();
 	
-
+    private Zaposleni prijavljeniZaposleni;
 	private DefaultTableModel tableModel;
 	private JTable knjigeTabela;
 	
 	private Biblioteka biblioteka;
-	public KnjigaProzor(Biblioteka biblioteka) {
+	public KnjigaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
 		this.biblioteka = biblioteka;
+		this.prijavljeniZaposleni = prijavljeniZaposleni;
 		setTitle("Knjige");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -79,8 +84,33 @@ public class KnjigaProzor extends JFrame {
 		add(scrollPane, BorderLayout.CENTER); }
 		
 		
-		private void initActions() {}
+		private void initActions() {
+			btnEdit.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(knjigeTabela.getSelectedRow() == -1) {
+						JOptionPane.showMessageDialog(rootPane, "Izaberite knjigu za izmenu");
+						return;
+					}
+					KnjigaIzmenaProzor kp = new KnjigaIzmenaProzor(biblioteka, prijavljeniZaposleni, knjigeTabela.getSelectedRow());
+					kp.setVisible(true);
+				}
+					
+			});
+		
+		
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodajKnjiguProzor dk = new DodajKnjiguProzor(biblioteka, prijavljeniZaposleni);
+				dk.setVisible(true);
+			}
+				
+			
+		});
 		
 	
 	}
 
+}

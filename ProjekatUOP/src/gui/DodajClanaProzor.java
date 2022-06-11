@@ -1,14 +1,9 @@
 package gui;
 
 import java.awt.event.ActionEvent;
-
-
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.nio.file.Files;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -19,18 +14,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-
-
 import biblioteka.Biblioteka;
 import biblioteka.Clan;
 import biblioteka.Pol;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
-
-
 import net.miginfocom.swing.MigLayout;
 
-public class ClanIzmenaProzor extends JDialog {
+public class DodajClanaProzor extends JDialog {
 	private JTextField IDClana = new JTextField(4);
     private JLabel lblID = new JLabel("ID");
     
@@ -69,19 +60,12 @@ public class ClanIzmenaProzor extends JDialog {
    
 
     
-    private JButton dugmeIzmena = new JButton("Izmenite");
+    private JButton dugmeDodaj = new JButton("Dodaj");
     
    
     private Biblioteka biblioteka;
     private Zaposleni prijavljeniZaposleni;
-    private int index;
-    
-    
-    
-    
-    
-    
-    public ClanIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
+    public DodajClanaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
     	setTitle("Zaposleni: " + prijavljeniZaposleni.getIDOsobe());
@@ -101,66 +85,42 @@ public class ClanIzmenaProzor extends JDialog {
      	initMenu();
   	initActions();
     }
-     	
-     	  private void initMenu() {
-     	    	MigLayout mig = new MigLayout("wrap 2","[][]", "[]10[][]10[]");
-     	    	setLayout(mig);
-     	    	
-     	    	add(lblID);
-     	    	add(IDClana);
-     	    	add(lblIme);
-     	    	add(imeClana);
-     	    	add(lblJMBG);
-     	    	add(JMBGClana);
-     	    	add(lblPol);
-     	    	add(cmbxPol);
-     	    	add(lblPrezime);
-     	    	add(prezimeClana);
-     	    	add(lblBrojClanske);
-     	    	add(brojClanske);
-     	    	add(lblDatumPoslednjeUplate);
-     	    	add(datumPoslednjeUplate);
-     	      	add(lblBrojUplacenihMeseci);
-     	    	add(brojUplacenihMeseci);
-     	    	add(lblTipClanarine);
-     	    	add(cmbxOznakaClanarine);
-     	    	add(aktivnostCheck);
-     	    	add(dugmeIzmena);
-     	    	IDClana.setEditable(false);
-     	    	
-     	    	
-     	    	Clan c = biblioteka.AktivniClanovi().get(index);
-     	    	IDClana.setText(Integer.toString(c.getIDOsobe()));
-     	    	imeClana.setText(c.getIme());
-     	    	prezimeClana.setText(c.getPrezime());
-     	    	brojClanske.setText(c.getBrojClanske());
-     	    	datumPoslednjeUplate.setText(c.getDatumPoslednjeUplate().toString());
-     	    	brojUplacenihMeseci.setText(Integer.toString(c.getBrojUplacenihMeseci()));
-     	    	cmbxOznakaClanarine.setSelectedItem(c.getTipClanarine());
-     	    	JMBGClana.setText(c.getJMBG());
-     	
-     	    	
-     	    	cmbxPol.setSelectedItem(c.getPol());
-     	    
-     	    	if (c.isAktivnost() == true ) {
-     	    		aktivnostCheck.setSelected(true);
-     	    	 {
-     	    			aktivnostCheck.setSelected(false);
-     	    		}
-     	    	
-     	    				
-     	    	}
-     	    	
-     	  
-     	  
-     	  }
-     	 
-     	 private void initActions() {
-   		dugmeIzmena.addActionListener(new ActionListener() {
+	
+    private void initMenu() {
+	    	MigLayout mig = new MigLayout("wrap 2","[][]", "[]10[][]10[]");
+	    	setLayout(mig);
+	    	
+	    	add(lblID);
+	    	add(IDClana);
+	    	add(lblIme);
+	    	add(imeClana);
+	    	add(lblJMBG);
+	    	add(JMBGClana);
+	    	add(lblPol);
+	    	add(cmbxPol);
+	    	add(lblPrezime);
+	    	add(prezimeClana);
+	    	add(lblBrojClanske);
+	    	add(brojClanske);
+	    	add(lblDatumPoslednjeUplate);
+	    	add(datumPoslednjeUplate);
+	      	add(lblBrojUplacenihMeseci);
+	    	add(brojUplacenihMeseci);
+	    	add(lblTipClanarine);
+	    	add(cmbxOznakaClanarine);
+	    	add(aktivnostCheck);
+	    	add(dugmeDodaj);
+	    	IDClana.setEditable(false);
+	
+	
+    }	
+    
+    private void initActions() {
+   		dugmeDodaj.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
-					prijavljeniZaposleni.updateClan(Integer.parseInt(IDClana.getText()),imeClana.getText().trim(),prezimeClana.getText().trim(),JMBGClana.getText().trim(),adresaClana.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanske.getText().trim(),LocalDate.parse(datumPoslednjeUplate.getText().trim()),Integer.parseInt(brojUplacenihMeseci.getText()),biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
+					prijavljeniZaposleni.dodajClanove(Clan.getUpdateMaker()+1,imeClana.getText().trim(),prezimeClana.getText().trim(),JMBGClana.getText().trim(),adresaClana.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanske.getText().trim(),LocalDate.parse(datumPoslednjeUplate.getText().trim()),Integer.parseInt(brojUplacenihMeseci.getText()),biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
 					dispose();
 					ClanProzor cp = new ClanProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);
@@ -178,8 +138,5 @@ public class ClanIzmenaProzor extends JDialog {
   			}
    		});
    		};
-     	
-     	
-    } 
 
-
+}

@@ -1,10 +1,8 @@
 package gui;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -17,14 +15,12 @@ import javax.swing.JTextField;
 
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
-import biblioteka.Knjiga;
 import biblioteka.Pol;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
 
-public class AdminIzmenaProzor extends JDialog {
-	private JTextField IDPolje = new JTextField(20);
-    private JLabel lblID = new JLabel("ID");
+public class DodajAdminaProzor extends JDialog {
+	
 	
 	private JTextField imePolje = new JTextField(20);
     private JLabel lblIme = new JLabel("Ime");
@@ -53,14 +49,12 @@ public class AdminIzmenaProzor extends JDialog {
     private JPasswordField lozinka = new JPasswordField(20);
     private JLabel lblLozinka = new JLabel("Lozinka");
     
-    private JButton dugmeIzmena = new JButton("Izmenite");
+    private JButton dugmeDodaj = new JButton("Dodaj");
     
     private Biblioteka biblioteka;
     private Zaposleni prijavljeniZaposleni;
-    int index;
     
-    
-    public AdminIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
+    public DodajAdminaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
     	setTitle("Admin: " + prijavljeniZaposleni.getIDOsobe());
@@ -77,10 +71,6 @@ public class AdminIzmenaProzor extends JDialog {
     private void initMenu() {
     	MigLayout mig = new MigLayout("wrap 2","[][]", "[]10[][]10[]");
     	setLayout(mig);
-    	add(lblID);
-    	add(IDPolje);
-    	IDPolje.setEditable(false);
-    	JMBGPolje.setEditable(false);
     	add(lblIme);
     	add(imePolje);
     	add(lblPol);
@@ -97,28 +87,15 @@ public class AdminIzmenaProzor extends JDialog {
     	add(korisnickoIme);
     	add(lblLozinka);
     	add(lozinka);
-    	add(dugmeIzmena);
-    	
-    	
-    	Administrator a = biblioteka.neobrisaniAdministratori().get(index);
-    	IDPolje.setText(Integer.toString(a.getIDOsobe()));
-    	imePolje.setText(a.getIme());
-    	prezimePolje.setText(a.getPrezime());
-    	adresaPolje.setText(a.getAdresa());
-    	plata.setText(Double.toString(a.getPlata()));
-    	korisnickoIme.setText(a.getKorIme());
-    	lozinka.setText(a.getLozinka());
-    	JMBGPolje.setText(a.getJMBG());
-    	
+    	add(dugmeDodaj);
     }
-    
     private void initActions() {
-   		dugmeIzmena.addActionListener(new ActionListener() {
+   		dugmeDodaj.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
   					Administrator admin = (Administrator) prijavljeniZaposleni;
-					admin.updateAdmina(Integer.parseInt(IDPolje.getText().trim()),imePolje.getText().trim(),prezimePolje.getText().trim(),JMBGPolje.getText().trim(),adresaPolje.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),Double.parseDouble(plata.getText().trim()),korisnickoIme.getText().trim(),lozinka.getText().trim(),biblioteka);
+					admin.dodajAdmina(Administrator.getIdMaker()+1,imePolje.getText().trim(),prezimePolje.getText().trim(),JMBGPolje.getText().trim(),adresaPolje.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),Double.parseDouble(plata.getText().trim()),korisnickoIme.getText().trim(),lozinka.getText().trim(),biblioteka);
 					dispose();
 					AdminProzor ap = new AdminProzor(biblioteka,prijavljeniZaposleni);
 					ap.setVisible(true);
@@ -137,6 +114,6 @@ public class AdminIzmenaProzor extends JDialog {
    		});
    		};
     
-
+    
 
 }

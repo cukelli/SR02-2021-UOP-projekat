@@ -22,7 +22,7 @@ public class Administrator extends Zaposleni {
 	
 	
 	
-	public void dodajAdmina(int IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka) throws IOException {
+	public void dodajAdmina(int IDOsobe,String ime,String prezime,String JMBG,String adresa,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
 		ArrayList<Administrator> sviAdministratori = new ArrayList<Administrator>();
 		
 		Administrator administrator = new Administrator();
@@ -31,7 +31,7 @@ public class Administrator extends Zaposleni {
 		administrator.setPrezime(prezime);
 		administrator.setJMBG(JMBG);
 		administrator.setAdresa(adresa);
-		administrator.setObrisan(obrisan);
+		//administrator.setObrisan(obrisan);
 		administrator.setPol(pol);
 		administrator.setPlata(plata);
 		administrator.setKorIme(korIme);
@@ -40,7 +40,7 @@ public class Administrator extends Zaposleni {
 		Biblioteka.upisiAdministratore(sviAdministratori, "src/fajlovi/administratori.txt");
 		}
 	
-	public void dodajBibliotekara(int IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka) throws IOException {
+	public void dodajBibliotekara(int IDOsobe,String ime,String prezime,String JMBG,String adresa,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
 		ArrayList<Bibliotekar> sviBibliotekari = new ArrayList<Bibliotekar>();
 		Bibliotekar bibliotekar = new Bibliotekar();
 		bibliotekar.setIDOsobe(IDOsobe);
@@ -48,7 +48,7 @@ public class Administrator extends Zaposleni {
 		bibliotekar.setPrezime(prezime);
 		bibliotekar.setJMBG(JMBG);
 		bibliotekar.setAdresa(adresa);
-		bibliotekar.setObrisan(obrisan);
+		//bibliotekar.setObrisan(obrisan);
 		bibliotekar.setPol(pol);
 		bibliotekar.setPlata(plata);
 		bibliotekar.setKorIme(korIme);
@@ -86,7 +86,7 @@ public class Administrator extends Zaposleni {
 	
 	}
 	
-	public void updateAdmina(int IDAdmina,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
+	public void updateAdmina(int IDAdmina,String ime,String prezime,String JMBG,String adresa,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
 		for (Administrator a: biblioteka.getSviAdministratori()) {
 			if (a.getIDOsobe() == IDAdmina) {
 				a.setIme(ime);
@@ -109,7 +109,7 @@ public class Administrator extends Zaposleni {
 		}
 	}
 	
-	public void updateBibliotekara(int IDBibliotekara,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
+	public void updateBibliotekara(int IDBibliotekara,String ime,String prezime,String JMBG,String adresa,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
 		for (Bibliotekar b: biblioteka.getSviBibliotekari()) {
 			if (b.getIDOsobe()==IDBibliotekara) {
 				b.setIme(ime);
@@ -142,6 +142,13 @@ public class Administrator extends Zaposleni {
 	
 	
 	
+	
+	
+	public static int getIdMaker() {
+		return idMaker;
+	}
+
+
 	@Override 
 	
 	public String toString() {

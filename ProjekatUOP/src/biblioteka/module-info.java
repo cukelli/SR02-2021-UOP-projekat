@@ -4,4 +4,5 @@ module ProjekatUOP {
 
 	requires java.desktop;
 //	requires miglayout;
+	
 }

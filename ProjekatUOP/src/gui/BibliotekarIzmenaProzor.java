@@ -1,8 +1,13 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-
-
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,6 +17,7 @@ import javax.swing.JTextField;
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
+import biblioteka.Pol;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
 
@@ -21,6 +27,11 @@ public class BibliotekarIzmenaProzor extends JDialog {
 	
 	private JTextField imePolje = new JTextField(20);
     private JLabel lblIme = new JLabel("Ime");
+    
+    private JTextField JMBGPolje = new JTextField(13);
+    private JLabel lblJMBG = new JLabel("JMBG");
+     
+    
     
     private JTextField prezimePolje = new JTextField(20);
     private JLabel lblPrezime = new JLabel("Prezime");
@@ -34,6 +45,10 @@ public class BibliotekarIzmenaProzor extends JDialog {
 
     private JTextField korisnickoIme = new JTextField(20);
     private JLabel lblKorisnickoIme = new JLabel("Korisnicko ime");
+    
+    private JLabel lblPol = new JLabel("Pol bibliotekara");
+    private JComboBox<Pol> cmbxPol = new JComboBox<Pol>();
+	
     
 
     private JPasswordField lozinka = new JPasswordField(20);
@@ -54,8 +69,10 @@ public class BibliotekarIzmenaProzor extends JDialog {
 	setResizable(false);
 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	setLocationRelativeTo(null);
+	cmbxPol.setModel(new DefaultComboBoxModel<Pol>(Pol.values()));
+
  	initMenu();
-//	initActions();
+	initActions();
 	
 } 
 
@@ -73,6 +90,8 @@ private void initMenu() {
 	add(adresaPolje);
 	add(lblPlata);
 	add(plata);
+	add(lblPol);
+	add(cmbxPol);
 	add(lblKorisnickoIme);
 	add(korisnickoIme);
 	add(lblLozinka);
@@ -91,5 +110,31 @@ private void initMenu() {
 	lozinka.setText(b.getLozinka());
 	
 }
+
+
+private void initActions() {
+		dugmeIzmena.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Administrator admin = (Administrator) prijavljeniZaposleni;
+				admin.updateBibliotekara(Integer.parseInt(IDPolje.getText().trim()),imePolje.getText().trim(),prezimePolje.getText().trim(),JMBGPolje.getText().trim(),adresaPolje.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),Double.parseDouble(plata.getText().trim()),korisnickoIme.getText().trim(),lozinka.getText().trim(),biblioteka);
+				dispose();
+				BibliotekarProzor ap = new BibliotekarProzor(biblioteka,prijavljeniZaposleni);
+				ap.setVisible(true);
+			} catch (NumberFormatException e1) {
+				
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
+			
+			
+				
+				
+			}
+		});
+		};
 
 }

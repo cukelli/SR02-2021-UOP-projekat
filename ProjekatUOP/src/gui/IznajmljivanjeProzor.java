@@ -102,5 +102,16 @@ public class IznajmljivanjeProzor extends JFrame {
 			
 		});
 		
-	}
+	
+	btnAdd.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			DodajIznajmljivanjeProzor dp = new DodajIznajmljivanjeProzor(biblioteka, prijavljenZaposleni);
+			dp.setVisible(true);
+		}
+			
+		
+	});
+}
 }

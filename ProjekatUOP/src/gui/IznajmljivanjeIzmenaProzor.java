@@ -1,5 +1,10 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -8,10 +13,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import biblioteka.Administrator;
 import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
 import biblioteka.Clan;
 import biblioteka.Iznajmljivanje;
+import biblioteka.Pol;
 import biblioteka.Primerak;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
@@ -80,7 +87,7 @@ public class IznajmljivanjeIzmenaProzor extends JDialog {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
      	initMenu();
-//		initActions();
+	initActions();
     }
     private void initMenu() {
     	MigLayout mig = new MigLayout("wrap 2","[][]", "[]10[][]10[]");
@@ -114,6 +121,34 @@ public class IznajmljivanjeIzmenaProzor extends JDialog {
     	
     	
     }
+    
+    private void initActions() {
+		dugmeIzmena.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Bibliotekar bibliotekar = (Bibliotekar) prijavljeniZaposleni;
+				bibliotekar.updateIznajmljivanje(Integer.parseInt(IDPolje.getText().trim()), biblioteka.neobrisaniBibliotekari().get(cmbxIDBibliotekara.getSelectedIndex()),biblioteka.neobrisaniClanovi().get(cmbxIDClana.getSelectedIndex()),LocalDate.parse(datumIznajmljivanja.getText().trim()),LocalDate.parse(datumVracanja.getText().trim()),biblioteka.sviNeiznajmljeniPrimerci().get(cmbxIDPrimerka.getSelectedIndex()),biblioteka);
+				
+				dispose();
+				IznajmljivanjeProzor ip = new IznajmljivanjeProzor(biblioteka,prijavljeniZaposleni);
+				ip.setVisible(true);
+			} catch (NumberFormatException e1) {
+				
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
+			
+			
+				
+				
+			}
+		});
+		};
+    
+
     
     
     }

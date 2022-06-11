@@ -3,13 +3,11 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Vector;
-
-
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,15 +15,12 @@ import javax.swing.JTextField;
 import biblioteka.Biblioteka;
 import biblioteka.Jezik;
 import biblioteka.Knjiga;
-import biblioteka.Pol;
 import biblioteka.Povez;
 import biblioteka.Primerak;
-import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
 
-public class PrimerakIzmenaProzor extends JFrame {
-	
+public class DodajPrimerakProzor extends JDialog {
 	private JTextField ID = new JTextField(4);
     private JLabel lblID = new JLabel("ID");
 	
@@ -44,15 +39,13 @@ public class PrimerakIzmenaProzor extends JFrame {
     
     private JLabel lblPovez = new JLabel("Povez");
     private JComboBox<Povez> cmbxPovez = new JComboBox<Povez>();
-   
-   private JButton dugmeIzmena = new JButton("Potvrdite izmenu");
+
+    private JButton dugmeDodaj = new JButton("Dodaj");
     
     private Biblioteka biblioteka;
     private Zaposleni prijavljeniZaposleni;
-    private int index;
     
-    
-    public PrimerakIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
+    public DodajPrimerakProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
     	String[] knjige = new String[biblioteka.neobrisaneKnjige().size()];
@@ -78,7 +71,6 @@ public class PrimerakIzmenaProzor extends JFrame {
 		initActions();
     	
     } 
-    
     private void initMenu() {
     	MigLayout mig = new MigLayout("wrap 2","[][]", "[]10[][]10[]");
     	setLayout(mig);
@@ -95,29 +87,17 @@ public class PrimerakIzmenaProzor extends JFrame {
     	add(cmbxJezik);
     	add(lblPovez);
     	add(cmbxPovez);
-    	add(dugmeIzmena);
-    	
-    	Primerak p = biblioteka.neobrisaniPrimerci().get(index);
-    	
-    	ID.setText(Integer.toString(p.getIDPrimerka()));
+    	add(dugmeDodaj);
     	ID.setEditable(false);
-        cmbxKnjige.setSelectedItem(p.getKnjiga().getNaslov());
-    	brojStrana.setText(Integer.toString(p.getBrojStrana()));
-    	godinaStampe.setText(Integer.toString(p.getGodinaStampe()));
-    	cmbxJezik.setSelectedItem(p.getJezikStampe());
-    	cmbxPovez.setSelectedItem(p.getJezikStampe());
-    	
-    	
-       	
-    	
-    }
     
+
+}
     private void initActions() {
-   		dugmeIzmena.addActionListener(new ActionListener() {
+   		dugmeDodaj.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
-					prijavljeniZaposleni.updatePrimerak(Integer.parseInt(ID.getText().trim()),biblioteka.neobrisaneKnjige().get(cmbxKnjige.getSelectedIndex()),Integer.parseInt(brojStrana.getText().trim()),Integer.parseInt(godinaStampe.getText().trim()),Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),Povez.valueOf(cmbxPovez.getSelectedItem().toString()),biblioteka);
+					prijavljeniZaposleni.dodajPrimerke(Primerak.getUpdateMaker()+1,biblioteka.neobrisaneKnjige().get(cmbxKnjige.getSelectedIndex()),Integer.parseInt(brojStrana.getText().trim()),Integer.parseInt(godinaStampe.getText().trim()),Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),Povez.valueOf(cmbxPovez.getSelectedItem().toString()),biblioteka);
 					dispose();
 					PrimerakProzor pp = new PrimerakProzor(biblioteka,prijavljeniZaposleni);
 					pp.setVisible(true);
@@ -135,7 +115,4 @@ public class PrimerakIzmenaProzor extends JFrame {
   			}
    		});
    		};
-	
-
-
 }

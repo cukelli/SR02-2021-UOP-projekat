@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -14,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import biblioteka.Biblioteka;
 import biblioteka.Clan;
 import biblioteka.Primerak;
+import biblioteka.Zaposleni;
 
 public class PrimerakProzor extends JFrame {
 
@@ -25,10 +29,12 @@ public class PrimerakProzor extends JFrame {
 	private DefaultTableModel tableModel;
 	private JTable primerciTabela;
 	
+	private Zaposleni prijavljeniZaposleni;
 	private Biblioteka biblioteka;
 	
-	public PrimerakProzor(Biblioteka biblioteka) {
-		this.biblioteka = biblioteka;
+	public PrimerakProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
+		this.prijavljeniZaposleni = prijavljeniZaposleni;
+ 		this.biblioteka = biblioteka;
 		setTitle("Primerci");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -78,7 +84,32 @@ public class PrimerakProzor extends JFrame {
 		add(scrollPane, BorderLayout.CENTER); }
 		
 		
-		private void initActions() {}
+		private void initActions() {
+			btnEdit.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(primerciTabela.getSelectedRow() == -1) {
+						JOptionPane.showMessageDialog(rootPane, "Izaberite primerak za izmenu");
+						return;
+					}
+					AdminIzmenaProzor ap = new AdminIzmenaProzor(biblioteka, prijavljeniZaposleni, primerciTabela.getSelectedRow());
+					ap.setVisible(true);
+				}
+					
+				
+			});
+			btnAdd.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					DodajPrimerakProzor dpr = new DodajPrimerakProzor(biblioteka, prijavljeniZaposleni);
+					dpr.setVisible(true);
+				}
+					
+				
+			});
+			
+		}
 	}
 
 

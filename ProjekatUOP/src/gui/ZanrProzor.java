@@ -94,10 +94,18 @@ public class ZanrProzor extends JFrame {
 				
 			});
 			
+		
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodajZanrProzor dz = new DodajZanrProzor(biblioteka, prijavljeniZaposleni);
+				dz.setVisible(true);
+			}
+				
 			
-			
-		}
+		});
 
 }
 	
-
+}

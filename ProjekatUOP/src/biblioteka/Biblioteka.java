@@ -768,7 +768,6 @@ public class Biblioteka {
 					sviNeobrisaniZaposleni.add(z);
 				}
 			}
-			//System.out.println(sviNeobrisaniZaposleni);
 			return sviNeobrisaniZaposleni;
 		}
 		

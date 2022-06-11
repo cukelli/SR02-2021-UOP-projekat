@@ -65,7 +65,7 @@ public abstract class Zaposleni extends Osoba {
 		this.biblioteka = biblioteka;
 	}
 
-	public void DodajKnjigu(int IDKnjige,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr,boolean obrisana) throws IOException {
+	public void dodajKnjigu(int IDKnjige,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr,Biblioteka biblioteka) throws IOException {
 		ArrayList<Knjiga> sveKnjige = new ArrayList<Knjiga>();
 		Knjiga knjiga = new Knjiga();
 		knjiga.setIDKnjige(Knjiga.getUpdateMaker());
@@ -81,7 +81,7 @@ public abstract class Zaposleni extends Osoba {
              
 	}
 	
-	public void dodajClanove(int IDOsobe,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,boolean aktivnost,TipClanarine tipClanarine) throws IOException {
+	public void dodajClanove(int IDOsobe,String ime,String prezime,String JMBG,String adresa,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,TipClanarine tipClanarine,Biblioteka biblioteka) throws IOException {
 		ArrayList<Clan> sviClanovi = new ArrayList<Clan>();
 		Clan clan = new Clan();
 		clan.setIDOsobe(Clan.getUpdateMaker());
@@ -89,18 +89,18 @@ public abstract class Zaposleni extends Osoba {
 		clan.setPrezime(prezime);
 		clan.setJMBG(JMBG);
 		clan.setAdresa(adresa);
-		clan.setObrisan(obrisan);
+		//clan.setObrisan(obrisan);
 		clan.setPol(pol);
 		clan.setBrojClanske(brojClanske);
 		clan.setDatumPoslednjeUplate(datumPoslednjeUplate);
 	    clan.setBrojUplacenihMeseci(brojUplacenihMeseci);
-	    clan.setAktivnost(aktivnost);
+	    clan.setAktivnost(true);
 	    clan.setTipClanarine(tipClanarine);
 	    sviClanovi.add(clan);
 	    Biblioteka.upisiClanove(sviClanovi, "src/fajlovi/clanovi.txt");
 	}
 	
-	public void dodajPrimerke(int IDPrimerka,Knjiga knjiga,int brojStrana,int godinaStampe,Jezik jezikStampe,boolean iznajmljena,Povez povez,boolean obrisan) throws IOException {
+	public void dodajPrimerke(int IDPrimerka,Knjiga knjiga,int brojStrana,int godinaStampe,Jezik jezikStampe,Povez povez,Biblioteka biblioteka) throws IOException {
 		ArrayList<Primerak> sviPrimerci = new ArrayList<Primerak>();
 		Primerak primerak = new Primerak();
 		primerak.setIDPrimerka(IDPrimerka);
@@ -108,18 +108,19 @@ public abstract class Zaposleni extends Osoba {
 		primerak.setBrojStrana(brojStrana);
 		primerak.setGodinaStampe(godinaStampe);
 		primerak.setJezikStampe(jezikStampe);
-		primerak.setIznajmljena(iznajmljena);
+		//primerak.setIznajmljena(iznajmljena);
 		primerak.setPovez(povez);
-		primerak.setObrisan(obrisan);
+		//primerak.setObrisan(obrisan);
 		sviPrimerci.add(primerak);
 		Biblioteka.pisiPrimerke(sviPrimerci,"src/fajlovi/primerci.txt");
 
 		
 	}
 	
-	public void dodajTipClanarine(String tip,double cena) throws IOException {
+	public void dodajTipClanarine(int ID,String tip,double cena,Biblioteka biblioteka) throws IOException {
 		ArrayList<TipClanarine> sveClanarine = new ArrayList<TipClanarine>();
 	    TipClanarine tipClanarine = new TipClanarine();
+	     tipClanarine.setIDClanarine(ID);
 	    tipClanarine.setCena(cena);
 	    tipClanarine.setTip(tip);
 	    sveClanarine.add(tipClanarine);
@@ -128,7 +129,7 @@ public abstract class Zaposleni extends Osoba {
 	}
 	
 	
-	public void dodajZanr(String oznaka,String opis,int IDZanra) throws IOException {
+	public void dodajZanr(String oznaka,String opis,int IDZanra,Biblioteka biblioteka) throws IOException {
 		ArrayList<Zanr> sviZanrovi = new ArrayList<Zanr>();
 		Zanr zanr = new Zanr();
 		zanr.setOznaka(oznaka);
@@ -211,7 +212,7 @@ public abstract class Zaposleni extends Osoba {
 	
 	}
 	
-    public void updateKnjigu(int ID,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr,boolean obrisana,Biblioteka biblioteka) throws IOException {
+    public void updateKnjigu(int ID,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr,Biblioteka biblioteka) throws IOException {
     	   for(Knjiga k: biblioteka.getKnjige()) {
     		   if (k.getIDKnjige() == ID) {
     			    k.setNaslov(originalniNaslov);
@@ -220,14 +221,14 @@ public abstract class Zaposleni extends Osoba {
     			    k.setJezikOriginala(jezikOriginala);
     			    k.setOpis(opis);
     			    k.setZanr(zanr);
-    			    k.setObrisana(obrisana);
+    			  //  k.setObrisana(obrisana);
     		   }
     		   Biblioteka.izbrisiSadrzajFajla("src/fajlovi/noveKnjige.txt");
     		   Biblioteka.upisiFajl(biblioteka.knjige, "src/fajlovi/noveKnjige.txt");
     	   }
     }
 	
-    public void updateClan(int ID,String ime,String prezime,String JMBG,String adresa,boolean obrisan,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,boolean aktivnost,TipClanarine tipClanarine,Biblioteka biblioteka) throws IOException {
+    public void updateClan(int ID,String ime,String prezime,String JMBG,String adresa,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,TipClanarine tipClanarine,Biblioteka biblioteka) throws IOException {
     	for (Clan c: biblioteka.getSviClanovi()) {
     		if (c.getIDOsobe() == ID) {
     		    c.setIme(ime);
@@ -239,7 +240,7 @@ public abstract class Zaposleni extends Osoba {
     		    c.setBrojClanske(brojClanske);
     		    c.setDatumPoslednjeUplate(datumPoslednjeUplate);
     		    c.setBrojUplacenihMeseci(brojUplacenihMeseci);
-    		    c.setAktivnost(aktivnost);
+    		   // c.setAktivnost(aktivnost);
     		    c.setTipClanarine(tipClanarine);
     		    
     		    Biblioteka.izbrisiSadrzajFajla("src/fajlovi/clanovi.txt");
@@ -250,14 +251,14 @@ public abstract class Zaposleni extends Osoba {
     }
 		
 	
-    public void updatePrimerak(int ID,Knjiga knjiga,int brojStrana,int godinaStampe, Jezik jezikStampe,boolean iznajmljena,Povez povez,boolean obrisan,Biblioteka biblioteka) throws IOException {
+    public void updatePrimerak(int ID,Knjiga knjiga,int brojStrana,int godinaStampe, Jezik jezikStampe,Povez povez,Biblioteka biblioteka) throws IOException {
     	for (Primerak p: biblioteka.getSviPrimerci()) {
     		if (p.getIDPrimerka() == ID) {
     			p.setKnjiga(knjiga);
     			p.setBrojStrana(brojStrana);
     			p.setGodinaStampe(godinaStampe);
     			p.setJezikStampe(jezikStampe);
-    			p.setIznajmljena(iznajmljena);
+    			//p.setIznajmljena(iznajmljena);
     			p.setPovez(povez);
     			p.setObrisan(obrisan);
    			
@@ -268,12 +269,12 @@ public abstract class Zaposleni extends Osoba {
     	}
     }
     
-    public void updateClanarina(String tip, double cena,int ID,boolean obrisanaClanarina,Biblioteka biblioteka) throws IOException {
+    public void updateClanarina(String tip, double cena,int ID,Biblioteka biblioteka) throws IOException {
     	for (TipClanarine tc: biblioteka.getSveClanarine()) {
     		if (tc.getIDClanarine() == ID) {
     			tc.setTip(tip);
     			tc.setCena(cena);
-    			tc.setObrisanaClanarina(obrisanaClanarina);
+    		//	tc.setObrisanaClanarina(obrisanaClanarina);
     			
     			Biblioteka.izbrisiSadrzajFajla("src/fajlovi/clanarine.txt");
     			Biblioteka.upisiClanarinu(biblioteka.sveClanarine,"src/fajlovi/clanarine.txt");
@@ -281,12 +282,12 @@ public abstract class Zaposleni extends Osoba {
     	}
     }
     
-    public void UpdateZanr(String oznaka,String opis,int ID,boolean obrisanZanr,Biblioteka biblioteka) throws IOException {
+    public void updateZanr(String oznaka,String opis,int ID,Biblioteka biblioteka) throws IOException {
     	for (Zanr z: biblioteka.getSviZanrovi()) {
     		if (z.getIDZanra() == ID) {
     			z.setOznaka(oznaka);
     			z.setOpis(opis);
-    			z.setObrisanZanr(obrisanZanr);
+    			//z.setObrisanZanr(obrisanZanr);
     			
     			Biblioteka.izbrisiSadrzajFajla("src/fajlovi/zanrovi.txt");
     			Biblioteka.upisiZanr(biblioteka.sviZanrovi, "src/fajlovi/zanrovi.txt");
@@ -294,6 +295,26 @@ public abstract class Zaposleni extends Osoba {
     	}
     	
     }
+    
+    public void updateIznajmljivanje(int ID,Bibliotekar bibliotekar,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak,Biblioteka biblioteka) throws IOException {
+		for (Iznajmljivanje i: biblioteka.getSvaIznajmljivanja()) {
+			if (i.getIDIznajmljivanja()==ID){
+				i.setBibliotekar(bibliotekar);
+				i.setClan(clan);
+				i.setDatumIznajmljivanja(datumIznajmljivanja);
+				i.setDatumVracanja(datumVracanja);
+				i.setIznajmljenPrimerak(iznajmljenPrimerak);
+				//i.setObrisanostIznajmljivanja(obrisanostIznajmljivanja);
+	
+			
+				
+				Biblioteka.izbrisiSadrzajFajla("src/fajlovi/iznajmljivanja.txt");
+				Biblioteka.upisiIznajmljivanje(biblioteka.svaIznajmljivanja,"src/fajlovi/iznajmljivanja.txt");
+				
+			}
+		}
+	}
+	
 
 	
 	@Override

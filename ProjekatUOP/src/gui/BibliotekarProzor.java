@@ -100,6 +100,17 @@ public class BibliotekarProzor extends JFrame {
 			
 		});
 		
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodajBibliotekaraProzor dp = new DodajBibliotekaraProzor(biblioteka, prijavljeniZaposleni);
+				dp.setVisible(true);
+			}
+				
+			
+		});
+		
 		
 		
 	}

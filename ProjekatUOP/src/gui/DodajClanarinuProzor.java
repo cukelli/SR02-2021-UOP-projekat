@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
@@ -11,29 +10,27 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import biblioteka.Administrator;
 import biblioteka.Biblioteka;
-import biblioteka.Pol;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
 
-public class ClanarinaIzmenaProzor extends JDialog {
+public class DodajClanarinuProzor extends JDialog {
 	private JTextField IDPolje = new JTextField(20);
     private JLabel lblID = new JLabel("ID");
 	
 	private JTextField tipPolje = new JTextField(20);
-    private JLabel lblTip = new JLabel("Opis");
+    private JLabel lblTip = new JLabel("Tip");
     
     private JTextField cenaPolje = new JTextField(20);
-    private JLabel lblCena = new JLabel("Oznaka");
-  private JButton dugmeIzmena = new JButton("Izmenite");
+    private JLabel lblCena = new JLabel("Cena");
+  private JButton dugmeDodaj = new JButton("Dodaj");
     
     private Biblioteka biblioteka;
     private Zaposleni prijavljeniZaposleni;
-    private int index;
     
-    public ClanarinaIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
+    
+    public DodajClanarinuProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
     	setTitle("Admin: " + prijavljeniZaposleni.getIDOsobe());
@@ -54,24 +51,17 @@ public class ClanarinaIzmenaProzor extends JDialog {
 	    	add(tipPolje);
 	    	add(lblCena);
 	    	add(cenaPolje);
-	    	add(dugmeIzmena);
+	    	add(dugmeDodaj);
 	    	IDPolje.setEditable(false);
-	    	
-	    	TipClanarine tc = biblioteka.neobrisaneClanarine().get(index);
-	    	IDPolje.setText(Integer.toString(tc.getIDClanarine()));
-	    	tipPolje.setText(tc.getTip());
-	    	cenaPolje.setText(Double.toString(tc.getCena()));
-	    	
-	    	
-    }
-    
+
+}
     private void initActions() {
-   		dugmeIzmena.addActionListener(new ActionListener() {
+   		dugmeDodaj.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
   					
-					prijavljeniZaposleni.updateClanarina(tipPolje.getText().trim(),Double.parseDouble(cenaPolje.getText().trim()),Integer.parseInt(IDPolje.getText().trim()),biblioteka);
+					prijavljeniZaposleni.dodajTipClanarine(TipClanarine.getIdMaker()+1,tipPolje.getText().trim(),Double.parseDouble(cenaPolje.getText().trim()),biblioteka);
 					dispose();
 					TipClanarineProzor cp = new TipClanarineProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);
@@ -89,5 +79,4 @@ public class ClanarinaIzmenaProzor extends JDialog {
   			}
    		});
    		};
-
 }

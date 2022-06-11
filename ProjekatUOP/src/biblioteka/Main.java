@@ -22,7 +22,7 @@ public class Main {
 		
 
 	try {
-		Biblioteka biblioteka = new Biblioteka();
+		Biblioteka biblioteka = new Biblioteka("Biblioteka Desanka Maksimovic","Laze Teleckog 6","6044395","20-25");
 		biblioteka.citajAdministratore("src/fajlovi/administratori.txt");
         biblioteka.citajBibliotekare("src/fajlovi/bibliotekari.txt");
         biblioteka.citajClanarine("src/fajlovi/clanarine.txt");
@@ -34,8 +34,11 @@ public class Main {
         Biblioteka.citajBiblioteku("src/fajlovi/biblioteka.txt");
         
         biblioteka.sviZaposleni();
+        biblioteka.sviNeobrisaniZaposleni();
 
 		 Administrator admin = biblioteka.neobrisaniAdministratori().get(0);
+		 
+	
 		 
 		 LoginProzor loginProzor = new LoginProzor(biblioteka);
 		 loginProzor.setVisible(true);

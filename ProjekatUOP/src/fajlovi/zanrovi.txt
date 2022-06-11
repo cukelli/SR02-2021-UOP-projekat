@@ -1,3 +1,5 @@
-Nova istorija;testiranje;1;false
+test oznaka;testiranjeE;1;false
 Beletristika;beletristicki zanr;2;false
 Klasik;klasicni zanr;3;true
+zanr dodat preko swinga;test swing;4;false
+drugi swing zanr;swing zanr 2;5;false

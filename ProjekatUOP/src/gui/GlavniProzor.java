@@ -72,7 +72,7 @@ public class GlavniProzor extends JFrame {
 	//	mainMenu.add(zaposleniMenu);
 		mainMenu.add(clanarineItem);
 		mainMenu.add(knjigeItem);
-		mainMenu.add(iznajmljivanjeItem);
+	//	mainMenu.add(iznajmljivanjeItem);
 		mainMenu.add(primerakItem);
 		mainMenu.add(clanItem);
 		mainMenu.add(zanroviItem);
@@ -130,7 +130,7 @@ public class GlavniProzor extends JFrame {
 	knjigeItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		KnjigaProzor knjigaProzor = new KnjigaProzor(biblioteka);
+		KnjigaProzor knjigaProzor = new KnjigaProzor(biblioteka,prijavljenZaposleni);
 			knjigaProzor.setVisible(true);
 		}
 	});
@@ -138,7 +138,7 @@ public class GlavniProzor extends JFrame {
 	primerakItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		PrimerakProzor primerakProzor = new PrimerakProzor(biblioteka);
+		PrimerakProzor primerakProzor = new PrimerakProzor(biblioteka,prijavljenZaposleni);
 			primerakProzor.setVisible(true);
 		}
 	});
@@ -146,7 +146,7 @@ public class GlavniProzor extends JFrame {
 	clanarineItem.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		TipClanarineProzor clanarinaProzor = new TipClanarineProzor(biblioteka);
+		TipClanarineProzor clanarinaProzor = new TipClanarineProzor(biblioteka,prijavljenZaposleni);
 			clanarinaProzor.setVisible(true);
 		}
 	});
@@ -166,6 +166,8 @@ public class GlavniProzor extends JFrame {
 		adresaBiblioteke.setEditable(false);
 		telefonBiblioteke.setEditable(false);
 		radnoVremeBiblioteke.setEditable(false);
+		zaposleniMenu.add(iznajmljivanjeItem);
+		
 		btnIzmeni.setEnabled(false);
 	}
 	

@@ -1,4 +1,4 @@
-1;Milkica;Simic;234;Cara Urosa;MUSKI;100.0;aasd;asdas;false
+1;Anastasija;Simic;234;Cara Urosa 2;MUSKI;100.0;aasd;asdas;false
 2;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 3;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 4;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
@@ -7,3 +7,4 @@
 7;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 8;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
 9;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;false
+10;Risto;Glavonjic;0102032131;Drugo zeleznicko naselje 16;MUSKI;10000.0;ristyyy;asdasd;false

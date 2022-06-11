@@ -98,10 +98,21 @@ public class AdminProzor extends JFrame {
 				
 			
 		});
-		
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodajAdminaProzor dp = new DodajAdminaProzor(biblioteka, prijavljeniZaposleni);
+				dp.setVisible(true);
+			}
+				
+			
+		});
 		
 		
 	}
+	
+	
 		
 
 }

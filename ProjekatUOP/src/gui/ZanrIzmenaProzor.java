@@ -1,7 +1,9 @@
 package gui;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,6 +14,7 @@ import javax.swing.JTextField;
 
 
 import biblioteka.Biblioteka;
+import biblioteka.Jezik;
 import biblioteka.Zanr;
 import biblioteka.Zaposleni;
 
@@ -42,7 +45,7 @@ public class ZanrIzmenaProzor extends JDialog {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
      	initMenu();
-  //	initActions();
+  	initActions();
     }
      	
      	  private void initMenu() {
@@ -65,15 +68,31 @@ public class ZanrIzmenaProzor extends JDialog {
      		  
      	  }
      	  
-//     	 private void initActions() {
-//     		dugmeIzmena.addActionListener(new ActionListener() {
-//     			@Override
-//     			public void actionPerformed(ActionEvent e) {
-//     				
-//     			}
-//     				
-//     		});
-//     	};
+     	   private void initActions() {
+     	   		dugmeIzmena.addActionListener(new ActionListener() {
+     	   			@Override
+     	  			public void actionPerformed(ActionEvent e) {
+     	  				try {
+     						prijavljeniZaposleni.updateZanr(oznakaPolje.getText().trim(),opisPolje.getText().trim(),Integer.parseInt(IDPolje.getText().trim()),biblioteka);
+     						dispose();
+     						ZanrProzor zp = new ZanrProzor(biblioteka,prijavljeniZaposleni);
+     						zp.setVisible(true);
+     					} catch (NumberFormatException e1) {
+     						
+     						e1.printStackTrace();
+     					} catch (IOException e1) {
+     						
+     						e1.printStackTrace();
+     					}
+     	  			
+     	 			
+     	  				
+     	  				
+     	  			}
+     	   		});
+     	   		};
+     	  
+
     } 
     
 

@@ -1,10 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -15,6 +18,7 @@ import biblioteka.Biblioteka;
 import biblioteka.Primerak;
 import biblioteka.TipClanarine;
 import biblioteka.Zanr;
+import biblioteka.Zaposleni;
 
 public class TipClanarineProzor extends JFrame {
 	
@@ -25,11 +29,13 @@ public class TipClanarineProzor extends JFrame {
 	
 	private DefaultTableModel tableModel;
 	private JTable clanarineTabela;
+	private Zaposleni prijavljeniZaposleni;
 	
 	private Biblioteka biblioteka;
 	
-	public TipClanarineProzor(Biblioteka biblioteka) {
+	public TipClanarineProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
 		this.biblioteka = biblioteka;
+		this.prijavljeniZaposleni = prijavljeniZaposleni;
 		setTitle("Clanarine");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -75,7 +81,32 @@ public class TipClanarineProzor extends JFrame {
 		add(scrollPane, BorderLayout.CENTER); }
 
 		
-		private void initActions() {}
+		private void initActions() {
+			btnEdit.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(clanarineTabela.getSelectedRow() == -1) {
+						JOptionPane.showMessageDialog(rootPane, "Izaberite clanarinu za izmenu");
+						return;
+					}
+					ClanarinaIzmenaProzor cp = new ClanarinaIzmenaProzor(biblioteka, prijavljeniZaposleni, clanarineTabela.getSelectedRow());
+					cp.setVisible(true);
+				}
+					
+				
+			});
+				
+		
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodajClanarinuProzor dc = new DodajClanarinuProzor(biblioteka, prijavljeniZaposleni);
+				dc.setVisible(true);
+			}
+				
+			
+		});
 
 }
-
+}
