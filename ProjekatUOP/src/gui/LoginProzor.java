@@ -58,7 +58,7 @@ public class LoginProzor extends JFrame {
 		
 		
 		txtKorisnickoIme.setText("aasd");
-		pfPassword.setText("asdas");
+		pfPassword.setText("seka8765");
 		getRootPane().setDefaultButton(btnOk);
 	}
 	public void initActions() {

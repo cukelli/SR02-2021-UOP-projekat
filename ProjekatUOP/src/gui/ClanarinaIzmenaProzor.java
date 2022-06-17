@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
@@ -17,6 +18,7 @@ import biblioteka.Pol;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class ClanarinaIzmenaProzor extends JDialog {
 	private JTextField IDPolje = new JTextField(20);
@@ -71,10 +73,17 @@ public class ClanarinaIzmenaProzor extends JDialog {
   			public void actionPerformed(ActionEvent e) {
   				try {
   					
-					prijavljeniZaposleni.updateClanarina(tipPolje.getText().trim(),Double.parseDouble(cenaPolje.getText().trim()),Integer.parseInt(IDPolje.getText().trim()),biblioteka);
+  					String tipIzmena = tipPolje.getText().trim();
+  					int cenaIzmena = Integer.parseInt(cenaPolje.getText().trim());
+  					
+  					if (Utils.validirajTipClanarine(tipIzmena, cenaIzmena)) {
+  					
+  					
+					prijavljeniZaposleni.updateClanarina(tipIzmena,cenaIzmena,Integer.parseInt(IDPolje.getText().trim()),biblioteka);
 					dispose();
 					TipClanarineProzor cp = new TipClanarineProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);
+  					}
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();

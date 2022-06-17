@@ -22,7 +22,7 @@ public class Main {
 		
 
 	try {
-		Biblioteka biblioteka = new Biblioteka("Biblioteka Desanka Maksimovic","Laze Teleckog 6","6044395","20-25");
+		Biblioteka biblioteka = new Biblioteka("Biblioteka Desanka Maksimovic","Laze Teleckog 6","6044395","20-25",1);
 		biblioteka.citajAdministratore("src/fajlovi/administratori.txt");
         biblioteka.citajBibliotekare("src/fajlovi/bibliotekari.txt");
         biblioteka.citajClanarine("src/fajlovi/clanarine.txt");
@@ -35,6 +35,7 @@ public class Main {
         
         biblioteka.sviZaposleni();
         biblioteka.sviNeobrisaniZaposleni();
+        biblioteka.neobrisaniPrimerci();
 
 		 Administrator admin = biblioteka.neobrisaniAdministratori().get(0);
 		 
@@ -43,7 +44,7 @@ public class Main {
 		 LoginProzor loginProzor = new LoginProzor(biblioteka);
 		 loginProzor.setVisible(true);
 		 
-		  } catch (IOException e) {
+		  } catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
@@ -20,6 +21,7 @@ import biblioteka.Bibliotekar;
 import biblioteka.Pol;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class BibliotekarIzmenaProzor extends JDialog {
 	private JTextField IDPolje = new JTextField(20);
@@ -92,6 +94,8 @@ private void initMenu() {
 	add(plata);
 	add(lblPol);
 	add(cmbxPol);
+	add(lblJMBG);
+	add(JMBGPolje);
 	add(lblKorisnickoIme);
 	add(korisnickoIme);
 	add(lblLozinka);
@@ -105,6 +109,7 @@ private void initMenu() {
 	imePolje.setText(b.getIme());
 	prezimePolje.setText(b.getPrezime());
     adresaPolje.setText(b.getAdresa());
+    JMBGPolje.setText(b.getJMBG().trim());
 	plata.setText(Double.toString(b.getPlata()));
 	korisnickoIme.setText(b.getKorIme());
 	lozinka.setText(b.getLozinka());
@@ -117,11 +122,28 @@ private void initActions() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					String ime = imePolje.getText().trim();
+					String prezime = prezimePolje.getText().trim();
+					String jmbg = JMBGPolje.getText().trim();
+					String adresa = adresaPolje.getText().trim();
+					double plataUpdate = Double.parseDouble(plata.getText().trim());
+					String korisName = korisnickoIme.getText().trim();
+					@SuppressWarnings("deprecation")
+					String lozinkaUpdate = lozinka.getText().trim();
+					
 					Administrator admin = (Administrator) prijavljeniZaposleni;
-				admin.updateBibliotekara(Integer.parseInt(IDPolje.getText().trim()),imePolje.getText().trim(),prezimePolje.getText().trim(),JMBGPolje.getText().trim(),adresaPolje.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),Double.parseDouble(plata.getText().trim()),korisnickoIme.getText().trim(),lozinka.getText().trim(),biblioteka);
+					
+					if (Utils.validirajZaposlenog(ime, prezime, jmbg, adresa,
+							plataUpdate, korisName, lozinkaUpdate,admin)) {
+					
+					
+				admin.updateBibliotekara(Integer.parseInt(IDPolje.getText().trim()),ime,prezime,jmbg,adresa,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,lozinkaUpdate,biblioteka);
 				dispose();
 				BibliotekarProzor ap = new BibliotekarProzor(biblioteka,prijavljeniZaposleni);
 				ap.setVisible(true);
+				
+				
+					}
 			} catch (NumberFormatException e1) {
 				
 				e1.printStackTrace();

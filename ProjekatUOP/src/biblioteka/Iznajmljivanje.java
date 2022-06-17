@@ -17,7 +17,7 @@ public class Iznajmljivanje {
 	
 	public Iznajmljivanje() {
 		
-		this.IDIznajmljivanja = 0;
+		this.IDIznajmljivanja = 0; 
 		this.bibliotekar = null;
 		this.clan = null;
 		this.datumIznajmljivanja = null;

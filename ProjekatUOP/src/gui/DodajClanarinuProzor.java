@@ -14,6 +14,7 @@ import biblioteka.Biblioteka;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class DodajClanarinuProzor extends JDialog {
 	private JTextField IDPolje = new JTextField(20);
@@ -61,10 +62,17 @@ public class DodajClanarinuProzor extends JDialog {
   			public void actionPerformed(ActionEvent e) {
   				try {
   					
-					prijavljeniZaposleni.dodajTipClanarine(TipClanarine.getIdMaker()+1,tipPolje.getText().trim(),Double.parseDouble(cenaPolje.getText().trim()),biblioteka);
+  					String tipDodaj = tipPolje.getText().trim();
+  					int cenaDodaj = Integer.parseInt(cenaPolje.getText().trim());
+  					
+  					if (Utils.validirajTipClanarine(tipDodaj, cenaDodaj)) {
+  					
+					prijavljeniZaposleni.dodajTipClanarine(TipClanarine.getIdMaker()+1,tipDodaj,cenaDodaj,biblioteka);
 					dispose();
 					TipClanarineProzor cp = new TipClanarineProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);
+					
+  					}
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();

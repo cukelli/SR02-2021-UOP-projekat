@@ -97,6 +97,11 @@ public class Clan extends Osoba {
 	public static int getUpdateMaker() {
 		return Clan.idMaker;
 	}
+	
+
+	public static int getIdMaker() {
+		return idMaker;
+	}
 
 	@Override 
 	public String toString() {

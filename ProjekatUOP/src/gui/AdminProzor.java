@@ -36,7 +36,7 @@ public class AdminProzor extends JFrame {
 	
 	public AdminProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
 		this.prijavljeniZaposleni = prijavljeniZaposleni;
-		this.biblioteka = biblioteka;
+		this.biblioteka = biblioteka; 
 		setTitle("Administratori");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

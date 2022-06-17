@@ -23,6 +23,7 @@ import biblioteka.Primerak;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class IznajmljivanjeIzmenaProzor extends JDialog {
 	   private JTextField IDPolje = new JTextField(20);
@@ -42,7 +43,7 @@ public class IznajmljivanjeIzmenaProzor extends JDialog {
     
 
     private JTextField datumVracanja = new JTextField(20);
-    private JLabel lblVracanja = new JLabel("Datum iznajmljivanja");
+    private JLabel lblVracanja = new JLabel("Datum vracanja");
     
     private JLabel lblIDPrimerka = new JLabel("ID primerka:");
     private JComboBox<Integer> cmbxIDPrimerka = new JComboBox<Integer>();
@@ -127,13 +128,23 @@ public class IznajmljivanjeIzmenaProzor extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+				LocalDate datumIznajmljivanjaIzmena = LocalDate.parse(datumIznajmljivanja.getText().trim());
+				LocalDate datumVracanjaIzmena = LocalDate.parse(datumVracanja.getText().trim());
+				
+	
+				
+				 if (Utils.validirajIznajmljivanje(datumIznajmljivanjaIzmena, datumVracanjaIzmena)) {
 					Bibliotekar bibliotekar = (Bibliotekar) prijavljeniZaposleni;
-				bibliotekar.updateIznajmljivanje(Integer.parseInt(IDPolje.getText().trim()), biblioteka.neobrisaniBibliotekari().get(cmbxIDBibliotekara.getSelectedIndex()),biblioteka.neobrisaniClanovi().get(cmbxIDClana.getSelectedIndex()),LocalDate.parse(datumIznajmljivanja.getText().trim()),LocalDate.parse(datumVracanja.getText().trim()),biblioteka.sviNeiznajmljeniPrimerci().get(cmbxIDPrimerka.getSelectedIndex()),biblioteka);
+				bibliotekar.updateIznajmljivanje(Integer.parseInt(IDPolje.getText().trim()), biblioteka.neobrisaniBibliotekari().get(cmbxIDBibliotekara.getSelectedIndex()),biblioteka.neobrisaniClanovi().get(cmbxIDClana.getSelectedIndex()),datumIznajmljivanjaIzmena,datumVracanjaIzmena,biblioteka.sviNeiznajmljeniPrimerci().get(cmbxIDPrimerka.getSelectedIndex()),biblioteka);
 				
 				dispose();
 				IznajmljivanjeProzor ip = new IznajmljivanjeProzor(biblioteka,prijavljeniZaposleni);
 				ip.setVisible(true);
-			} catch (NumberFormatException e1) {
+				
+				 }
+				 
+				
+				} catch (NumberFormatException e1) {
 				
 				e1.printStackTrace();
 			} catch (IOException e1) {
@@ -146,11 +157,11 @@ public class IznajmljivanjeIzmenaProzor extends JDialog {
 				
 			}
 		});
-		};
+		
     
 
-    
-    
+		
+    } 
     }
 
 

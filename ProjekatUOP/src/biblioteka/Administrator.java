@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Administrator extends Zaposleni {
 	private static int idMaker=0;
-	//private Biblioteka biblioteka;
+	private Biblioteka biblioteka;
 	
 	public Administrator() {
 		
@@ -18,7 +18,9 @@ public class Administrator extends Zaposleni {
 	 
 	this.IDOsobe = IDOsobe;
 	Administrator.idMaker = IDOsobe;
+    
 	}
+	
 	
 	
 	
@@ -129,6 +131,23 @@ public class Administrator extends Zaposleni {
 			}
 		}
 	}
+	public void updateBiblioteku(String naziv,String radnoVreme,String brojTelefona,String adresa,Biblioteka biblioteka) throws IOException {
+		  ArrayList<Biblioteka> bibliotekaLista = new ArrayList<Biblioteka>();
+	
+			biblioteka.setNaziv(naziv);
+			biblioteka.setRadnoVreme(radnoVreme);
+			biblioteka.setTelefon(brojTelefona);
+			biblioteka.setAdresa(adresa);
+			System.out.println(biblioteka.getNaziv());
+			bibliotekaLista.add(biblioteka);
+			
+			
+			Biblioteka.izbrisiSadrzajFajla("src/fajlovi/biblioteka.txt");
+			
+			Biblioteka.upisiBiblioteku(bibliotekaLista,"src/fajlovi/biblioteka.txt");
+		}
+		
+	
 	
 	
 

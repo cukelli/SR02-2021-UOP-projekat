@@ -95,7 +95,7 @@ public class PrimerakProzor extends JFrame {
 						JOptionPane.showMessageDialog(rootPane, "Izaberite primerak za izmenu");
 						return;
 					}
-					AdminIzmenaProzor ap = new AdminIzmenaProzor(biblioteka, prijavljeniZaposleni, primerciTabela.getSelectedRow());
+					PrimerakIzmenaProzor ap = new PrimerakIzmenaProzor(biblioteka, prijavljeniZaposleni, primerciTabela.getSelectedRow());
 					ap.setVisible(true);
 				}
 					

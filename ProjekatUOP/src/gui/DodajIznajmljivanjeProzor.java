@@ -21,6 +21,7 @@ import biblioteka.Iznajmljivanje;
 import biblioteka.Primerak;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class DodajIznajmljivanjeProzor extends JDialog {
 	
@@ -108,14 +109,24 @@ public class DodajIznajmljivanjeProzor extends JDialog {
 		dugmeDodaj.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				try {
+					LocalDate datumIznajmljivanjaDodaj = LocalDate.parse(datumIznajmljivanja.getText().trim());
+					LocalDate datumVracanjaDodaj = LocalDate.parse(datumVracanja.getText().trim());
+					
+		
+					
+					
+					 if (Utils.validirajIznajmljivanje(datumIznajmljivanjaDodaj, datumVracanjaDodaj)) {
 					Bibliotekar bibliotekar = (Bibliotekar) prijavljeniZaposleni;
 
-				bibliotekar.iznajmiKnjigu(Iznajmljivanje.getUpdateMaker()+1, biblioteka.neobrisaniBibliotekari().get(cmbxIDBibliotekara.getSelectedIndex()),biblioteka.neobrisaniClanovi().get(cmbxIDClana.getSelectedIndex()),LocalDate.parse(datumIznajmljivanja.getText().trim()),LocalDate.parse(datumVracanja.getText().trim()),biblioteka.sviNeiznajmljeniPrimerci().get(cmbxIDPrimerka.getSelectedIndex()),biblioteka);
+				bibliotekar.iznajmiKnjigu(Iznajmljivanje.getUpdateMaker()+1, biblioteka.neobrisaniBibliotekari().get(cmbxIDBibliotekara.getSelectedIndex()),biblioteka.neobrisaniClanovi().get(cmbxIDClana.getSelectedIndex()),datumIznajmljivanjaDodaj,datumVracanjaDodaj,biblioteka.sviNeiznajmljeniPrimerci().get(cmbxIDPrimerka.getSelectedIndex()),biblioteka);
 				
 				dispose();
 				IznajmljivanjeProzor ip = new IznajmljivanjeProzor(biblioteka,prijavljeniZaposleni);
 				ip.setVisible(true);
+				
+					 }
 			} catch (NumberFormatException e1) {
 				
 				e1.printStackTrace();

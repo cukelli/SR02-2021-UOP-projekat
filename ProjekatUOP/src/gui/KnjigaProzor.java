@@ -57,7 +57,7 @@ public class KnjigaProzor extends JFrame {
 		add(mainToolbar, BorderLayout.NORTH);
 		
 		String[] zaglavlja = new String[] {"ID","Naslov","Originalni naslov","autor","Godina objavljivanja","Jezik originala","opis","zanr"};
-		Object[][] sadrzaj = new Object[biblioteka.neobrisaniBibliotekari().size()][zaglavlja.length];
+		Object[][] sadrzaj = new Object[biblioteka.neobrisaneKnjige().size()][zaglavlja.length];
 		
 		
 		for(int i=0; i<biblioteka.neobrisaneKnjige().size(); i++) {

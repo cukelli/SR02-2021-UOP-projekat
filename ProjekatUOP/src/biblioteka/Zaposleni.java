@@ -68,7 +68,7 @@ public abstract class Zaposleni extends Osoba {
 	public void dodajKnjigu(int IDKnjige,String naslov,String originalniNaslov,String autor,int godinaObjavljivanja,Jezik jezikOriginala,String opis,Zanr zanr,Biblioteka biblioteka) throws IOException {
 		ArrayList<Knjiga> sveKnjige = new ArrayList<Knjiga>();
 		Knjiga knjiga = new Knjiga();
-		knjiga.setIDKnjige(Knjiga.getUpdateMaker());
+		knjiga.setIDKnjige(IDKnjige);
 		knjiga.setNaslov(naslov);
 		knjiga.setOriginalniNaslov(originalniNaslov);
 		knjiga.setAutor(autor);
@@ -84,7 +84,7 @@ public abstract class Zaposleni extends Osoba {
 	public void dodajClanove(int IDOsobe,String ime,String prezime,String JMBG,String adresa,Pol pol,String brojClanske,LocalDate datumPoslednjeUplate,int brojUplacenihMeseci,TipClanarine tipClanarine,Biblioteka biblioteka) throws IOException {
 		ArrayList<Clan> sviClanovi = new ArrayList<Clan>();
 		Clan clan = new Clan();
-		clan.setIDOsobe(Clan.getUpdateMaker());
+		clan.setIDOsobe(Clan.getUpdateMaker()+1);
 		clan.setIme(ime);
 		clan.setPrezime(prezime);
 		clan.setJMBG(JMBG);

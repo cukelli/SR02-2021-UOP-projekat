@@ -18,6 +18,7 @@ import biblioteka.Biblioteka;
 import biblioteka.Pol;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class DodajAdminaProzor extends JDialog {
 	
@@ -94,11 +95,28 @@ public class DodajAdminaProzor extends JDialog {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
+  					String ime = imePolje.getText().trim();
+					String prezime = prezimePolje.getText().trim();
+					String jmbg = JMBGPolje.getText().trim();
+					String adresa = adresaPolje.getText().trim();
+					double plataUpdate = Double.parseDouble(plata.getText().trim());
+					String korisName = korisnickoIme.getText().trim();
+					@SuppressWarnings("deprecation")
+					String lozinkaUpdate = lozinka.getText().trim();
+  					
+  					
   					Administrator admin = (Administrator) prijavljeniZaposleni;
-					admin.dodajAdmina(Administrator.getIdMaker()+1,imePolje.getText().trim(),prezimePolje.getText().trim(),JMBGPolje.getText().trim(),adresaPolje.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),Double.parseDouble(plata.getText().trim()),korisnickoIme.getText().trim(),lozinka.getText().trim(),biblioteka);
+  					
+
+					if (Utils.validirajZaposlenog(ime, prezime, jmbg, adresa,
+							plataUpdate, korisName, lozinkaUpdate,admin)) {
+  					
+					admin.dodajAdmina(Administrator.getIdMaker()+1,ime,prezime,jmbg,adresa,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,lozinkaUpdate,biblioteka);
 					dispose();
 					AdminProzor ap = new AdminProzor(biblioteka,prijavljeniZaposleni);
 					ap.setVisible(true);
+					
+					}
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();

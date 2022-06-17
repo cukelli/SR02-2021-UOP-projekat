@@ -29,6 +29,11 @@ public class Bibliotekar extends Zaposleni {
 	}
 	
 	
+	
+	public static int getIdMaker() {
+		return idMaker;
+	}
+
 	public void iznajmiKnjigu(int IDIznajmljivanja,Bibliotekar bibliotekar,Clan clan,LocalDate datumIznajmljivanja,LocalDate datumVracanja,Primerak iznajmljenPrimerak,Biblioteka biblioteka) throws IOException {
 		ArrayList<Iznajmljivanje> svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
 		Iznajmljivanje iznajmljivanje = new Iznajmljivanje();

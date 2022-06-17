@@ -20,6 +20,7 @@ import biblioteka.Pol;
 import biblioteka.Zanr;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class KnjigaIzmenaProzor extends JDialog {
 	
@@ -35,7 +36,7 @@ public class KnjigaIzmenaProzor extends JDialog {
     
 
     private JTextField autor = new JTextField(20);
-    private JLabel lblAutor = new JLabel("Autor");
+    private JLabel lblAutor = new JLabel("Autor"); 
     
     private JTextField godinaObjavljivanja = new JTextField(20);
     private JLabel lblGodinaObjavljivanja = new JLabel("Godina objavljivanja");
@@ -63,6 +64,7 @@ public class KnjigaIzmenaProzor extends JDialog {
     
     
     public KnjigaIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
+    	this.index = index;
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
     	setTitle("Zaposleni: " + prijavljeniZaposleni.getIDOsobe());
@@ -127,10 +129,21 @@ public class KnjigaIzmenaProzor extends JDialog {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
-					prijavljeniZaposleni.updateKnjigu(Integer.parseInt(IDPolje.getText().trim()),naslovPolje.getText().trim(),originalniNaslov.getText().trim(),autor.getText().trim(),Integer.parseInt(godinaObjavljivanja.getText().trim()),Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),opis.getText().trim(),biblioteka.neobrisaniZanrovi().get(cmbxZanr.getSelectedIndex()),biblioteka);
+  					
+  					String naslovIzmeni = naslovPolje.getText().trim();
+					String originalniNaslovIzmeni = originalniNaslov.getText().trim();
+					String autorIzmeni = autor.getText().trim();
+					int godinaObjavljivanjaIzmeni = Integer.parseInt(godinaObjavljivanja.getText().trim());
+					String opisIzmeni = opis.getText().trim();
+					
+					
+					if (Utils.validirajKnjigu(naslovIzmeni, originalniNaslovIzmeni, autorIzmeni, godinaObjavljivanjaIzmeni, opisIzmeni)) {
+					
+					prijavljeniZaposleni.updateKnjigu(Integer.parseInt(IDPolje.getText().trim()),naslovIzmeni,originalniNaslovIzmeni,autorIzmeni,godinaObjavljivanjaIzmeni,Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),opisIzmeni,biblioteka.neobrisaniZanrovi().get(cmbxZanr.getSelectedIndex()),biblioteka);
 					dispose();
 					KnjigaProzor kp = new KnjigaProzor(biblioteka,prijavljeniZaposleni);
 					kp.setVisible(true);
+					}
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();

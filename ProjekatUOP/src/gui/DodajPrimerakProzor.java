@@ -19,6 +19,7 @@ import biblioteka.Povez;
 import biblioteka.Primerak;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class DodajPrimerakProzor extends JDialog {
 	private JTextField ID = new JTextField(4);
@@ -73,10 +74,8 @@ public class DodajPrimerakProzor extends JDialog {
     } 
     private void initMenu() {
     	MigLayout mig = new MigLayout("wrap 2","[][]", "[]10[][]10[]");
-    	setLayout(mig);
+    	setLayout(mig);   	
     	
-    	add(lblID);
-    	add(ID);
     	add(lblNaslov);
     	add(cmbxKnjige);
     	add(lblBrojStrana);
@@ -88,7 +87,7 @@ public class DodajPrimerakProzor extends JDialog {
     	add(lblPovez);
     	add(cmbxPovez);
     	add(dugmeDodaj);
-    	ID.setEditable(false);
+    
     
 
 }
@@ -97,10 +96,17 @@ public class DodajPrimerakProzor extends JDialog {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
-					prijavljeniZaposleni.dodajPrimerke(Primerak.getUpdateMaker()+1,biblioteka.neobrisaneKnjige().get(cmbxKnjige.getSelectedIndex()),Integer.parseInt(brojStrana.getText().trim()),Integer.parseInt(godinaStampe.getText().trim()),Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),Povez.valueOf(cmbxPovez.getSelectedItem().toString()),biblioteka);
+  					int brojStranaDodaj =  Integer.parseInt(brojStrana.getText().trim());
+  					int godinaStampeDodaj = Integer.parseInt(godinaStampe.getText().trim());
+  					
+  					if (Utils.validirajPrimerak(brojStranaDodaj, godinaStampeDodaj)) {
+  					
+					prijavljeniZaposleni.dodajPrimerke(Primerak.getUpdateMaker()+1,biblioteka.neobrisaneKnjige().get(cmbxKnjige.getSelectedIndex()),brojStranaDodaj,godinaStampeDodaj,Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),Povez.valueOf(cmbxPovez.getSelectedItem().toString()),biblioteka);
 					dispose();
 					PrimerakProzor pp = new PrimerakProzor(biblioteka,prijavljeniZaposleni);
 					pp.setVisible(true);
+					
+  					}
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();

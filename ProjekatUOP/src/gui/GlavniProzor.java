@@ -12,12 +12,21 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import biblioteka.Administrator;
 import biblioteka.Biblioteka;
+import biblioteka.Jezik;
+import biblioteka.Povez;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class GlavniProzor extends JFrame {
+	
+	JTextField bibliotekaID = new JTextField(20);
+    JLabel lblID = new JLabel("ID biblioteke");
+	
 	JTextField bibliotekaNazivPolje = new JTextField(20);
     JLabel lblNaziv = new JLabel("Naziv biblioteke");
     
@@ -76,6 +85,8 @@ public class GlavniProzor extends JFrame {
 		mainMenu.add(primerakItem);
 		mainMenu.add(clanItem);
 		mainMenu.add(zanroviItem);
+		add(lblID);
+		add(bibliotekaID);
 		add(lblNaziv);
 		add(bibliotekaNazivPolje);
 		add(lblAdresa);
@@ -86,9 +97,11 @@ public class GlavniProzor extends JFrame {
 		add(radnoVremeBiblioteke);
 		add(btnIzmeni);
 		
+		
+		bibliotekaID.setText(Integer.toString(biblioteka.getID()));
 		bibliotekaNazivPolje.setText(biblioteka.getNaziv());
 		adresaBiblioteke.setText(biblioteka.getAdresa());
-	    telefonBiblioteke.setText(biblioteka.getNaziv());
+	    telefonBiblioteke.setText(biblioteka.getTelefon());
 	    radnoVremeBiblioteke.setText(biblioteka.getRadnoVreme());
 	    
 		
@@ -162,20 +175,58 @@ public class GlavniProzor extends JFrame {
 	});
 	
 	if (prijavljenZaposleni.getIDOsobe() >=300  && prijavljenZaposleni.getIDOsobe() <= 500) {
+		bibliotekaID.setEditable(false);
 		bibliotekaNazivPolje.setEditable(false);
 		adresaBiblioteke.setEditable(false);
 		telefonBiblioteke.setEditable(false);
 		radnoVremeBiblioteke.setEditable(false);
-		zaposleniMenu.add(iznajmljivanjeItem);
+		mainMenu.add(iznajmljivanjeItem);
 		
 		btnIzmeni.setEnabled(false);
 	}
 	
 	if (prijavljenZaposleni.getIDOsobe() >= 1  && prijavljenZaposleni.getIDOsobe() <= 100) {
 		mainMenu.add(zaposleniMenu);
+		bibliotekaID.setEditable(false);
 		zaposleniMenu.add(administratorItem);
 		zaposleniMenu.add(bibliotekarItem);
 	}
+	
+	btnIzmeni.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int IDBiblioteke = Integer.parseInt(bibliotekaID.getText().trim());
+					String nazivBibliotekeIzmena = bibliotekaNazivPolje.getText().trim();
+					String adresaBibliotekeIzmena = adresaBiblioteke.getText().trim();
+					String telefonBibliotekeIzmena = telefonBiblioteke.getText().trim();
+					String radnoVremeBibliotekeIzmena = radnoVremeBiblioteke.getText().trim();
+					
+					Administrator admin = (Administrator) prijavljenZaposleni;
+					
+					if (Utils.validirajBiblioteku(nazivBibliotekeIzmena, adresaBibliotekeIzmena, telefonBibliotekeIzmena, radnoVremeBibliotekeIzmena)) {
+						System.out.println("Valdacija uspesna");
+						admin.updateBiblioteku(nazivBibliotekeIzmena, radnoVremeBibliotekeIzmena, telefonBibliotekeIzmena,adresaBibliotekeIzmena,biblioteka);
+						
+			dispose();
+			GlavniProzor gp = new GlavniProzor(biblioteka,admin);
+			gp.setVisible(true);
+				} else {
+					System.out.println(biblioteka.getAdresa());
+				}
+		} catch (NumberFormatException e1) {
+				
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
+			
+			
+				
+				
+			}
+		});
 	
 	
 		

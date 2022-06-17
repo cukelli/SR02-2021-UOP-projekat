@@ -14,3 +14,5 @@
 51;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 52;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
 53;Srpska Trilogija;120;2002;NEMACKI;false;TVRDI;true
+54;Rat i mir;123;1990;SRPSKI;false;MEKI;false
+55;Rat i mir;340;2021;SRPSKI;false;MEKI;true

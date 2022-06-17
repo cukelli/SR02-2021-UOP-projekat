@@ -23,6 +23,7 @@ import biblioteka.Primerak;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class PrimerakIzmenaProzor extends JFrame {
 	
@@ -45,7 +46,7 @@ public class PrimerakIzmenaProzor extends JFrame {
     private JLabel lblPovez = new JLabel("Povez");
     private JComboBox<Povez> cmbxPovez = new JComboBox<Povez>();
    
-   private JButton dugmeIzmena = new JButton("Potvrdite izmenu");
+   private JButton dugmeIzmena = new JButton("Potvrdite izmenu"); 
     
     private Biblioteka biblioteka;
     private Zaposleni prijavljeniZaposleni;
@@ -55,6 +56,7 @@ public class PrimerakIzmenaProzor extends JFrame {
     public PrimerakIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
+    	this.index = index;
     	String[] knjige = new String[biblioteka.neobrisaneKnjige().size()];
 		for (int i=0; i<biblioteka.neobrisaneKnjige().size();i++) {
 			Knjiga k = biblioteka.neobrisaneKnjige().get(i);
@@ -107,9 +109,6 @@ public class PrimerakIzmenaProzor extends JFrame {
     	cmbxJezik.setSelectedItem(p.getJezikStampe());
     	cmbxPovez.setSelectedItem(p.getJezikStampe());
     	
-    	
-       	
-    	
     }
     
     private void initActions() {
@@ -117,10 +116,16 @@ public class PrimerakIzmenaProzor extends JFrame {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
-					prijavljeniZaposleni.updatePrimerak(Integer.parseInt(ID.getText().trim()),biblioteka.neobrisaneKnjige().get(cmbxKnjige.getSelectedIndex()),Integer.parseInt(brojStrana.getText().trim()),Integer.parseInt(godinaStampe.getText().trim()),Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),Povez.valueOf(cmbxPovez.getSelectedItem().toString()),biblioteka);
+  					int brojStranaIzmena =  Integer.parseInt(brojStrana.getText().trim());
+  					int godinaStampeIzmena = Integer.parseInt(godinaStampe.getText().trim());
+  					
+  					if (Utils.validirajPrimerak(brojStranaIzmena, godinaStampeIzmena)) {
+  						
+					prijavljeniZaposleni.updatePrimerak(Integer.parseInt(ID.getText().trim()),biblioteka.neobrisaneKnjige().get(cmbxKnjige.getSelectedIndex()),brojStranaIzmena,godinaStampeIzmena,Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),Povez.valueOf(cmbxPovez.getSelectedItem().toString()),biblioteka);
 					dispose();
 					PrimerakProzor pp = new PrimerakProzor(biblioteka,prijavljeniZaposleni);
 					pp.setVisible(true);
+  					}
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();

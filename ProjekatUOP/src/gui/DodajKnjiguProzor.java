@@ -18,6 +18,7 @@ import biblioteka.Knjiga;
 import biblioteka.Zanr;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class DodajKnjiguProzor extends JDialog {
 	
@@ -105,10 +106,20 @@ private void initActions() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-				prijavljeniZaposleni.dodajKnjigu(Knjiga.getUpdateMaker()+1,naslovPolje.getText().trim(),originalniNaslov.getText().trim(),autor.getText().trim(),Integer.parseInt(godinaObjavljivanja.getText().trim()),Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),opis.getText().trim(),biblioteka.neobrisaniZanrovi().get(cmbxZanr.getSelectedIndex()),biblioteka);
+					String naslovDodaj = naslovPolje.getText().trim();
+					String originalniNaslovDodaj = originalniNaslov.getText().trim();
+					String autorDodaj = autor.getText().trim();
+					int godinaObjavljivanjaDodaj = Integer.parseInt(godinaObjavljivanja.getText().trim());
+					String opisDodaj = opis.getText().trim();
+					
+					
+					if (Utils.validirajKnjigu(naslovDodaj, originalniNaslovDodaj, autorDodaj, godinaObjavljivanjaDodaj, opisDodaj)) {
+					
+				prijavljeniZaposleni.dodajKnjigu(Knjiga.getUpdateMaker()+1,naslovDodaj,originalniNaslovDodaj,autorDodaj,godinaObjavljivanjaDodaj,Jezik.valueOf(cmbxJezik.getSelectedItem().toString().trim()),opisDodaj,biblioteka.neobrisaniZanrovi().get(cmbxZanr.getSelectedIndex()),biblioteka);
 				dispose();
 				KnjigaProzor kp = new KnjigaProzor(biblioteka,prijavljeniZaposleni);
 				kp.setVisible(true);
+					}
 			} catch (NumberFormatException e1) {
 				
 				e1.printStackTrace();

@@ -1,4 +1,4 @@
-1;Anastasija;Simic;234;Cara Urosa 2;MUSKI;100.0;aasd;asdas;false
+1;Anastasija;Simic;0102002735021;Cara Urosa 2;MUSKI;100.0;aasd;seka8765;false
 2;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;true
 3;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;true
 4;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;true
@@ -8,3 +8,7 @@
 8;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;true
 9;Mica;Micun;0102002735021;Stepe 3;MUSKI;23200.3;wer;lozinka;true
 10;Risto;Glavonjic;0102032131;Drugo zeleznicko naselje 16;MUSKI;10000.0;ristyyy;asdasd;true
+11;Anastasija;Cukelj;0102002735021;4.jula,25;ZENSKI;12000.0;tassy;seka;false
+12;Jovan;Glaovnjic;0102002735921;Drugo zeleznicko naselje 15;MUSKI;15999.0;jovanyy;12;false
+13;Tamra;Beljanski;0102002735021;Laze Teleckog 4;MUSKI;120000.0;tess_;weweweww;false
+14;Tasa;Tasic;0102002735021;Dostojevska 13;MUSKI;23000.0;abcde;Tasy12345As;false

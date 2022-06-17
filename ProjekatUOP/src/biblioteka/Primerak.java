@@ -21,7 +21,7 @@ public class Primerak {
 		this.brojStrana = 0;
 		this.godinaStampe = 0;
 		this.jezikStampe = null;
-		this.iznajmljena = false;
+		this.iznajmljena = false; 
 		this.povez = null;
 		this.obrisan = false;
 	}
@@ -114,10 +114,18 @@ public class Primerak {
 	}
 	
 
+	public static int getIDMaker() {
+		return IDMaker;
+	}
+
+	public static void setIDMaker(int iDMaker) {
+		IDMaker = iDMaker;
+	}
+
 	@Override
 	
 	public String toString() {
-		return "primerak: [Knjiga: " + ", naslov: " + this.knjiga.getNaslov() + ",broj strana: " + this.brojStrana + ",povez " + this.povez + ",godina stampe: " + this.godinaStampe + ",jezik stampe: " + this.jezikStampe + ",iznajmljena:" + this.iznajmljena + ", ID:" + this.IDPrimerka;
+		return "primerak: [Knjiga: " + ", naslov: " + this.knjiga.getNaslov() + ",broj strana: " + this.brojStrana + ",povez " + this.povez + ",godina stampe: " + this.godinaStampe + ",jezik stampe: " + this.jezikStampe + ",iznajmljena:" + this.iznajmljena + ", ID:" + this.IDPrimerka + "\n";
 	}
 	
 	

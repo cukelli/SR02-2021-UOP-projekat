@@ -14,6 +14,7 @@ import biblioteka.Biblioteka;
 import biblioteka.Zanr;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class DodajZanrProzor extends JDialog {
 	
@@ -57,10 +58,18 @@ public class DodajZanrProzor extends JDialog {
 	   			@Override
 	  			public void actionPerformed(ActionEvent e) {
 	  				try {
-						prijavljeniZaposleni.dodajZanr(opisPolje.getText().trim(),oznakaPolje.getText().trim(),Zanr.getIdMaker()+1,biblioteka);
+	  					
+	  					String opisDodaj = opisPolje.getText().trim();
+	  					String oznakaDodaj = oznakaPolje.getText().trim();
+	  					
+	  					
+	  					if (Utils.validirajZanr(oznakaDodaj, opisDodaj)) {
+	  					
+						prijavljeniZaposleni.dodajZanr(opisDodaj,oznakaDodaj,Zanr.getIdMaker()+1,biblioteka);
 						dispose();
 						ZanrProzor zp = new ZanrProzor(biblioteka,prijavljeniZaposleni);
 						zp.setVisible(true);
+	  					}
 					} catch (NumberFormatException e1) {
 						
 						e1.printStackTrace();

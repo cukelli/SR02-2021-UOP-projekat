@@ -10,7 +10,7 @@ public class TipClanarine {
 	private int IDClanarine;
 	private boolean obrisanaClanarina;
 	
-	public TipClanarine() {
+	public TipClanarine() { 
 		this.tip = "";
 		this.cena = 0.0;
 		this.IDClanarine = 0;

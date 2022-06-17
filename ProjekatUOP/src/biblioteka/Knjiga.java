@@ -134,6 +134,10 @@ public class Knjiga {
 	
 	
 
+	public static int getIdMaker() {
+		return idMaker;
+	}
+
 	@Override
 	public String toString() {
 		

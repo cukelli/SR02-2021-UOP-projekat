@@ -20,6 +20,7 @@ import biblioteka.Pol;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class DodajClanaProzor extends JDialog {
 	private JTextField IDClana = new JTextField(4);
@@ -55,7 +56,7 @@ public class DodajClanaProzor extends JDialog {
     private JLabel lblTipClanarine = new JLabel("Tip clanarine");
     private JComboBox<String> cmbxOznakaClanarine = new JComboBox<String>();
     
-    JCheckBox aktivnostCheck = new JCheckBox("Aktivnost");
+    //JCheckBox aktivnostCheck = new JCheckBox("Aktivnost");
     
    
 
@@ -83,7 +84,7 @@ public class DodajClanaProzor extends JDialog {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
      	initMenu();
-  	initActions();
+    	initActions();
     }
 	
     private void initMenu() {
@@ -91,9 +92,12 @@ public class DodajClanaProzor extends JDialog {
 	    	setLayout(mig);
 	    	
 	    	add(lblID);
+	    	IDClana.setEditable(false);
 	    	add(IDClana);
 	    	add(lblIme);
 	    	add(imeClana);
+	    	add(lblAdresa);
+	    	add(adresaClana);
 	    	add(lblJMBG);
 	    	add(JMBGClana);
 	    	add(lblPol);
@@ -108,10 +112,9 @@ public class DodajClanaProzor extends JDialog {
 	    	add(brojUplacenihMeseci);
 	    	add(lblTipClanarine);
 	    	add(cmbxOznakaClanarine);
-	    	add(aktivnostCheck);
+	    	//add(aktivnostCheck);
 	    	add(dugmeDodaj);
 	    	IDClana.setEditable(false);
-	
 	
     }	
     
@@ -119,26 +122,37 @@ public class DodajClanaProzor extends JDialog {
    		dugmeDodaj.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
-  				try {
-					prijavljeniZaposleni.dodajClanove(Clan.getUpdateMaker()+1,imeClana.getText().trim(),prezimeClana.getText().trim(),JMBGClana.getText().trim(),adresaClana.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanske.getText().trim(),LocalDate.parse(datumPoslednjeUplate.getText().trim()),Integer.parseInt(brojUplacenihMeseci.getText()),biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
+   				try {
+   					
+   				String imeDodaj = imeClana.getText().trim();
+   				String prezimeDodaj = prezimeClana.getText().trim();
+   				String JMBGDodaj= JMBGClana.getText().trim();
+   				String adresaDodaj = adresaClana.getText().trim();
+   				String brojClanskeDodaj = brojClanske.getText().trim();
+   				int brojUplacenihMeseciDodaj = Integer.parseInt(brojUplacenihMeseci.getText().trim());			
+   				 
+  					
+					if (Utils.validirajClana(imeDodaj, prezimeDodaj, JMBGDodaj, adresaDodaj,
+							brojClanskeDodaj,brojUplacenihMeseciDodaj,prijavljeniZaposleni)) {
+  					
+					prijavljeniZaposleni.dodajClanove(Clan.getIdMaker()+1,imeDodaj,prezimeDodaj,JMBGDodaj,adresaDodaj,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeDodaj,LocalDate.parse(datumPoslednjeUplate.getText().trim()),brojUplacenihMeseciDodaj,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
 					dispose();
 					ClanProzor cp = new ClanProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);
-				} catch (NumberFormatException e1) {
+					
+					}
+					
+   				}
+				 catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();
 				} catch (IOException e1) {
 					
 					e1.printStackTrace();
 				}
-  			
- 			
-  				
-  				
+  					
   			}
    		});
    		};
-   		
-   		
 
 }

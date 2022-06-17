@@ -24,7 +24,8 @@ public class Biblioteka {
     ArrayList<Iznajmljivanje>svaIznajmljivanja = new ArrayList<Iznajmljivanje>();
     ArrayList<Bibliotekar> sviBibliotekari = new ArrayList<Bibliotekar>();
     ArrayList<Administrator> sviAdministratori = new ArrayList<Administrator>();
-    
+    ArrayList<Biblioteka> biblioteka = new ArrayList<Biblioteka>();
+     
     ArrayList<Zaposleni> sviZaposleni = new ArrayList<Zaposleni>();
     
     
@@ -36,6 +37,7 @@ public class Biblioteka {
 	private String adresa;
 	private String telefon;
 	private String radnoVreme;
+	private int ID;
 	
 	
 
@@ -44,16 +46,27 @@ public class Biblioteka {
 		this.adresa = "";
 		this.telefon = "";
 		this.radnoVreme = "";
+		this.ID = 0;
 		
 		
 	}
 	
-	public Biblioteka(String naziv,String adresa,String telefon,String radnoVreme) {
+	public Biblioteka(String naziv,String adresa,String telefon,String radnoVreme,int ID) {
 		this.naziv = naziv;
 		this.adresa = adresa;
 		this.telefon = telefon;
 		this.radnoVreme = radnoVreme;
+		this.ID = ID;
 		
+	}
+	
+
+	public ArrayList<Biblioteka> getBiblioteka() {
+		return biblioteka;
+	}
+
+	public void setBiblioteka(ArrayList<Biblioteka> biblioteka) {
+		this.biblioteka = biblioteka;
 	}
 
 	public String getNaziv() {
@@ -167,6 +180,24 @@ public class Biblioteka {
 	}
 	
 	
+	
+	
+	public ArrayList<Zaposleni> getSviZaposleni() {
+		return sviZaposleni;
+	}
+
+	public void setSviZaposleni(ArrayList<Zaposleni> sviZaposleni) {
+		this.sviZaposleni = sviZaposleni;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	public void citajZanrove(String imeFajlaZanrovi) throws IOException {
 		 this.sviZanrovi = new ArrayList<Zanr>();
 		File fajlZanrova = new File(imeFajlaZanrovi);
@@ -178,6 +209,9 @@ public class Biblioteka {
 			String opisZanra = linijaZanr[1];
 			int IDZanra = Integer.parseInt(linijaZanr[2]);
 			boolean obrisanostZanra = Boolean.parseBoolean(linijaZanr[3]);
+			if (IDZanra <= Zanr.getIdMaker()) {
+				throw new IllegalArgumentException("Pogresan ID");
+			}
 			Zanr zanr = new Zanr(oznakaZanra,opisZanra,IDZanra,obrisanostZanra);
 			sviZanrovi.add(zanr);
 			//System.out.println(zanr);
@@ -201,6 +235,9 @@ public class Biblioteka {
 				double cenaClanarine = Double.parseDouble(linijaClanarine[1]);
 				int IDClanarine = Integer.parseInt(linijaClanarine[2]);
 				boolean obrisanostClanarine = Boolean.parseBoolean(linijaClanarine[3]);
+				if (IDClanarine <= TipClanarine.getIdMaker()) {
+					throw new IllegalArgumentException("Pogresan ID");
+				}
 				TipClanarine clanarina = new TipClanarine(tipClanarine,cenaClanarine,IDClanarine,obrisanostClanarine);
 				sveClanarine.add(clanarina);
 			
@@ -247,6 +284,9 @@ public class Biblioteka {
 					}
 				}
 				boolean obrisanostClana = Boolean.parseBoolean(nizClanova[11]);
+				if (IDclana <= Clan.getIdMaker()) {
+					throw new IllegalArgumentException("Pogresan ID");
+				}
 			
 					
 				Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,obrisanostClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine);
@@ -300,6 +340,10 @@ public class Biblioteka {
 				String lozinkaBibliotekara = nizBibliotekara[8];
 				boolean obrisanostBibliotekara = Boolean.parseBoolean(nizBibliotekara[9]);
 			//	System.out.println(obrisanostBibliotekara);
+				
+				if (IDBibliotekara <= Bibliotekar.getIdMaker()) {
+					throw new IllegalArgumentException("Pogresan ID");
+				}
 
 				Bibliotekar bibliotekar = new Bibliotekar(IDBibliotekara,imeBibliotekara,prezimeBibliotekara,JMBGBibliotekara,adresaBibliotekara,obrisanostBibliotekara,defPol,plataBibliotekara,korImeBibliotekara,lozinkaBibliotekara);
 				sviBibliotekari.add(bibliotekar);
@@ -354,6 +398,10 @@ public class Biblioteka {
 				String korImeAdministratora = nizAdministratora[7];
 				String lozinkaAdministratora = nizAdministratora[8];
 				boolean obrisanostAdministratora = Boolean.parseBoolean(nizAdministratora[9]);
+				if (IDAdministratora <= Administrator.getIdMaker()) {
+					throw new IllegalArgumentException("Pogresan ID");
+				}
+				
 				
 				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,obrisanostAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
 	            sviAdministratori.add(administrator);
@@ -417,6 +465,14 @@ public class Biblioteka {
 				
 				int IDKnjige = Integer.parseInt(niz[7]);
 				boolean obrisanostKnjige = Boolean.parseBoolean(niz[8]);
+		if (IDKnjige <= Knjiga.getIdMaker()) {
+			       
+			         throw new IllegalArgumentException("Pogresan ID");
+			}
+				
+				for (Knjiga k: knjige) {
+					System.out.println(Knjiga.getUpdateMaker());
+				}
 				Knjiga knjiga = new Knjiga(IDKnjige,naslov,originalniNaslov,autor,godinaObjavljivanja,defJezik,opis,tmp,obrisanostKnjige);
 				this.knjige.add(knjiga);
 				
@@ -471,6 +527,9 @@ public class Biblioteka {
 					}
 				}
 				boolean obrisanostPrimerka = Boolean.parseBoolean(nizPrimerka[7]);
+				if (IDPrimerka <= Primerak.getIDMaker()) {
+					throw new IllegalArgumentException("Pogresan ID");
+				}
 				Primerak primerak = new Primerak(IDPrimerka,tmpKnjiga,brojStranaPrimerka,godinaStampePrimerka,defJezikPrimerka,iznajmljenostPrimerka,defPovezPrimerka,obrisanostPrimerka);
 				
 				sviPrimerci.add(primerak);			
@@ -555,6 +614,9 @@ public class Biblioteka {
 				  }
 				  
 				  boolean obrisanostIznajmljivanja = Boolean.parseBoolean(redIznajmljivanja[6]);
+				  if (IDIznajmljivanja <= Iznajmljivanje.getIdMaker()) {
+						throw new IllegalArgumentException("Pogresan ID");
+					}
 				
 				  Iznajmljivanje iznajmljivanje = new Iznajmljivanje(IDIznajmljivanja,tmpBibliotekar,tmpClan,datumIznajmljivanja,datumVracanja,tmpPrimerak,obrisanostIznajmljivanja);
 				  svaIznajmljivanja.add(iznajmljivanje);
@@ -594,13 +656,15 @@ public class Biblioteka {
 				String adresaBiblioteke = redBiblioteke[1];
 				String brojTelefonaBiblioteke = redBiblioteke[2];
 				String radnoVremeBiblioteke = redBiblioteke[3];
-				Biblioteka biblioteka = new Biblioteka(nazivBiblioteke,adresaBiblioteke,brojTelefonaBiblioteke,radnoVremeBiblioteke);
+				int bibliotekaID = Integer.parseInt(redBiblioteke[4]);
+				Biblioteka biblioteka = new Biblioteka(nazivBiblioteke,adresaBiblioteke,brojTelefonaBiblioteke,radnoVremeBiblioteke,bibliotekaID);
 				bibliotekaCitanje.add(biblioteka);
 
 
 			}
 		
 			reader.close();
+			System.out.println(bibliotekaCitanje.size());
 			return bibliotekaCitanje;
 			
 			
@@ -614,7 +678,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fajl,true));
 			
 			for (Biblioteka b: biblioteka) {
-				String sbBiblioteke = b.getNaziv() + ";" + b.getAdresa() + ";" + b.getTelefon() + ";" + b.getRadnoVreme();
+				String sbBiblioteke = b.getNaziv() + ";" + b.getAdresa() + ";" + b.getTelefon() + ";" + b.getRadnoVreme() + ";" + b.getID();
 				writer.write(sbBiblioteke);
 				writer.newLine();
 			}
@@ -729,7 +793,7 @@ public class Biblioteka {
 					neobrisaniPrimerci.add(p);
 				}
 			}
-			//System.out.println(neobrisaniPrimerci);
+			System.out.println(neobrisaniPrimerci);
 			return neobrisaniPrimerci;
 		}
 		
@@ -801,8 +865,13 @@ public class Biblioteka {
 			
 			return oznakeClanarina;
 			
-			
-			
+		}
+		public List<String> sviBrojeviClanskih() {
+			List<String> clanske = new ArrayList<String>();
+			for (Clan c: sviClanovi) {
+				clanske.add(c.getBrojClanske());
+			}
+			return clanske;
 		}
 	
 	

@@ -1,4 +1,4 @@
-test oznaka;testiranjeE;1;false
+radii;testiranjeE;1;false
 Beletristika;beletristicki zanr;2;false
 Klasik;klasicni zanr;3;true
 zanr dodat preko swinga;test swing;4;false

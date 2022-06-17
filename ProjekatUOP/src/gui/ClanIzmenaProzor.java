@@ -3,6 +3,7 @@ package gui;
 import java.awt.event.ActionEvent;
 
 
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,6 +30,7 @@ import biblioteka.Zaposleni;
 
 
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class ClanIzmenaProzor extends JDialog {
 	private JTextField IDClana = new JTextField(4);
@@ -62,7 +64,7 @@ public class ClanIzmenaProzor extends JDialog {
     
  
     private JLabel lblTipClanarine = new JLabel("Tip clanarine");
-    private JComboBox<String> cmbxOznakaClanarine = new JComboBox<String>();
+    private JComboBox<String> cmbxOznakaClanarine = new JComboBox<String>(); 
     
     JCheckBox aktivnostCheck = new JCheckBox("Aktivnost");
     
@@ -82,6 +84,7 @@ public class ClanIzmenaProzor extends JDialog {
     
     
     public ClanIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
+    	this.index = index;
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
     	setTitle("Zaposleni: " + prijavljeniZaposleni.getIDOsobe());
@@ -159,11 +162,24 @@ public class ClanIzmenaProzor extends JDialog {
    		dugmeIzmena.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
+   				String imeUpdate = imeClana.getText().trim();
+   				String prezimeUpdate = prezimeClana.getText().trim();
+   				String JMBGUpdate = JMBGClana.getText().trim();
+   				String adresaUpdate = adresaClana.getText().trim();
+   				String brojClanskeUpdate = brojClanske.getText().trim();
+   				int brojUplacenihMeseciUpdate = Integer.parseInt(brojUplacenihMeseci.getText().trim());
+   				
   				try {
-					prijavljeniZaposleni.updateClan(Integer.parseInt(IDClana.getText()),imeClana.getText().trim(),prezimeClana.getText().trim(),JMBGClana.getText().trim(),adresaClana.getText().trim(),Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanske.getText().trim(),LocalDate.parse(datumPoslednjeUplate.getText().trim()),Integer.parseInt(brojUplacenihMeseci.getText()),biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
+  					
+  					
+  					if (Utils.validirajClana(imeUpdate, prezimeUpdate, JMBGUpdate, adresaUpdate,
+							brojClanskeUpdate,brojUplacenihMeseciUpdate,prijavljeniZaposleni)) {
+					prijavljeniZaposleni.updateClan(Integer.parseInt(IDClana.getText()),imeUpdate,prezimeUpdate,JMBGUpdate,adresaUpdate,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeUpdate,LocalDate.parse(datumPoslednjeUplate.getText().trim()),brojUplacenihMeseciUpdate,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
 					dispose();
 					ClanProzor cp = new ClanProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);
+					
+  					}
 				} catch (NumberFormatException e1) {
 					
 					e1.printStackTrace();

@@ -3,6 +3,7 @@ package gui;
 import java.awt.event.ActionEvent;
 
 
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -60,11 +61,13 @@ public class AdminIzmenaProzor extends JDialog {
     private Biblioteka biblioteka;
     private Zaposleni prijavljeniZaposleni;
     int index;
+
     
     
     public AdminIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
+    	this.index=index;
     	setTitle("Admin: " + prijavljeniZaposleni.getIDOsobe());
 		setSize(500, 500);
 		setResizable(false);
@@ -100,7 +103,6 @@ public class AdminIzmenaProzor extends JDialog {
     	add(lozinka);
     	add(dugmeIzmena);
     	
-    	
     	Administrator a = biblioteka.neobrisaniAdministratori().get(index);
     	IDPolje.setText(Integer.toString(a.getIDOsobe()));
     	imePolje.setText(a.getIme());
@@ -118,7 +120,7 @@ public class AdminIzmenaProzor extends JDialog {
    			@Override
   			public void actionPerformed(ActionEvent e) {
   				try {
-
+                    
 					String ime = imePolje.getText().trim();
 					String prezime = prezimePolje.getText().trim();
 					String jmbg = JMBGPolje.getText().trim();
@@ -131,7 +133,7 @@ public class AdminIzmenaProzor extends JDialog {
   					Administrator admin = (Administrator) prijavljeniZaposleni;
 
   					
-					if (Utils.validirajAdmin(ime, prezime, jmbg, adresa,
+					if (Utils.validirajZaposlenog(ime, prezime, jmbg, adresa,
 							plataUpdate, korisName, lozinkaUpdate,admin)) {
 						
 						admin.updateAdmina(Integer.parseInt(IDPolje.getText().trim()),ime,prezime,jmbg,adresa,

@@ -19,6 +19,7 @@ import biblioteka.Zanr;
 import biblioteka.Zaposleni;
 
 import net.miginfocom.swing.MigLayout;
+import utils.Utils;
 
 public class ZanrIzmenaProzor extends JDialog {
 	private JTextField IDPolje = new JTextField(20);
@@ -37,6 +38,7 @@ public class ZanrIzmenaProzor extends JDialog {
     private int index;
     
     public ZanrIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
+    	this.index = index;
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
     	setTitle("Admin: " + prijavljeniZaposleni.getIDOsobe());
@@ -73,10 +75,16 @@ public class ZanrIzmenaProzor extends JDialog {
      	   			@Override
      	  			public void actionPerformed(ActionEvent e) {
      	  				try {
-     						prijavljeniZaposleni.updateZanr(oznakaPolje.getText().trim(),opisPolje.getText().trim(),Integer.parseInt(IDPolje.getText().trim()),biblioteka);
+     	  					String opisIzmena = opisPolje.getText().trim();
+    	  					String oznakaIzmena = oznakaPolje.getText().trim();
+    	  					
+    	  					if (Utils.validirajZanr(oznakaIzmena, opisIzmena)) {
+     	  					
+     						prijavljeniZaposleni.updateZanr(oznakaIzmena,opisIzmena,Integer.parseInt(IDPolje.getText().trim()),biblioteka);
      						dispose();
      						ZanrProzor zp = new ZanrProzor(biblioteka,prijavljeniZaposleni);
      						zp.setVisible(true);
+    	  					}
      					} catch (NumberFormatException e1) {
      						
      						e1.printStackTrace();
