@@ -23,8 +23,7 @@ import net.miginfocom.swing.MigLayout;
 import utils.Utils;
 
 public class DodajClanaProzor extends JDialog {
-	private JTextField IDClana = new JTextField(4);
-    private JLabel lblID = new JLabel("ID");
+	
     
 	private JTextField imeClana = new JTextField(10);
     private JLabel lblIme= new JLabel("Ime");
@@ -91,9 +90,6 @@ public class DodajClanaProzor extends JDialog {
 	    	MigLayout mig = new MigLayout("wrap 2","[][]", "[]10[][]10[]");
 	    	setLayout(mig);
 	    	
-	    	add(lblID);
-	    	IDClana.setEditable(false);
-	    	add(IDClana);
 	    	add(lblIme);
 	    	add(imeClana);
 	    	add(lblAdresa);
@@ -114,7 +110,7 @@ public class DodajClanaProzor extends JDialog {
 	    	add(cmbxOznakaClanarine);
 	    	//add(aktivnostCheck);
 	    	add(dugmeDodaj);
-	    	IDClana.setEditable(false);
+	    	
 	
     }	
     
@@ -133,7 +129,8 @@ public class DodajClanaProzor extends JDialog {
    				 
   					
 					if (Utils.validirajClana(imeDodaj, prezimeDodaj, JMBGDodaj, adresaDodaj,
-							brojClanskeDodaj,brojUplacenihMeseciDodaj,prijavljeniZaposleni)) {
+							brojClanskeDodaj,brojUplacenihMeseciDodaj,prijavljeniZaposleni)  &&
+  							!(Utils.JMBGClanstvoValidacijaClan(biblioteka.AktivniClanovi(), JMBGDodaj, brojClanskeDodaj, Integer.MAX_VALUE))) {
   					
 					prijavljeniZaposleni.dodajClanove(Clan.getIdMaker()+1,imeDodaj,prezimeDodaj,JMBGDodaj,adresaDodaj,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeDodaj,LocalDate.parse(datumPoslednjeUplate.getText().trim()),brojUplacenihMeseciDodaj,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
 					dispose();

@@ -148,8 +148,23 @@ public class Administrator extends Zaposleni {
 		}
 		
 	
-	
-	
+	public static void registrujAdmina(int IDOsobe,String ime,String prezime,String JMBG,String adresa,Pol pol,double plata,String korIme,String lozinka,Biblioteka biblioteka) throws IOException {
+		ArrayList<Administrator> sviAdministratori = new ArrayList<Administrator>();
+		
+		Administrator administrator = new Administrator();
+		administrator.setIDOsobe(IDOsobe);
+		administrator.setIme(ime);
+		administrator.setPrezime(prezime);
+		administrator.setJMBG(JMBG);
+		administrator.setAdresa(adresa);
+		//administrator.setObrisan(obrisan);
+		administrator.setPol(pol);
+		administrator.setPlata(plata);
+		administrator.setKorIme(korIme);
+		administrator.setLozinka(lozinka);
+		sviAdministratori.add(administrator);
+		Biblioteka.upisiAdministratore(sviAdministratori, "src/fajlovi/administratori.txt");
+		}
 
 	public static void setIdMaker(int count) {
 		Administrator.idMaker = count;

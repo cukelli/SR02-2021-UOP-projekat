@@ -117,7 +117,8 @@ public class DodajBibliotekaraProzor extends JDialog {
 				
 
 				if (Utils.validirajZaposlenog(ime, prezime, jmbg, adresa,
-						plataUpdate, korisName, lozinkaUpdate,admin)) {
+						plataUpdate, korisName, lozinkaUpdate,admin) &&
+						!(Utils.JMBGValidacijaBibliotekar(biblioteka.getSviBibliotekari(), jmbg, Integer.MAX_VALUE))) {
 				
 			admin.dodajBibliotekara(Bibliotekar.getUpdateMaker()+1,ime,prezime,jmbg,adresa,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,lozinkaUpdate,biblioteka);
 			dispose();

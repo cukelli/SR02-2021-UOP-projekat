@@ -27,6 +27,7 @@ public class LoginProzor extends JFrame {
 	private JLabel lblPassword = new JLabel("Sifra");
 	private JPasswordField pfPassword = new JPasswordField(20);
 	private JButton btnOk = new JButton("OK");
+	private JButton btnRegistracija = new JButton("Registracija");
 	private JButton btnCancel = new JButton("Cancel");
 	
 	private Biblioteka biblioteka;
@@ -53,7 +54,8 @@ public class LoginProzor extends JFrame {
 		add(lblPassword);
 		add(pfPassword);
 		add(new JLabel());
-		add(btnOk, "split 2");
+		add(btnOk, "split 3");
+		add(btnRegistracija);
 		add(btnCancel);
 		
 		
@@ -92,6 +94,17 @@ public class LoginProzor extends JFrame {
 				}
 			}
 		}
+	});
+	
+	btnRegistracija.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		    DodajAdminaRegistracija dp = new DodajAdminaRegistracija(biblioteka);
+			dp.setVisible(true);
+		}
+			
+		
 	});
 	
 }

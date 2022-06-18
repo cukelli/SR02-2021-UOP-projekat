@@ -134,7 +134,8 @@ private void initActions() {
 					Administrator admin = (Administrator) prijavljeniZaposleni;
 					
 					if (Utils.validirajZaposlenog(ime, prezime, jmbg, adresa,
-							plataUpdate, korisName, lozinkaUpdate,admin)) {
+							plataUpdate, korisName, lozinkaUpdate,admin) && 
+							(!Utils.JMBGValidacijaBibliotekar(biblioteka.getSviBibliotekari(), jmbg,Integer.parseInt(IDPolje.getText().trim())))) {
 					
 					
 				admin.updateBibliotekara(Integer.parseInt(IDPolje.getText().trim()),ime,prezime,jmbg,adresa,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,lozinkaUpdate,biblioteka);

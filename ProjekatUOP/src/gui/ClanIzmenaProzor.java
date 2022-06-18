@@ -66,7 +66,7 @@ public class ClanIzmenaProzor extends JDialog {
     private JLabel lblTipClanarine = new JLabel("Tip clanarine");
     private JComboBox<String> cmbxOznakaClanarine = new JComboBox<String>(); 
     
-    JCheckBox aktivnostCheck = new JCheckBox("Aktivnost");
+    //private JCheckBox aktivnostCheck = new JCheckBox("Aktivnost");
     
    
 
@@ -115,6 +115,8 @@ public class ClanIzmenaProzor extends JDialog {
      	    	add(imeClana);
      	    	add(lblJMBG);
      	    	add(JMBGClana);
+     	    	add(lblAdresa);
+     	    	add(adresaClana);
      	    	add(lblPol);
      	    	add(cmbxPol);
      	    	add(lblPrezime);
@@ -127,7 +129,7 @@ public class ClanIzmenaProzor extends JDialog {
      	    	add(brojUplacenihMeseci);
      	    	add(lblTipClanarine);
      	    	add(cmbxOznakaClanarine);
-     	    	add(aktivnostCheck);
+     	    	//add(aktivnostCheck);
      	    	add(dugmeIzmena);
      	    	IDClana.setEditable(false);
      	    	
@@ -137,6 +139,7 @@ public class ClanIzmenaProzor extends JDialog {
      	    	imeClana.setText(c.getIme());
      	    	prezimeClana.setText(c.getPrezime());
      	    	brojClanske.setText(c.getBrojClanske());
+     	    	adresaClana.setText(c.getAdresa());
      	    	datumPoslednjeUplate.setText(c.getDatumPoslednjeUplate().toString());
      	    	brojUplacenihMeseci.setText(Integer.toString(c.getBrojUplacenihMeseci()));
      	    	cmbxOznakaClanarine.setSelectedItem(c.getTipClanarine());
@@ -144,19 +147,9 @@ public class ClanIzmenaProzor extends JDialog {
      	
      	    	
      	    	cmbxPol.setSelectedItem(c.getPol());
-     	    
-     	    	if (c.isAktivnost() == true ) {
-     	    		aktivnostCheck.setSelected(true);
-     	    	 {
-     	    			aktivnostCheck.setSelected(false);
-     	    		}
-     	    	
-     	    				
-     	    	}
-     	    	
-     	  
-     	  
-     	  }
+     	        	    				
+     	    	   	  
+ 	  		}
      	 
      	 private void initActions() {
    		dugmeIzmena.addActionListener(new ActionListener() {
@@ -168,13 +161,14 @@ public class ClanIzmenaProzor extends JDialog {
    				String adresaUpdate = adresaClana.getText().trim();
    				String brojClanskeUpdate = brojClanske.getText().trim();
    				int brojUplacenihMeseciUpdate = Integer.parseInt(brojUplacenihMeseci.getText().trim());
-   				
+   				int idClana = Integer.parseInt(IDClana.getText().trim());
   				try {
   					
   					
   					if (Utils.validirajClana(imeUpdate, prezimeUpdate, JMBGUpdate, adresaUpdate,
-							brojClanskeUpdate,brojUplacenihMeseciUpdate,prijavljeniZaposleni)) {
-					prijavljeniZaposleni.updateClan(Integer.parseInt(IDClana.getText()),imeUpdate,prezimeUpdate,JMBGUpdate,adresaUpdate,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeUpdate,LocalDate.parse(datumPoslednjeUplate.getText().trim()),brojUplacenihMeseciUpdate,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
+							brojClanskeUpdate,brojUplacenihMeseciUpdate,prijavljeniZaposleni) &&
+  							!(Utils.JMBGClanstvoValidacijaClan(biblioteka.AktivniClanovi(), JMBGUpdate, brojClanskeUpdate,idClana))) {
+					prijavljeniZaposleni.updateClan(idClana,imeUpdate,prezimeUpdate,JMBGUpdate,adresaUpdate,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeUpdate,LocalDate.parse(datumPoslednjeUplate.getText().trim()),brojUplacenihMeseciUpdate,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
 					dispose();
 					ClanProzor cp = new ClanProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);

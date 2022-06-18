@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -20,7 +21,7 @@ import biblioteka.Zaposleni;
 import net.miginfocom.swing.MigLayout;
 import utils.Utils;
 
-public class DodajAdminaProzor extends JDialog {
+public class DodajAdminaRegistracija extends JDialog {
 	
 	
 	private JTextField imePolje = new JTextField(20);
@@ -53,12 +54,10 @@ public class DodajAdminaProzor extends JDialog {
     private JButton dugmeDodaj = new JButton("Dodaj");
     
     private Biblioteka biblioteka;
-    private Zaposleni prijavljeniZaposleni;
     
-    public DodajAdminaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni) {
+    public DodajAdminaRegistracija(Biblioteka biblioteka) {
     	this.biblioteka = biblioteka;
-    	this.prijavljeniZaposleni = prijavljeniZaposleni;
-    	setTitle("Admin: " + prijavljeniZaposleni.getIDOsobe());
+    	setTitle("Registracija Administratora");
 		setSize(500, 500);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -103,19 +102,16 @@ public class DodajAdminaProzor extends JDialog {
 					String korisName = korisnickoIme.getText().trim();
 					@SuppressWarnings("deprecation")
 					String lozinkaUpdate = lozinka.getText().trim();
-  					
-  					
-  					Administrator admin = (Administrator) prijavljeniZaposleni;
-  					
+  					  					
 
 					if (Utils.validirajZaposlenog(ime, prezime, jmbg, adresa,
-							plataUpdate, korisName, lozinkaUpdate,admin)  && 
+							plataUpdate, korisName, lozinkaUpdate,null)  && 
 							!Utils.JMBGValidacijaAdmin(biblioteka.getSviAdministratori(), jmbg, Integer.MAX_VALUE)) {
   					
-					admin.dodajAdmina(Administrator.getIdMaker()+1,ime,prezime,jmbg,adresa,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,lozinkaUpdate,biblioteka);
+					Administrator.registrujAdmina(Administrator.getIdMaker()+1,ime,prezime,jmbg,adresa,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,lozinkaUpdate,biblioteka);
+					JOptionPane.showMessageDialog(null, "", "Uspesno ste se registrovali", JOptionPane.INFORMATION_MESSAGE);
 					dispose();
-					AdminProzor ap = new AdminProzor(biblioteka,prijavljeniZaposleni);
-					ap.setVisible(true);
+					return;
 					
 					}
 				} catch (NumberFormatException e1) {

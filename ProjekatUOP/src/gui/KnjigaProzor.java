@@ -20,6 +20,7 @@ import biblioteka.Biblioteka;
 import biblioteka.Bibliotekar;
 import biblioteka.Knjiga;
 import biblioteka.Zaposleni;
+import utils.Utils;
 
 public class KnjigaProzor extends JFrame {
 	private JToolBar mainToolbar = new JToolBar();
@@ -120,11 +121,16 @@ public class KnjigaProzor extends JFrame {
 				
 					return;
 				}
+				
 				else {
 				 
 				   Knjiga brisi =  biblioteka.neobrisaneKnjige().get(knjigeTabela.getSelectedRow());
 				   if (!brisi.isObrisana()) {
 					   try {
+						   if (Utils.validacijaBrisanja(biblioteka.neobrisanaIznajmljivanja(), brisi.getIDKnjige())) {
+							   return;
+						   }
+						   
 							prijavljeniZaposleni.brisiKnjigu(brisi.getIDKnjige(),biblioteka);
 							tableModel.removeRow(knjigeTabela.getSelectedRow());
 							

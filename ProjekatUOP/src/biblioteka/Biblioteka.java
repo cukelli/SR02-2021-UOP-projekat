@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Utils;
+
 
 
 
@@ -285,7 +287,13 @@ public class Biblioteka {
 				}
 				boolean obrisanostClana = Boolean.parseBoolean(nizClanova[11]);
 				if (IDclana <= Clan.getIdMaker()) {
+					reader.close();
 					throw new IllegalArgumentException("Pogresan ID");
+				}
+				if (Utils.JMBGClanstvoValidacijaClan(sviClanovi, JMBGClana, brojClanskeClana, IDclana)) {
+					reader.close();
+					throw new IllegalArgumentException("Pogresan JMBG/broj clanske");
+					
 				}
 			
 					
@@ -342,7 +350,13 @@ public class Biblioteka {
 			//	System.out.println(obrisanostBibliotekara);
 				
 				if (IDBibliotekara <= Bibliotekar.getIdMaker()) {
+					reader.close();
 					throw new IllegalArgumentException("Pogresan ID");
+				}
+				
+				if (Utils.JMBGValidacijaBibliotekar(sviBibliotekari, JMBGBibliotekara, IDBibliotekara)) {
+					reader.close();
+					throw new IllegalArgumentException("Pogresan JMBG bibliotekara");
 				}
 
 				Bibliotekar bibliotekar = new Bibliotekar(IDBibliotekara,imeBibliotekara,prezimeBibliotekara,JMBGBibliotekara,adresaBibliotekara,obrisanostBibliotekara,defPol,plataBibliotekara,korImeBibliotekara,lozinkaBibliotekara);
@@ -399,9 +413,14 @@ public class Biblioteka {
 				String lozinkaAdministratora = nizAdministratora[8];
 				boolean obrisanostAdministratora = Boolean.parseBoolean(nizAdministratora[9]);
 				if (IDAdministratora <= Administrator.getIdMaker()) {
+					reader.close();
 					throw new IllegalArgumentException("Pogresan ID");
 				}
 				
+				if (Utils.JMBGValidacijaAdmin(sviAdministratori, JMBGAdministratora, IDAdministratora)) {
+					reader.close();
+					throw new IllegalArgumentException("Pogresan JMBG");
+				}
 				
 				Administrator administrator = new Administrator(IDAdministratora,imeAdministratora,prezimeAdministratora,JMBGAdministratora,adresaAdministratora,obrisanostAdministratora,defPol,plataAdministratora,korImeAdministratora,lozinkaAdministratora);
 	            sviAdministratori.add(administrator);

@@ -134,7 +134,8 @@ public class AdminIzmenaProzor extends JDialog {
 
   					
 					if (Utils.validirajZaposlenog(ime, prezime, jmbg, adresa,
-							plataUpdate, korisName, lozinkaUpdate,admin)) {
+							plataUpdate, korisName, lozinkaUpdate,admin) && 
+							!Utils.JMBGValidacijaAdmin(biblioteka.getSviAdministratori(), jmbg,Integer.parseInt(IDPolje.getText().trim()))) {
 						
 						admin.updateAdmina(Integer.parseInt(IDPolje.getText().trim()),ime,prezime,jmbg,adresa,
 								Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),plataUpdate,korisName,

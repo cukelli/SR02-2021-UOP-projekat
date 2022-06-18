@@ -1,18 +1,18 @@
 34;Srpska Trilogija;200;2010;SRPSKI;false;MEKI;true
-35;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-40;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-41;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-42;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-43;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-44;Alhemicar;567;2010;ENGLESKI;false;MEKI;true
-45;Alhemicar;567;2010;ENGLESKI;false;MEKI;true
-46;Alhemicar;567;2010;ENGLESKI;false;MEKI;false
-47;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-48;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-49;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-50;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-51;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
-52;Alhemicar;567;2010;ENGLESKI;true;MEKI;true
+35;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+40;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+41;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+42;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+43;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+44;Srpska Trilogija;567;2010;ENGLESKI;false;MEKI;true
+45;Srpska Trilogija;567;2010;ENGLESKI;false;MEKI;true
+46;Srpska Trilogija;5670;2010;ENGLESKI;false;MEKI;false
+47;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+48;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+49;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+50;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+51;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
+52;Srpska Trilogija;567;2010;ENGLESKI;true;MEKI;true
 53;Srpska Trilogija;120;2002;NEMACKI;false;TVRDI;true
 54;Rat i mir;123;1990;SRPSKI;false;MEKI;false
 55;Rat i mir;340;2021;SRPSKI;false;MEKI;true

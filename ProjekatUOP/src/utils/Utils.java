@@ -1,6 +1,7 @@
 package utils;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -9,6 +10,7 @@ import biblioteka.Administrator;
 import biblioteka.TipClanarine;
 import biblioteka.Zaposleni;
 import biblioteka.Biblioteka;
+import biblioteka.Bibliotekar;
 import biblioteka.Clan;
 import biblioteka.Iznajmljivanje;
 import biblioteka.Knjiga;
@@ -45,7 +47,7 @@ public class Utils {
 		}
 		
 		if (pass.equals("") || !pass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,20}$")) {
-			sb.append("\nLozinka sadrzi izmedju 8 i 20 cifara,jedno veliko i jedno malo slovo");
+			sb.append("\nLozinka sadrzi izmedju 8 i 20 cifara,jedno veliko i jedno malo slovo i min jedan broj");
 			ok = false;
 		}
 		
@@ -228,43 +230,60 @@ public class Utils {
 	    return ok;
 	}
 	
-	public static boolean JMBGValidacijaZaposleni(List<Zaposleni> zaposleni, String jmbg) {
+	public static boolean JMBGValidacijaAdmin(ArrayList<Administrator> zaposleni, String jmbg, int id) {
 		if ((zaposleni == null) || (zaposleni.size() == 0)) {
-			return true;
+			return false;
 		}
-		for (Zaposleni zz: zaposleni) {
-			if (zz.getJMBG().equals(jmbg)) {
-				return false;
+		for (Administrator zz: zaposleni) {
+			if (zz.getJMBG().equals(jmbg) && zz.getIDOsobe() != id) {
+		    	JOptionPane.showMessageDialog(null,"JMBG vec postoji","Neispravni podaci",JOptionPane.WARNING_MESSAGE);		    
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 	
-	public static boolean JMBGClanstvoValidacijaClan(List<Clan> clanovi, String jmbg, String brCl) {
+	
+	public static boolean JMBGValidacijaBibliotekar(ArrayList<Bibliotekar> zaposleni, String jmbg, int id) {
+		if ((zaposleni == null) || (zaposleni.size() == 0)) {
+			return false;
+		}
+		for (Bibliotekar zz: zaposleni) {
+			if (zz.getJMBG().equals(jmbg) && zz.getIDOsobe() != id) {
+		    	JOptionPane.showMessageDialog(null,"JMBG vec postoji","Neispravni podaci",JOptionPane.WARNING_MESSAGE);		    
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean JMBGClanstvoValidacijaClan(ArrayList<Clan> clanovi, String jmbg, String brCl, int id) {
 		if ((clanovi == null) || (clanovi.size() == 0)) {
-			return true;
+			return false;
 		}
 		for (Clan cl: clanovi) {
-			if (cl.getJMBG().equals(jmbg) || cl.getBrojClanske().equals(brCl)) {
-				return false;
+			if ((cl.getJMBG().equals(jmbg) || cl.getBrojClanske().equals(brCl)) && (cl.getIDOsobe() != id)) {
+		    	JOptionPane.showMessageDialog(null,"JMBG ili broj clanske karte vec postoji","Neispravni podaci",JOptionPane.WARNING_MESSAGE);		    
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 	
-	public static boolean validacijaBrisanja(List<Iznajmljivanje> iznajmljivanja, int idKnjige) {
+	public static boolean validacijaBrisanja(ArrayList<Iznajmljivanje> iznajmljivanja, int idKnjige) {
 		if ((iznajmljivanja == null) || (iznajmljivanja.size() == 0)) {
-			return true;
+			return false;
 		}
 		for (Iznajmljivanje i: iznajmljivanja) {
 			Primerak p = i.getIznajmljenPrimerak();
 			Knjiga kk = p.getKnjiga();
 			if (kk.getIDKnjige() == idKnjige) {
-				return false;
+		    	JOptionPane.showMessageDialog(null,"Primerak knjige je iznajmljen,ne moze se obrisati","Neispravni podaci",JOptionPane.WARNING_MESSAGE);		    
+				return true;
 			}
 			
 		}
-		return true;
+		return false;
 	}
 	      
 }

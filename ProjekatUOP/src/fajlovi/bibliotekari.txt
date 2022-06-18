@@ -1,5 +1,6 @@
-300;Zvici;Aleksandra;666;Bulevar 6;ZENSKI;100.0;zvicy;zvciy123;true
-301;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;true
-302;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;true
-303;Milica;Lakovic;0102002735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
-304;Dobrica;Cosic;010200231;4 JULA 25;MUSKI;24300.0;cosss;cosss;true
+300;Zvici;Aleksandra;1311997800221;Bulevar 6;ZENSKI;100.0;zvicy;zvciy123;true
+301;Milica;Lakovic;0102005735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;true
+302;Milica;Lakovic;0102006735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;true
+303;Milica;Lakovic;0102008735021;Vojvode Stepe 3;ZENSKI;25000.0;LAKI;123df;false
+304;Dobrica;Cosic;0102002374532;4 JULA 25;MUSKI;24300.0;cosss;cosss;true
+305;Nenad;Knezevic;0102005735025;4 jula 25;MUSKI;15000.0;nenaddd;NenadQ3@aaaaaa;false
