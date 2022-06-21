@@ -104,7 +104,6 @@ public class GlavniProzor extends JFrame {
 	    telefonBiblioteke.setText(biblioteka.getTelefon());
 	    radnoVremeBiblioteke.setText(biblioteka.getRadnoVreme());
 	    
-		
 
 	}
 	private void initActions() {

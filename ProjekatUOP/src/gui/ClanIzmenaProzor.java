@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
@@ -134,7 +135,7 @@ public class ClanIzmenaProzor extends JDialog {
      	    	IDClana.setEditable(false);
      	    	
      	    	
-     	    	Clan c = biblioteka.AktivniClanovi().get(index);
+     	    	Clan c = biblioteka.neobrisaniClanovi().get(index);
      	    	IDClana.setText(Integer.toString(c.getIDOsobe()));
      	    	imeClana.setText(c.getIme());
      	    	prezimeClana.setText(c.getPrezime());
@@ -155,6 +156,12 @@ public class ClanIzmenaProzor extends JDialog {
    		dugmeIzmena.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
+   				
+   				double cena = biblioteka.getSviClanovi().get(index).getTipClanarine().getCena();
+   				
+
+   			
+   				
    				String imeUpdate = imeClana.getText().trim();
    				String prezimeUpdate = prezimeClana.getText().trim();
    				String JMBGUpdate = JMBGClana.getText().trim();
@@ -162,13 +169,32 @@ public class ClanIzmenaProzor extends JDialog {
    				String brojClanskeUpdate = brojClanske.getText().trim();
    				int brojUplacenihMeseciUpdate = Integer.parseInt(brojUplacenihMeseci.getText().trim());
    				int idClana = Integer.parseInt(IDClana.getText().trim());
+   				LocalDate datumPoslednjeUplateUpdate = LocalDate.parse(datumPoslednjeUplate.getText().trim());
+   			    if (brojUplacenihMeseciUpdate >=6 && brojUplacenihMeseciUpdate <12) {
+   			    	cena = (brojUplacenihMeseciUpdate * cena) - (brojUplacenihMeseciUpdate * cena * 0.1);
+   			    	
+   			    }
+   			    else if (brojUplacenihMeseciUpdate >= 12) {
+   			    	cena = (brojUplacenihMeseciUpdate * cena) - (brojUplacenihMeseciUpdate * cena * 0.2);
+   			    	
+   			    }
+   			    else {
+   			    	cena = brojUplacenihMeseciUpdate * cena;
+   			    	
+   			    }
+   			    
   				try {
   					
   					
   					if (Utils.validirajClana(imeUpdate, prezimeUpdate, JMBGUpdate, adresaUpdate,
-							brojClanskeUpdate,brojUplacenihMeseciUpdate,prijavljeniZaposleni) &&
+							brojClanskeUpdate,brojUplacenihMeseciUpdate,datumPoslednjeUplateUpdate,prijavljeniZaposleni) &&
   							!(Utils.JMBGClanstvoValidacijaClan(biblioteka.AktivniClanovi(), JMBGUpdate, brojClanskeUpdate,idClana))) {
-					prijavljeniZaposleni.updateClan(idClana,imeUpdate,prezimeUpdate,JMBGUpdate,adresaUpdate,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeUpdate,LocalDate.parse(datumPoslednjeUplate.getText().trim()),brojUplacenihMeseciUpdate,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
+					prijavljeniZaposleni.updateClan(idClana,imeUpdate,prezimeUpdate,JMBGUpdate,adresaUpdate,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeUpdate,datumPoslednjeUplateUpdate,
+							brojUplacenihMeseciUpdate,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
+					     
+					
+   			    	JOptionPane.showMessageDialog(rootPane, "Cena je: " + cena);
+
 					dispose();
 					ClanProzor cp = new ClanProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);

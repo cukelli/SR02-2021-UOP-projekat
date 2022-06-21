@@ -118,21 +118,23 @@ public class DodajClanaProzor extends JDialog {
    		dugmeDodaj.addActionListener(new ActionListener() {
    			@Override
   			public void actionPerformed(ActionEvent e) {
-   				try {
-   					
+   				try {			
+   	
    				String imeDodaj = imeClana.getText().trim();
    				String prezimeDodaj = prezimeClana.getText().trim();
    				String JMBGDodaj= JMBGClana.getText().trim();
    				String adresaDodaj = adresaClana.getText().trim();
    				String brojClanskeDodaj = brojClanske.getText().trim();
-   				int brojUplacenihMeseciDodaj = Integer.parseInt(brojUplacenihMeseci.getText().trim());			
+   				int brojUplacenihMeseciDodaj = Integer.parseInt(brojUplacenihMeseci.getText().trim());
+   				LocalDate datumPoslednjeUplateDodaj = LocalDate.parse(datumPoslednjeUplate.getText().trim());
    				 
   					
-					if (Utils.validirajClana(imeDodaj, prezimeDodaj, JMBGDodaj, adresaDodaj,
-							brojClanskeDodaj,brojUplacenihMeseciDodaj,prijavljeniZaposleni)  &&
+					if (Utils.validirajNovogClana(imeDodaj, prezimeDodaj, JMBGDodaj, adresaDodaj,
+							brojClanskeDodaj,brojUplacenihMeseciDodaj,datumPoslednjeUplateDodaj,prijavljeniZaposleni)  &&
   							!(Utils.JMBGClanstvoValidacijaClan(biblioteka.AktivniClanovi(), JMBGDodaj, brojClanskeDodaj, Integer.MAX_VALUE))) {
   					
-					prijavljeniZaposleni.dodajClanove(Clan.getIdMaker()+1,imeDodaj,prezimeDodaj,JMBGDodaj,adresaDodaj,Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeDodaj,LocalDate.parse(datumPoslednjeUplate.getText().trim()),brojUplacenihMeseciDodaj,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
+					prijavljeniZaposleni.dodajClanove(Clan.getIdMaker()+1,imeDodaj,prezimeDodaj,JMBGDodaj,adresaDodaj,
+							Pol.valueOf(cmbxPol.getSelectedItem().toString().trim()),brojClanskeDodaj,datumPoslednjeUplateDodaj,brojUplacenihMeseciDodaj,biblioteka.neobrisaneClanarine().get(cmbxOznakaClanarine.getSelectedIndex()),biblioteka);
 					dispose();
 					ClanProzor cp = new ClanProzor(biblioteka,prijavljeniZaposleni);
 					cp.setVisible(true);

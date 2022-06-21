@@ -57,7 +57,7 @@ public class Utils {
 		return ok;
 	}
 	
-	public static boolean validirajClana(String ime,String prezime,String JMBG,String adresa,String brojClanske,int brojUplacenihMeseci,Zaposleni zaposleni) {
+	public static boolean validirajClana(String ime,String prezime,String JMBG,String adresa,String brojClanske,int brojUplacenihMeseci,LocalDate datumPoslednjeUplate,Zaposleni zaposleni) {
 		StringBuilder sb = new StringBuilder();
 		boolean ok = true;
 		if (ime.equals("")  || !ime.matches("[A-Z][a-zA-Z]*")) {
@@ -86,6 +86,11 @@ public class Utils {
 		if (brojUplacenihMeseci <0) {
 			sb.append("\nBroj uplacenih meseci ne moze biti negativan broj");
 			ok = false;
+		}
+		
+		if (datumPoslednjeUplate.isAfter(LocalDate.now())) {
+			sb.append("\n Datum poslednje uplate ne moze biti posle danasnjeg datuma");
+			ok=false;
 		}
 		if(ok == false) {
 			JOptionPane.showMessageDialog(null, sb.toString(), "Neispravni podaci", JOptionPane.WARNING_MESSAGE);
@@ -285,5 +290,51 @@ public class Utils {
 		}
 		return false;
 	}
+	
+	public static boolean validirajNovogClana(String ime,String prezime,String JMBG,String adresa,String brojClanske,int brojUplacenihMeseci,LocalDate datumPoslednjeUplate,Zaposleni zaposleni) {
+		StringBuilder sb = new StringBuilder();
+		boolean ok = true;
+		if (ime.equals("")  || !ime.matches("[A-Z][a-zA-Z]*")) {
+			sb.append("\nIme");
+			ok = false;
+		}
+		if (prezime.equals("")  || !prezime.matches("[A-Z][a-zA-Z]*")) {
+			sb.append("\nPrezime");
+			ok = false;
+		}
+		if (JMBG.equals("") || JMBG.length() != 13 || !JMBG.matches("\\d{13}")) {
+			sb.append("\nJmbg ima 13 cifara!");
+			ok = false;
+		}
+		
+		if (adresa.equals("") || !adresa.matches(".*\\d+.*")) { //barem 1 broj
+			sb.append("\nAdresa ima barem 1 broj");
+			ok = false;
+		}
+		
+		if (brojClanske.equals("") || !brojClanske.matches("^\\d+$")) {
+			sb.append("\nBroj clanske karte sadrzi samo cifre");
+			ok = false;
+		}
+		
+		if (brojUplacenihMeseci <0 || brojUplacenihMeseci>=6) {
+			sb.append("\nBroj uplacenih meseci ne moze biti negativan broj,i novi clan ne moze uplatiti vise od 5 meseci");
+			ok = false;
+		}
+		
+		if (datumPoslednjeUplate.isAfter(LocalDate.now())) {
+			sb.append("\n Datum poslednje uplate ne moze biti posle danasnjeg datuma");
+			ok=false;
+		}
+		if(ok == false) {
+			JOptionPane.showMessageDialog(null, sb.toString(), "Neispravni podaci", JOptionPane.WARNING_MESSAGE);
+		}
+		
+		
+		
+		return ok;
+	}
+	
+	
 	      
 }

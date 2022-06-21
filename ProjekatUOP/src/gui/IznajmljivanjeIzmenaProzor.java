@@ -59,6 +59,7 @@ public class IznajmljivanjeIzmenaProzor extends JDialog {
     public IznajmljivanjeIzmenaProzor(Biblioteka biblioteka,Zaposleni prijavljeniZaposleni,int index) {
     	this.biblioteka = biblioteka;
     	this.prijavljeniZaposleni = prijavljeniZaposleni;
+    	this.index = index;
     	setTitle("Zaposleni: " + prijavljeniZaposleni.getIDOsobe());
 		setSize(500, 500);
 		Integer[] bibliotekarID = new Integer[biblioteka.neobrisaniBibliotekari().size()];

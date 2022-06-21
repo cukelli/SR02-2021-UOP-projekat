@@ -296,15 +296,26 @@ public class Biblioteka {
 					
 				}
 			
-					
+				
+				
 				Clan clan = new Clan(IDclana,imeClana,prezimeClana,JMBGClana,adresaClana,obrisanostClana,defPol,brojClanskeClana,datumPoslednjeUplateClana,UplaceniMeseciClana,aktivnostClana,tmpClanarine);
+				this.proveriAktivnost(clan);
 				sviClanovi.add(clan);	
 				
 			}
 			reader.close();
 			
 			
+			
 		}
+	 
+	 public void proveriAktivnost(Clan clan) {
+		 LocalDate datumPoslednjeUplate = clan.getDatumPoslednjeUplate();
+		 int brojUplacenihMeseci = clan.getBrojUplacenihMeseci();
+		 LocalDate provera = datumPoslednjeUplate.plusMonths(brojUplacenihMeseci);
+		 clan.setAktivnost(provera.isAfter(LocalDate.now()));		 
+	 }
+	 
 		
 		public static void upisiClanove(ArrayList<Clan> clanoviUpis, String clanoviFajl) throws IOException {
 			ArrayList<Clan> clanovi = clanoviUpis;

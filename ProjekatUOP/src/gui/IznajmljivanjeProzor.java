@@ -94,7 +94,7 @@ public class IznajmljivanjeProzor extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(iznajmljivanjeTabela.getSelectedRow() == -1) {
-					JOptionPane.showMessageDialog(rootPane, "Izaberite clana za izmenu");
+					JOptionPane.showMessageDialog(rootPane, "Izaberite iznajmljivanje za izmenu");
 					return;
 				}
 				IznajmljivanjeIzmenaProzor ip = new IznajmljivanjeIzmenaProzor(biblioteka, prijavljenZaposleni, iznajmljivanjeTabela.getSelectedRow());

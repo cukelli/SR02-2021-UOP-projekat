@@ -1,4 +1,6 @@
-1000;Perica;Cukelj;0102002735821;Bulevar cara Lazara 3;MUSKI;312;2022-06-03;4;true;novi odraslii;false
-1001;Erica;Cukic;0102002735021;Dostojevski 3;MUSKI;342;2021-10-10;3;true;novi odraslii;false
-1002;Aleksa;Novkovic;0102002735861;Limanski park 3;MUSKI;123;2022-01-01;3;true;novi odraslii;false
-1003;Tijana;Kalampos;1234123412347;Stutgatt 3;MUSKI;002;2022-12-12;2;true;novi odraslii;false
+1000;Perica;Cukelj;0102002735821;Bulevar cara Lazara 3;MUSKI;312;2022-06-03;13;true;novi odraslii;false
+1001;Erica;Cukic;0102002735021;Dostojevski 3;MUSKI;342;2021-10-10;3;false;novi odraslii;false
+1002;Aleksa;Novkovic;0102002735861;Limanski park 3;MUSKI;123;2022-01-01;8;true;novi odraslii;false
+1003;Tijana;Kalampos;1234123412347;Stutgatt 3;MUSKI;002;2022-01-01;8;true;novi odraslii;false
+1004;Boki;Cukelj;4321432154321;4 jul 25;MUSKI;987;2022-01-01;3;false;novi odraslii;true
+1005;Mmici;Ssdasd;1234567890000;Krajiske Brigade 4;MUSKI;456;2021-10-10;9;false;novi odraslii;false

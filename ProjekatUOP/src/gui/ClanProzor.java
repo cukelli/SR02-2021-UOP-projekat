@@ -59,7 +59,7 @@ public class ClanProzor extends JFrame {
 		mainToolbar.add(btnDelete);
 		add(mainToolbar, BorderLayout.NORTH);
 		
-		String[] zaglavlja = new String[] {"ID","Ime","Prezime","JMBG","Adresa","Pol","Broj clanske","Datum poslednje uplate","Broj uplacenih meseci","Tip clanarine"};
+		String[] zaglavlja = new String[] {"ID","Ime","Prezime","JMBG","Adresa","Pol","Broj clanske","Datum poslednje uplate","Broj uplacenih meseci","Tip clanarine","Aktivnost"};
 		Object[][] sadrzaj = new Object[biblioteka.neobrisaniClanovi().size()][zaglavlja.length];
 		
 		for(int i=0; i<biblioteka.neobrisaniClanovi().size(); i++) {
@@ -74,6 +74,9 @@ public class ClanProzor extends JFrame {
 			sadrzaj[i][7] = clan.getDatumPoslednjeUplate();
 			sadrzaj[i][8] = clan.getBrojUplacenihMeseci();
             sadrzaj[i][9] = clan.getTipClanarine();
+            sadrzaj[i][10] = clan.isAktivnost();
+
+            
 		}
 		
 
