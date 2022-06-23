@@ -4,7 +4,7 @@ clanovi - 1000+
 iznajmljivanja - 6000+
 
 
-knjige - 0,1,2...
+knjige - 1,2,3...
 clanarine - 1 do 10
 primerci - 34 +
 zanrovi - 1,2,3
